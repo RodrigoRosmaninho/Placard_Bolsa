@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <GridLayout
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_width="250dp"
+        android:layout_marginLeft="10dp">
+
+        <EditText
+            android:maxLength="3"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/placardCode"
+            android:gravity="center_vertical|center"
+            android:layout_width="60dp" />
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:id="@+id/betType_spinner"
+            android:textColor="#000000"
+            android:layout_width="105dp" />
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:id="@+id/outcome_spinner"
+            android:textColor="#000000"
+            android:layout_width="85dp" />
+
+    </GridLayout>
+
+</LinearLayout>

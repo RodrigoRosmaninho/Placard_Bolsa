@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "842683177296",
+    "firebase_url": "https://placard-bolsa.firebaseio.com",
+    "project_id": "placard-bolsa",
+    "storage_bucket": "placard-bolsa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842683177296:android:6d8c3d9b9394bac8",
+        "android_client_info": {
+          "package_name": "com.firebaseio.placardbolsa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842683177296-k4gcf9spn92dmb7epfvcelml18ac2q5l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firebaseio.placardbolsa",
+            "certificate_hash": "E6ACC859B8BEA8F22DDA7F29D466E4A81E304EE9"
+          }
+        },
+        {
+          "client_id": "842683177296-17qnoa0t0m0n7dvmldgebe9gldvgm9va.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvASR37cnd3Rr-966-Hi8jPG72oVMJLyM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842683177296-17qnoa0t0m0n7dvmldgebe9gldvgm9va.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

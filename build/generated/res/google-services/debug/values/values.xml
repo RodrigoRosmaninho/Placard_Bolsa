@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">842683177296-17qnoa0t0m0n7dvmldgebe9gldvgm9va.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://placard-bolsa.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">842683177296</string>
+    <string name="google_api_key" translatable="false">AIzaSyDvASR37cnd3Rr-966-Hi8jPG72oVMJLyM</string>
+    <string name="google_app_id" translatable="false">1:842683177296:android:6d8c3d9b9394bac8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDvASR37cnd3Rr-966-Hi8jPG72oVMJLyM</string>
+    <string name="google_storage_bucket" translatable="false">placard-bolsa.appspot.com</string>
+</resources>
