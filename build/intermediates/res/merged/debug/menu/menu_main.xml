@@ -5,6 +5,9 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Definições"
         app:showAsAction="never" />
+    <item android:title="Abrir Placard"
+        android:id="@+id/placard_link"
+        android:checkable="false" />
 </menu>

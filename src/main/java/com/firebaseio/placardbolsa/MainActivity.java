@@ -2,12 +2,11 @@ package com.firebaseio.placardbolsa;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -47,6 +45,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
@@ -63,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private static RecyclerView.LayoutManager mLayoutManager;
     public static List<gameCode> myDataset;
 
+    static boolean calledAlready = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -71,20 +72,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        com.github.clans.fab.FloatingActionButton fab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.add_bet_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addEntries();
-                //Snackbar.make(view, "[Ainda não faz nada]", Snackbar.LENGTH_LONG)
-                //        .setAction("Action", null).show();
             }
         });
 
-        ProgressBar spinner;
-        spinner = (ProgressBar)findViewById(R.id.progressBar1);
-
-        spinner.setVisibility(View.VISIBLE);
+        com.github.clans.fab.FloatingActionButton fab2 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.add_sug_fab);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addSuggestions();
+            }
+        });
 
         RecyclerView transactions_view = (RecyclerView) findViewById(R.id.transactions_view);
         transactions_view.setHasFixedSize(true);
@@ -92,7 +94,10 @@ public class MainActivity extends AppCompatActivity {
         bet_layoutManager.setReverseLayout(true);
         transactions_view.setLayoutManager(bet_layoutManager);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        if (!calledAlready) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            calledAlready = true;
+        }
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref = ref.child("Transactions");
@@ -109,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 Statistics stats_class = dataSnapshot.getValue(Statistics.class);
 
                 String ammount = stats_class.getOn_pouch();
-                ammount = ammount + "€";
+                ammount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(ammount)) + "€";
 
                 stats_text3.setTextColor(Color.parseColor("#FF669900"));
                 stats_text3.setText(ammount);
@@ -129,18 +134,19 @@ public class MainActivity extends AppCompatActivity {
                 betViewHolder.setDate(specificBet.getDate());
                 betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
                 betViewHolder.setGeneralBetType(specificBet.getGeneral_betType());
+                betViewHolder.setGameNumber(specificBet.getGame_number());
             }
         };
         transactions_view.setAdapter(mAdapter);
 
-        Handler handler = new Handler();
+        /**Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
                 ProgressBar spinner;
                 spinner = (ProgressBar)findViewById(R.id.progressBar1);
                 spinner.setVisibility(View.GONE);
             }
-        }, 2700);
+        }, 2700);**/
 
         //final EditText mMessage = (EditText) findViewById(R.id.message_text);
         //findViewById(R.id.send_button).setOnClickListener(new View.OnClickListener() {
@@ -236,6 +242,90 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    public void addSuggestions() {
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Adicionar Nova Sugestão")
+                .customView(R.layout.dialog_addentries, true)
+                .positiveText("Adicionar Jogos")
+                .negativeText("Cancelar")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        MaterialDialog dialog2 = new MaterialDialog.Builder(MainActivity.this)
+                                .title("Adicionar Jogos")
+                                .customView(R.layout.dialog_addgames, true)
+                                .positiveText("Confirmar")
+                                .negativeText("Cancelar")
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                        parseInput();
+                                    }
+                                })
+                                .build();
+
+                        myDataset = gameCode.createEmpty();
+                        number_of_games = 1;
+
+                        mRecyclerView = (RecyclerView) dialog2.getCustomView().findViewById(R.id.games_list);
+
+                        mRecyclerView.setHasFixedSize(true);
+
+                        mLayoutManager = new LinearLayoutManager(MainActivity.this);
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+
+                        mAdapter = new MyAdapter(MainActivity.this, myDataset);
+                        mRecyclerView.setAdapter(mAdapter);
+
+
+
+                        dialog2.show();
+                    }
+                })
+                .build();
+
+        final TextView n_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta);
+        final TextView d_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.d_da_aposta);
+
+        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
+        statsRef = statsRef.child("Statistics");
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
+        String formattedDate = df.format(c.getTime());
+        final String date = formattedDate.split("_")[1];
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
+
+                String bet_number_string = stats_class.getNumber_ofBets();
+                int bet_number_int = Integer.parseInt(bet_number_string) + 1;
+                String bet_number_result = "Aposta " + bet_number_int;
+
+                n_da_aposta.setText(bet_number_result);
+                d_da_aposta.setText(date);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        statsRef.addListenerForSingleValueEvent(postListener);
+
+        MaterialSpinner typeSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
+        View spinner_tipo = (View) dialog.getCustomView().findViewById(R.id.type_spinner);
+        spinner_tipo.isInEditMode();
+        typeSpinner.setItems("Combinada", "Simples", "Múltipla");
+
+        MaterialSpinner ammountSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
+        ammountSpinner.setItems("5€", "1€", "2€", "10€", "20€", "50€", "75€", "100€");
+
+        dialog.show();
+
+    }
+
     public void parseJSON(String JSON_String) throws JSONException {
         JSONObject mainObject = new JSONObject(JSON_String);
 
@@ -315,7 +405,19 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Snackbar.make(findViewById(android.R.id.content), "[Ainda não faz nada]", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+
+        if (id == R.id.placard_link) {
+            Intent launchIntent = getPackageManager().getLaunchIntentForPackage("pt.scml.placard");
+            if (launchIntent != null) {
+                startActivity(launchIntent);//null pointer check in case package name was not found
+            }
+            else {
+                Snackbar.make(findViewById(android.R.id.content), "A app Placard não está instalada!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -331,6 +433,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void setIndex(String index) {
+            // mView.setPadding(20, 0, 20, 0);
             TextView field = (TextView) mView.findViewById(R.id.bet_text1);
             index = "Aposta " + index.substring(1);
             field.setText(index);
@@ -348,11 +451,11 @@ public class MainActivity extends AppCompatActivity {
 
             if(result.equals("1")) {
                 float math_result = Float.parseFloat(winnings) - Float.parseFloat(losses);
-                balance = "+" + math_result + "€";
+                balance = String.format(Locale.ENGLISH, "%.2f", math_result) + "€";
                 field.setTextColor(Color.parseColor("#FF669900"));
             }
             else {
-                balance = "-" + losses + "€";
+                balance = "-" + String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(losses)) + "€";
                 field.setTextColor(Color.parseColor("#FFCC0000"));
             }
 
@@ -362,6 +465,13 @@ public class MainActivity extends AppCompatActivity {
         public void setGeneralBetType(String type) {
             TextView field = (TextView) mView.findViewById(R.id.bet_text4);
             field.setText(type);
+        }
+
+        public void setGameNumber(String number) {
+            TextView field = (TextView) mView.findViewById(R.id.bet_text5);
+            field.setTextSize(17);
+
+            field.setText("Jogos: " + number);
         }
 
     }
