@@ -940,9 +940,9 @@ public final class R {
 		public static final int up = 0x7f0e000a;
 		public static final int useLogo = 0x7f0e0018;
 		public static final int view_offset_helper = 0x7f0e000b;
-		public static final int welcome_back_idp_button = 0x7f0e0131;
-		public static final int welcome_back_idp_prompt = 0x7f0e0130;
-		public static final int welcome_back_password_body = 0x7f0e0132;
+		public static final int welcome_back_idp_button = 0x7f0e013f;
+		public static final int welcome_back_idp_prompt = 0x7f0e013e;
+		public static final int welcome_back_password_body = 0x7f0e0140;
 		public static final int wide = 0x7f0e0046;
 		public static final int withText = 0x7f0e0043;
 		public static final int wrap_content = 0x7f0e0024;
@@ -1028,9 +1028,9 @@ public final class R {
 		public static final int select_dialog_singlechoice_material = 0x7f040091;
 		public static final int sign_in_layout = 0x7f040092;
 		public static final int signin_no_password_layout = 0x7f040093;
-		public static final int support_simple_spinner_dropdown_item = 0x7f040094;
-		public static final int welcome_back_idp_prompt_layout = 0x7f040095;
-		public static final int welcome_back_password_prompt_layout = 0x7f040096;
+		public static final int support_simple_spinner_dropdown_item = 0x7f040095;
+		public static final int welcome_back_idp_prompt_layout = 0x7f040096;
+		public static final int welcome_back_password_prompt_layout = 0x7f040097;
 	}
 	public static final class string {
 		public static final int abc_action_bar_home_description = 0x7f060000;

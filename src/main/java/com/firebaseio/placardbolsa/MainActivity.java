@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
         statsRef = statsRef.child("Statistics");
 
-        CardViewNative stats = (CardViewNative) findViewById(R.id.stats_card);
+        CardViewNative stats = (CardViewNative) findViewById(R.id.stats_winLostCard);
         final TextView stats_text3 = (TextView) findViewById(R.id.stats_text3);
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -421,6 +421,52 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void expandStats(View v) {
+        setContentView(R.layout.stats_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        final TextView main_text3 = (TextView) findViewById(R.id.main_text3);
+        final TextView share_text42 = (TextView) findViewById(R.id.share_text42);
+        final TextView winLost_text3 = (TextView) findViewById(R.id.winLost_text3);
+        final TextView winLost_text5 = (TextView) findViewById(R.id.winLost_text5);
+
+        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
+        statsRef = statsRef.child("Statistics");
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
+
+                String ammount = stats_class.getOn_pouch();
+                ammount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(ammount)) + "€";
+
+                String share = stats_class.getCurrent_share();
+
+                String win = stats_class.getGeneral_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[2].split("=")[1];
+
+                String lost = stats_class.getGeneral_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[1].split("=")[1];
+
+                main_text3.setTextColor(Color.parseColor("#FF669900"));
+                main_text3.setText(ammount);
+
+                share_text42.setText(share);
+
+                winLost_text3.setText(win);
+
+                winLost_text5.setText(lost);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        statsRef.addValueEventListener(postListener);
+
+
     }
 
     public static class betHolder extends RecyclerView.ViewHolder {

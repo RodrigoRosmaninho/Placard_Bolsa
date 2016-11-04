@@ -10,6 +10,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="1dp"
+    android:animateLayoutChanges="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.firebaseio.placardbolsa.MainActivity"
     tools:showIn="@layout/activity_main">
@@ -18,7 +19,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:id="@+id/progressBar2"
-        android:layout_below="@+id/stats_card"
+        android:layout_below="@+id/stats_winLostCard"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:progress="0"
@@ -37,7 +38,7 @@
     </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
 
     <it.gmariotti.cardslib.library.view.CardViewNative
-        android:id="@+id/stats_card"
+        android:id="@+id/stats_winLostCard"
         card:cardPreventCornerOverlap="true"
         card:cardUseCompatPadding="true"
         android:layout_width="match_parent"
@@ -46,7 +47,9 @@
         android:layout_height="110dp"
         android:layout_marginBottom="1dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:onClick="expandStats">
 
         <GridLayout
             android:layout_width="match_parent"

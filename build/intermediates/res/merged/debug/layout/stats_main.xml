@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:layout_height="match_parent"
+    android:paddingBottom="1dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="1dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/stats_mainCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_marginBottom="1dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_height="100dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp">
+
+                    <GridLayout
+                        android:layout_width="138dp"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_height="26dp">
+
+                        <TextView
+                            android:id="@+id/main_text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_row="1"
+                            android:paddingLeft="3dp"
+                            android:layout_column="1"
+                            android:textSize="23sp"
+                            android:text="Na bolsa: " />
+
+                    </GridLayout>
+
+                    <TextView
+                        android:id="@+id/main_text1"
+                        android:layout_width="185dp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="23sp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="5dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="Estatísticas:" />
+
+                    <TextView
+                        android:id="@+id/main_text3"
+                        android:layout_height="wrap_content"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:textSize="24sp"
+                        android:paddingRight="10dp"
+                        android:layout_width="90dp"
+                        android:paddingBottom="1dp"
+                        android:gravity="right" />
+
+                    <TextView
+                        android:textSize="23sp"
+                        android:layout_row="0"
+                        android:layout_column="3"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/main_textView"
+                        android:background="@color/buttonTextColor" />
+
+                </GridLayout>
+
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/stats_winLostCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_below="@+id/stats_mainCard"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/textView"
+                android:layout_height="100dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp">
+
+                    <GridLayout
+                        android:layout_width="138dp"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_height="26dp">
+
+                        <TextView
+                            android:id="@+id/winLost_text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_row="1"
+                            android:paddingLeft="3dp"
+                            android:layout_column="1"
+                            android:textSize="23sp"
+                            android:text="Ganhas:" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="138dp"
+                        android:layout_row="2"
+                        android:layout_column="0"
+                        android:layout_height="26dp">
+
+                        <TextView
+                            android:id="@+id/winLost_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_row="1"
+                            android:paddingLeft="3dp"
+                            android:layout_column="1"
+                            android:textSize="23sp"
+                            android:text="Perdidas:" />
+
+                    </GridLayout>
+
+                    <TextView
+                        android:id="@+id/winLost_text3"
+                        android:layout_height="wrap_content"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:textSize="24sp"
+                        android:paddingRight="10dp"
+                        android:layout_width="90dp"
+                        android:paddingBottom="1dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/winLost_text1"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="21sp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="5dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="Apostas:"
+                        android:layout_width="140dp" />
+
+                    <TextView
+                        android:id="@+id/winLost_text5"
+                        android:layout_height="wrap_content"
+                        android:layout_row="2"
+                        android:layout_column="1"
+                        android:textSize="24sp"
+                        android:paddingRight="10dp"
+                        android:layout_width="90dp"
+                        android:paddingBottom="1dp"
+                        android:gravity="right|center" />
+
+                </GridLayout>
+
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+            <TextView
+                android:textSize="23sp"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:background="@color/buttonTextColor"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="97dp" />
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/stats_shareCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_height="100dp"
+                android:layout_below="@+id/stats_mainCard"
+                android:layout_toEndOf="@+id/stats_winLostCard">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp">
+
+                    <GridLayout
+                        android:layout_width="138dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_height="26dp">
+
+                    </GridLayout>
+
+                    <TextView
+                        android:id="@+id/share_text22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_row="0"
+                        android:paddingLeft="3dp"
+                        android:layout_column="0"
+                        android:textSize="21sp"
+                        android:text="Divisão:" />
+
+                    <TextView
+                        android:id="@+id/share_text42"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_row="1"
+                        android:paddingLeft="3dp"
+                        android:layout_column="0"
+                        android:textSize="24sp"
+                        android:text="5€"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/com_facebook_button_background_color" />
+
+                    <TextView
+                        android:id="@+id/share_text52"
+                        android:layout_height="wrap_content"
+                        android:layout_row="2"
+                        android:layout_column="0"
+                        android:textSize="13sp"
+                        android:paddingRight="10dp"
+                        android:layout_width="90dp"
+                        android:paddingBottom="1dp"
+                        android:gravity="right"
+                        android:text="por pessoa"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="2dp" />
+
+                </GridLayout>
+
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

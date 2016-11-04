@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
-    api-level="24"
-    density="xhdpi"
+    abi="armeabi-v7a,armeabi"
+    api-level="23"
+    density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="519873636154553"
-    token="-3460993904367622089"
+    timestamp="20113179378317"
+    token="3413955696348547010"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="11589" />
+        duration="2125" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="2095" />
+        duration="1176" />
     <task
         name="verifier"
-        duration="1315" />
+        duration="1208" />
 
     <artifact
-        location="E:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"
+        location="H:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="519873636154553"
+        timestamp="20113179378317"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="E:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"
+            location="H:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
 

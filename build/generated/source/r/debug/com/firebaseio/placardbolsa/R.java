@@ -4298,7 +4298,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0e0074;
         public static final int action_mode_bar_stub=0x7f0e0073;
         public static final int action_mode_close_button=0x7f0e0058;
-        public static final int action_settings=0x7f0e0135;
+        public static final int action_settings=0x7f0e0143;
         public static final int activity_chooser_view_content=0x7f0e0059;
         public static final int add=0x7f0e001e;
         public static final int add_bet_fab=0x7f0e0089;
@@ -4451,6 +4451,10 @@ containing a value of this type.
         public static final int loading_section=0x7f0e00d7;
         public static final int login_section=0x7f0e00ce;
         public static final int logo=0x7f0e008b;
+        public static final int main_text1=0x7f0e0132;
+        public static final int main_text2=0x7f0e0131;
+        public static final int main_text3=0x7f0e0133;
+        public static final int main_textView=0x7f0e0134;
         public static final int marquee=0x7f0e0035;
         public static final int match_parent=0x7f0e003e;
         public static final int md_buttonDefaultNegative=0x7f0e00ee;
@@ -4512,8 +4516,8 @@ containing a value of this type.
         public static final int pin=0x7f0e002e;
         public static final int placardCod=0x7f0e011d;
         public static final int placardCode=0x7f0e011e;
-        public static final int placard_link=0x7f0e0136;
-        public static final int pressed=0x7f0e0133;
+        public static final int placard_link=0x7f0e0144;
+        public static final int pressed=0x7f0e0141;
         public static final int progressBar=0x7f0e00d8;
         public static final int progressBar2=0x7f0e00b2;
         public static final int progress_bar=0x7f0e00a7;
@@ -4538,7 +4542,10 @@ containing a value of this type.
         public static final int search_src_text=0x7f0e0080;
         public static final int search_voice_btn=0x7f0e0084;
         public static final int select_dialog_listview=0x7f0e0085;
-        public static final int selected=0x7f0e0134;
+        public static final int selected=0x7f0e0142;
+        public static final int share_text22=0x7f0e013b;
+        public static final int share_text42=0x7f0e013c;
+        public static final int share_text52=0x7f0e013d;
         public static final int shortcut=0x7f0e006f;
         public static final int showCustom=0x7f0e0015;
         public static final int showHome=0x7f0e0016;
@@ -4555,10 +4562,12 @@ containing a value of this type.
         public static final int src_over=0x7f0e0023;
         public static final int standard=0x7f0e0045;
         public static final int start=0x7f0e000e;
-        public static final int stats_card=0x7f0e00b3;
+        public static final int stats_mainCard=0x7f0e0130;
+        public static final int stats_shareCard=0x7f0e013a;
         public static final int stats_text1=0x7f0e00b6;
         public static final int stats_text2=0x7f0e00b5;
         public static final int stats_text3=0x7f0e00b7;
+        public static final int stats_winLostCard=0x7f0e00b3;
         public static final int status_bar_latest_event_content=0x7f0e0112;
         public static final int submenuarrow=0x7f0e0071;
         public static final int submit_area=0x7f0e0082;
@@ -4588,10 +4597,15 @@ containing a value of this type.
         public static final int up=0x7f0e000a;
         public static final int useLogo=0x7f0e0018;
         public static final int view_offset_helper=0x7f0e000b;
-        public static final int welcome_back_idp_button=0x7f0e0131;
-        public static final int welcome_back_idp_prompt=0x7f0e0130;
-        public static final int welcome_back_password_body=0x7f0e0132;
+        public static final int welcome_back_idp_button=0x7f0e013f;
+        public static final int welcome_back_idp_prompt=0x7f0e013e;
+        public static final int welcome_back_password_body=0x7f0e0140;
         public static final int wide=0x7f0e0046;
+        public static final int winLost_text1=0x7f0e0138;
+        public static final int winLost_text2=0x7f0e0135;
+        public static final int winLost_text3=0x7f0e0137;
+        public static final int winLost_text4=0x7f0e0136;
+        public static final int winLost_text5=0x7f0e0139;
         public static final int withText=0x7f0e0043;
         public static final int wrap_content=0x7f0e0024;
     }
@@ -4757,9 +4771,10 @@ containing a value of this type.
         public static final int select_dialog_singlechoice_material=0x7f040091;
         public static final int sign_in_layout=0x7f040092;
         public static final int signin_no_password_layout=0x7f040093;
-        public static final int support_simple_spinner_dropdown_item=0x7f040094;
-        public static final int welcome_back_idp_prompt_layout=0x7f040095;
-        public static final int welcome_back_password_prompt_layout=0x7f040096;
+        public static final int stats_main=0x7f040094;
+        public static final int support_simple_spinner_dropdown_item=0x7f040095;
+        public static final int welcome_back_idp_prompt_layout=0x7f040096;
+        public static final int welcome_back_password_prompt_layout=0x7f040097;
     }
     public static final class menu {
         public static final int menu_main=0x7f0f0000;
