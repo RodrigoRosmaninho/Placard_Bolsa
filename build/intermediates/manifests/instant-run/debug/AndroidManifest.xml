@@ -39,6 +39,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.firebaseio.placardbolsa.StatsActivity"
+            android:colorPrimaryDark="#880000"
+            android:label="Placard Bolsa"
+            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.firebaseio.placardbolsa.MainActivity" />
+        </activity>
 
         <uses-permission android:name="android.permission.INTERNET" />
 

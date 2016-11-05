@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:animateLayoutChanges="true"
-    android:layout_height="match_parent"
-    android:paddingBottom="1dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="1dp">
+    android:layout_height="match_parent">
 
     <ScrollView
+        android:paddingBottom="1dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -26,9 +27,10 @@
                 android:layout_width="match_parent"
                 style="@style/native_recyclerview_card.base"
                 card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_marginBottom="1dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:layout_height="100dp">
 
                 <GridLayout
@@ -102,7 +104,9 @@
                 android:layout_below="@+id/stats_mainCard"
                 android:layout_alignParentStart="true"
                 android:layout_alignEnd="@+id/textView"
-                android:layout_height="100dp">
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_height="115dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -146,17 +150,6 @@
                     </GridLayout>
 
                     <TextView
-                        android:id="@+id/winLost_text3"
-                        android:layout_height="wrap_content"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:textSize="24sp"
-                        android:paddingRight="10dp"
-                        android:layout_width="90dp"
-                        android:paddingBottom="1dp"
-                        android:gravity="center" />
-
-                    <TextView
                         android:id="@+id/winLost_text1"
                         android:textStyle="bold"
                         android:layout_height="wrap_content"
@@ -174,10 +167,37 @@
                         android:layout_row="2"
                         android:layout_column="1"
                         android:textSize="24sp"
-                        android:paddingRight="10dp"
+                        android:paddingRight="22dp"
                         android:layout_width="90dp"
                         android:paddingBottom="1dp"
-                        android:gravity="right|center" />
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginRight="5dp" />
+
+                    <TextView
+                        android:textSize="23sp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/winLost_textView"
+                        android:background="@color/buttonTextColor"
+                        android:layout_below="@+id/stats_winLostCard"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="32dp" />
+
+                    <TextView
+                        android:id="@+id/winLost_text3"
+                        android:layout_height="wrap_content"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:textSize="24sp"
+                        android:paddingRight="22dp"
+                        android:layout_width="90dp"
+                        android:paddingBottom="1dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginRight="5dp" />
 
                 </GridLayout>
 
@@ -188,24 +208,25 @@
                 android:textSize="23sp"
                 android:layout_row="0"
                 android:layout_column="3"
-                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
-                android:background="@color/buttonTextColor"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="97dp" />
+                android:layout_marginBottom="97dp"
+                android:layout_width="80dp" />
 
             <it.gmariotti.cardslib.library.view.CardViewNative
                 android:id="@+id/stats_shareCard"
                 card:cardPreventCornerOverlap="true"
                 card:cardUseCompatPadding="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:layout_width="match_parent"
                 style="@style/native_recyclerview_card.base"
                 card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_height="100dp"
                 android:layout_below="@+id/stats_mainCard"
-                android:layout_toEndOf="@+id/stats_winLostCard">
+                android:layout_toEndOf="@+id/stats_winLostCard"
+                android:layout_height="115dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -213,10 +234,11 @@
                     android:paddingBottom="5dp">
 
                     <GridLayout
-                        android:layout_width="138dp"
+                        android:layout_width="match_parent"
                         android:layout_row="0"
                         android:layout_column="0"
-                        android:layout_height="26dp">
+                        android:background="@color/buttonTextColor"
+                        android:layout_height="32dp">
 
                     </GridLayout>
 
@@ -232,16 +254,17 @@
 
                     <TextView
                         android:id="@+id/share_text42"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_row="1"
                         android:paddingLeft="3dp"
                         android:layout_column="0"
                         android:textSize="24sp"
                         android:text="5€"
-                        android:layout_marginLeft="60dp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/com_facebook_button_background_color" />
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center" />
 
                     <TextView
                         android:id="@+id/share_text52"
@@ -254,11 +277,31 @@
                         android:paddingBottom="1dp"
                         android:gravity="right"
                         android:text="por pessoa"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="2dp" />
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center_horizontal" />
 
                 </GridLayout>
 
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/stats_chartCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_height="100dp"
+                android:layout_below="@+id/stats_winLostCard"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_alignParentStart="true">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </it.gmariotti.cardslib.library.view.CardViewNative>
 

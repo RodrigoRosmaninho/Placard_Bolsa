@@ -28,12 +28,12 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\card_undo_layout.xml"
     },
     {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\native_material_topcolored_card.xml",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\layout\\native_material_topcolored_card.xml"
-    },
-    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\inner_base_main_cardwithlist.xml",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\inner_base_main_cardwithlist.xml"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\native_material_topcolored_card.xml",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\layout\\native_material_topcolored_card.xml"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_thumbnail_layout.xml",
@@ -56,12 +56,12 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_section_layout.xml",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\base_section_layout.xml"
-    },
-    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_fragment.xml",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.14.1\\res\\layout\\com_facebook_login_fragment.xml"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_section_layout.xml",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\base_section_layout.xml"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\native_material_topcolored_inner_base_main.xml",
@@ -76,16 +76,16 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_layout_snackbar.xml"
     },
     {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\signin_no_password_layout.xml",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui-auth\\0.6.0\\res\\layout\\signin_no_password_layout.xml"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\native_card_thumbnail_layout.xml",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\native_card_thumbnail_layout.xml"
     },
     {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item_subheader.xml"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\signin_no_password_layout.xml",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui-auth\\0.6.0\\res\\layout\\signin_no_password_layout.xml"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_titleframe_lesspadding.xml",

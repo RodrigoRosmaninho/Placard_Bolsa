@@ -924,9 +924,9 @@ public final class R {
 		public static final int up = 0x7f0e000a;
 		public static final int useLogo = 0x7f0e0018;
 		public static final int view_offset_helper = 0x7f0e000b;
-		public static final int welcome_back_idp_button = 0x7f0e013f;
-		public static final int welcome_back_idp_prompt = 0x7f0e013e;
-		public static final int welcome_back_password_body = 0x7f0e0140;
+		public static final int welcome_back_idp_button = 0x7f0e0142;
+		public static final int welcome_back_idp_prompt = 0x7f0e0141;
+		public static final int welcome_back_password_body = 0x7f0e0143;
 		public static final int wide = 0x7f0e0046;
 		public static final int withText = 0x7f0e0043;
 		public static final int wrap_content = 0x7f0e0024;
