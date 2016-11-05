@@ -12,11 +12,12 @@ public class Statistics {
     private Object best_winnings;
     private Object worst_fuckUp;
     private String number_ofBets;
+    private Object pouch_history;
 
     public Statistics() {
     }
 
-    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, Object best_winnings, Object worst_fuckUp, String number_ofBets) {
+    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, Object best_winnings, Object worst_fuckUp, String number_ofBets, Object pouch_history) {
         this.all_earnings = all_earnings;
         this.current_share = current_share;
         this.on_pouch = on_pouch;
@@ -26,6 +27,7 @@ public class Statistics {
         this.best_winnings = best_winnings;
         this.worst_fuckUp = worst_fuckUp;
         this.number_ofBets = number_ofBets;
+        this.pouch_history = pouch_history;
 
 
     }
@@ -66,8 +68,12 @@ public class Statistics {
         return number_ofBets;
     }
 
-    
-    
+    public Object getPouch_history() {
+        return pouch_history;
+    }
+
+
+
     public class voteStats {
         private String u01;
         private String u02;

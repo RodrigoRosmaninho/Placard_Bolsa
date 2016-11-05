@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+        "outputFile": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 110
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 187
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 270
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 343
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 424
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 505
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -125,7 +125,7 @@
                     "endOffset": 585
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -145,7 +145,7 @@
                     "endOffset": 886
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\values-v21\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -165,7 +165,7 @@
                     "endOffset": 977
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -184,7 +184,7 @@
                     "endOffset": 1080
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -203,7 +203,7 @@
                     "endOffset": 1183
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -222,7 +222,7 @@
                     "endOffset": 1288
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -241,7 +241,7 @@
                     "endOffset": 1395
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -260,7 +260,7 @@
                     "endOffset": 1504
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -279,7 +279,7 @@
                     "endOffset": 1613
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -298,7 +298,7 @@
                     "endOffset": 1722
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -317,7 +317,7 @@
                     "endOffset": 1831
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -336,7 +336,7 @@
                     "endOffset": 1940
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -355,7 +355,7 @@
                     "endOffset": 2047
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -374,7 +374,7 @@
                     "endOffset": 2150
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -393,7 +393,7 @@
                     "endOffset": 2269
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -413,7 +413,7 @@
                     "endOffset": 2424
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -434,7 +434,7 @@
                     "endOffset": 2579
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -454,7 +454,7 @@
                     "endOffset": 2684
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -473,7 +473,7 @@
                     "endOffset": 2805
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -492,7 +492,7 @@
                     "endOffset": 2906
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -512,7 +512,7 @@
                     "endOffset": 3053
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -533,7 +533,7 @@
                     "endOffset": 3194
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -553,7 +553,7 @@
                     "endOffset": 3297
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
@@ -572,7 +572,7 @@
                     "endOffset": 3416
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
@@ -591,7 +591,7 @@
                     "endOffset": 3523
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -610,7 +610,7 @@
                     "endOffset": 3626
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -630,7 +630,7 @@
                     "endOffset": 3781
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 30,
                         "startColumn": 4,
@@ -651,7 +651,7 @@
                     "endOffset": 3952
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -672,7 +672,7 @@
                     "endOffset": 4101
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 34,
                         "startColumn": 4,
@@ -693,7 +693,7 @@
                     "endOffset": 4266
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 36,
                         "startColumn": 4,
@@ -714,7 +714,7 @@
                     "endOffset": 4423
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
@@ -735,7 +735,7 @@
                     "endOffset": 4574
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 40,
                         "startColumn": 4,
@@ -755,7 +755,7 @@
                     "endOffset": 4693
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 42,
                         "startColumn": 4,
@@ -775,7 +775,7 @@
                     "endOffset": 5065
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 43,
                         "startColumn": 4,
@@ -796,7 +796,7 @@
                     "endOffset": 5214
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,
@@ -817,7 +817,7 @@
                     "endOffset": 5363
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 50,
                         "startColumn": 4,
@@ -837,7 +837,7 @@
                     "endOffset": 5475
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 52,
                         "startColumn": 4,
@@ -856,7 +856,7 @@
                     "endOffset": 5622
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 53,
                         "startColumn": 4,
@@ -876,7 +876,7 @@
                     "endOffset": 5775
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 54,
                         "startColumn": 4,
@@ -897,7 +897,7 @@
                     "endOffset": 5922
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 56,
                         "startColumn": 4,
@@ -917,7 +917,7 @@
                     "endOffset": 5997
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 58,
                         "startColumn": 4,
@@ -936,7 +936,7 @@
                     "endOffset": 6086
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 59,
                         "startColumn": 4,
@@ -955,7 +955,7 @@
                     "endOffset": 6173
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 60,
                         "startColumn": 4,
@@ -974,7 +974,7 @@
                     "endOffset": 6274
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 61,
                         "startColumn": 4,
@@ -993,7 +993,7 @@
                     "endOffset": 6377
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 62,
                         "startColumn": 4,
@@ -1013,7 +1013,7 @@
                     "endOffset": 9445
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 63,
                         "startColumn": 4,
@@ -1034,7 +1034,7 @@
                     "endOffset": 9631
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 107,
                         "startColumn": 4,
@@ -1055,7 +1055,7 @@
                     "endOffset": 12711
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 110,
                         "startColumn": 4,
@@ -1076,7 +1076,7 @@
                     "endOffset": 12909
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 154,
                         "startColumn": 4,
@@ -1097,7 +1097,7 @@
                     "endOffset": 13109
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 157,
                         "startColumn": 4,
@@ -1118,7 +1118,7 @@
                     "endOffset": 13232
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 160,
                         "startColumn": 4,
@@ -1139,7 +1139,7 @@
                     "endOffset": 13355
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 162,
                         "startColumn": 4,
@@ -1160,7 +1160,7 @@
                     "endOffset": 13468
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 164,
                         "startColumn": 4,
@@ -1181,7 +1181,7 @@
                     "endOffset": 13651
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 166,
                         "startColumn": 4,
@@ -1202,7 +1202,7 @@
                     "endOffset": 13782
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 169,
                         "startColumn": 4,
@@ -1223,7 +1223,7 @@
                     "endOffset": 13983
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 171,
                         "startColumn": 4,
@@ -1243,7 +1243,7 @@
                     "endOffset": 14072
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 174,
                         "startColumn": 4,
@@ -1262,7 +1262,7 @@
                     "endOffset": 14183
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 175,
                         "startColumn": 4,
@@ -1282,7 +1282,7 @@
                     "endOffset": 14416
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 176,
                         "startColumn": 4,
@@ -1302,7 +1302,7 @@
                     "endOffset": 14517
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 179,
                         "startColumn": 4,
@@ -1321,7 +1321,7 @@
                     "endOffset": 14612
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 180,
                         "startColumn": 4,
@@ -1340,7 +1340,7 @@
                     "endOffset": 14735
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 181,
                         "startColumn": 4,
@@ -1359,7 +1359,7 @@
                     "endOffset": 14864
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 182,
                         "startColumn": 4,
@@ -1378,7 +1378,7 @@
                     "endOffset": 14981
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 183,
                         "startColumn": 4,
@@ -1398,7 +1398,7 @@
                     "endOffset": 15158
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 184,
                         "startColumn": 4,
@@ -1418,7 +1418,7 @@
                     "endOffset": 15257
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 187,
                         "startColumn": 4,
@@ -1438,7 +1438,7 @@
                     "endOffset": 15392
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 188,
                         "startColumn": 4,
@@ -1459,7 +1459,7 @@
                     "endOffset": 15535
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 190,
                         "startColumn": 4,
@@ -1480,7 +1480,7 @@
                     "endOffset": 15670
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 192,
                         "startColumn": 4,
@@ -1501,7 +1501,7 @@
                     "endOffset": 15789
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 194,
                         "startColumn": 4,
@@ -1522,7 +1522,7 @@
                     "endOffset": 15990
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 196,
                         "startColumn": 4,
@@ -1543,7 +1543,7 @@
                     "endOffset": 16109
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 200,
                         "startColumn": 4,
@@ -1563,7 +1563,7 @@
                     "endOffset": 16202
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 202,
                         "startColumn": 4,
@@ -1582,7 +1582,7 @@
                     "endOffset": 16313
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 203,
                         "startColumn": 4,
@@ -1601,7 +1601,7 @@
                     "endOffset": 16369
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 204,
                         "startColumn": 4,
@@ -1621,7 +1621,7 @@
                     "endOffset": 16476
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 205,
                         "startColumn": 4,
@@ -1642,7 +1642,7 @@
                     "endOffset": 16671
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 207,
                         "startColumn": 4,
@@ -1663,7 +1663,7 @@
                     "endOffset": 16782
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 211,
                         "startColumn": 4,
@@ -1684,7 +1684,7 @@
                     "endOffset": 16915
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 213,
                         "startColumn": 4,
@@ -1704,7 +1704,7 @@
                     "endOffset": 17010
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 215,
                         "startColumn": 4,
@@ -1723,7 +1723,7 @@
                     "endOffset": 17101
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 216,
                         "startColumn": 4,
@@ -1742,7 +1742,7 @@
                     "endOffset": 17192
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 217,
                         "startColumn": 4,
@@ -1761,7 +1761,7 @@
                     "endOffset": 17309
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 218,
                         "startColumn": 4,
@@ -1781,7 +1781,7 @@
                     "endOffset": 17448
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 219,
                         "startColumn": 4,
@@ -1802,7 +1802,7 @@
                     "endOffset": 18286
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui-auth\\0.6.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui-auth\\0.6.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -1823,7 +1823,7 @@
                     "endOffset": 19326
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui-auth\\0.6.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui-auth\\0.6.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -1844,7 +1844,7 @@
                     "endOffset": 20085
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -1865,7 +1865,7 @@
                     "endOffset": 20836
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -1886,7 +1886,7 @@
                     "endOffset": 21349
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 221,
                         "startColumn": 4,
@@ -1907,7 +1907,7 @@
                     "endOffset": 21874
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 231,
                         "startColumn": 4,
@@ -1928,7 +1928,7 @@
                     "endOffset": 22554
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 241,
                         "startColumn": 4,
@@ -1948,7 +1948,7 @@
                     "endOffset": 22611
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 251,
                         "startColumn": 4,
@@ -1967,7 +1967,7 @@
                     "endOffset": 22669
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 252,
                         "startColumn": 4,
@@ -1987,7 +1987,7 @@
                     "endOffset": 22863
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -2008,7 +2008,7 @@
                     "endOffset": 23682
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -2029,7 +2029,7 @@
                     "endOffset": 23827
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -2050,7 +2050,7 @@
                     "endOffset": 23984
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
@@ -2071,7 +2071,7 @@
                     "endOffset": 24881
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -2092,7 +2092,7 @@
                     "endOffset": 25043
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 43,
                         "startColumn": 4,
@@ -2113,7 +2113,7 @@
                     "endOffset": 25200
                 },
                 "from": {
-                    "file": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
+                    "file": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v21\\values-v21.xml",
                     "position": {
                         "startLine": 46,
                         "startColumn": 4,

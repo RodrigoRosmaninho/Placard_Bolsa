@@ -748,11 +748,11 @@ public final class R {
 		public static final int messenger_button_send_round_shadow = 0x7f0200d5;
 		public static final int messenger_button_white_bg_round = 0x7f0200d6;
 		public static final int messenger_button_white_bg_selector = 0x7f0200d7;
-		public static final int notification_template_icon_bg = 0x7f0200eb;
+		public static final int notification_template_icon_bg = 0x7f0200f0;
 		public static final int or_line = 0x7f0200e0;
 		public static final int password_button = 0x7f0200e1;
-		public static final int rounded_button = 0x7f0200e4;
-		public static final int twitter_button = 0x7f0200e6;
+		public static final int rounded_button = 0x7f0200e9;
+		public static final int twitter_button = 0x7f0200eb;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0e0110;
@@ -940,9 +940,9 @@ public final class R {
 		public static final int up = 0x7f0e000a;
 		public static final int useLogo = 0x7f0e0018;
 		public static final int view_offset_helper = 0x7f0e000b;
-		public static final int welcome_back_idp_button = 0x7f0e0142;
-		public static final int welcome_back_idp_prompt = 0x7f0e0141;
-		public static final int welcome_back_password_body = 0x7f0e0143;
+		public static final int welcome_back_idp_button = 0x7f0e0152;
+		public static final int welcome_back_idp_prompt = 0x7f0e0151;
+		public static final int welcome_back_password_body = 0x7f0e0153;
 		public static final int wide = 0x7f0e0046;
 		public static final int withText = 0x7f0e0043;
 		public static final int wrap_content = 0x7f0e0024;

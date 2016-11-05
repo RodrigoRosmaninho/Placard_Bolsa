@@ -216,12 +216,12 @@ public final class R {
 		public static final int ic_more_vert_grey600_36dp = 0x7f0200b6;
 		public static final int ic_undobar_undo = 0x7f0200b9;
 		public static final int native_card_selector = 0x7f0200de;
-		public static final int pressed_background_card = 0x7f0200e2;
-		public static final int pressed_background_kitkat_card = 0x7f0200e3;
-		public static final int undobar = 0x7f0200e7;
-		public static final int undobar_button_focused = 0x7f0200e8;
-		public static final int undobar_button_pressed = 0x7f0200e9;
-		public static final int undobar_divider = 0x7f0200ea;
+		public static final int pressed_background_card = 0x7f0200e7;
+		public static final int pressed_background_kitkat_card = 0x7f0200e8;
+		public static final int undobar = 0x7f0200ec;
+		public static final int undobar_button_focused = 0x7f0200ed;
+		public static final int undobar_button_pressed = 0x7f0200ee;
+		public static final int undobar_divider = 0x7f0200ef;
 	}
 	public static final class id {
 		public static final int card_base_empty_cardwithlist_text = 0x7f0e0097;
@@ -253,8 +253,8 @@ public final class R {
 		public static final int list_card_undobar_button = 0x7f0e00e2;
 		public static final int list_card_undobar_message = 0x7f0e00e1;
 		public static final int normal = 0x7f0e0010;
-		public static final int pressed = 0x7f0e0144;
-		public static final int selected = 0x7f0e0145;
+		public static final int pressed = 0x7f0e0154;
+		public static final int selected = 0x7f0e0155;
 		public static final int undobar = 0x7f0e00a0;
 		public static final int undobar_button = 0x7f0e00a2;
 		public static final int undobar_message = 0x7f0e00a1;

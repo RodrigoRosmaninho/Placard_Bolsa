@@ -598,7 +598,7 @@ public final class R {
 		public static final int md_selector = 0x7f0200cc;
 		public static final int md_selector_dark = 0x7f0200cd;
 		public static final int md_transparent = 0x7f0200ce;
-		public static final int notification_template_icon_bg = 0x7f0200eb;
+		public static final int notification_template_icon_bg = 0x7f0200f0;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0e0110;

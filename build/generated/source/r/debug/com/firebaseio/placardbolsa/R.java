@@ -4269,18 +4269,23 @@ containing a value of this type.
         public static final int ms__shadow_background=0x7f0200dd;
         public static final int native_card_selector=0x7f0200de;
         public static final int navigation_empty_icon=0x7f0200df;
-        public static final int notification_template_icon_bg=0x7f0200eb;
+        public static final int notification_template_icon_bg=0x7f0200f0;
         public static final int or_line=0x7f0200e0;
         public static final int password_button=0x7f0200e1;
-        public static final int pressed_background_card=0x7f0200e2;
-        public static final int pressed_background_kitkat_card=0x7f0200e3;
-        public static final int rounded_button=0x7f0200e4;
-        public static final int topcolored_bg=0x7f0200e5;
-        public static final int twitter_button=0x7f0200e6;
-        public static final int undobar=0x7f0200e7;
-        public static final int undobar_button_focused=0x7f0200e8;
-        public static final int undobar_button_pressed=0x7f0200e9;
-        public static final int undobar_divider=0x7f0200ea;
+        public static final int pb_chico=0x7f0200e2;
+        public static final int pb_lois=0x7f0200e3;
+        public static final int pb_melo=0x7f0200e4;
+        public static final int pb_nuno=0x7f0200e5;
+        public static final int pb_salgado=0x7f0200e6;
+        public static final int pressed_background_card=0x7f0200e7;
+        public static final int pressed_background_kitkat_card=0x7f0200e8;
+        public static final int rounded_button=0x7f0200e9;
+        public static final int topcolored_bg=0x7f0200ea;
+        public static final int twitter_button=0x7f0200eb;
+        public static final int undobar=0x7f0200ec;
+        public static final int undobar_button_focused=0x7f0200ed;
+        public static final int undobar_button_pressed=0x7f0200ee;
+        public static final int undobar_divider=0x7f0200ef;
     }
     public static final class id {
         public static final int action0=0x7f0e0110;
@@ -4298,7 +4303,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0e0074;
         public static final int action_mode_bar_stub=0x7f0e0073;
         public static final int action_mode_close_button=0x7f0e0058;
-        public static final int action_settings=0x7f0e0146;
+        public static final int action_settings=0x7f0e0156;
         public static final int activity_chooser_view_content=0x7f0e0059;
         public static final int add=0x7f0e001e;
         public static final int add_bet_fab=0x7f0e0089;
@@ -4368,7 +4373,8 @@ containing a value of this type.
         public static final int center=0x7f0e000c;
         public static final int center_horizontal=0x7f0e0027;
         public static final int center_vertical=0x7f0e0028;
-        public static final int chart=0x7f0e0140;
+        public static final int chart=0x7f0e0143;
+        public static final int chart_text2=0x7f0e0142;
         public static final int checkbox=0x7f0e006e;
         public static final int chronometer=0x7f0e0117;
         public static final int circular=0x7f0e003b;
@@ -4433,6 +4439,11 @@ containing a value of this type.
         public static final int ifRoom=0x7f0e0041;
         public static final int image=0x7f0e005b;
         public static final int imageView=0x7f0e00c7;
+        public static final int imageView2=0x7f0e014f;
+        public static final int imageView3=0x7f0e0147;
+        public static final int imageView4=0x7f0e0146;
+        public static final int imageView5=0x7f0e0148;
+        public static final int imageView6=0x7f0e014d;
         public static final int include=0x7f0e0087;
         public static final int info=0x7f0e011b;
         public static final int inline=0x7f0e0050;
@@ -4452,10 +4463,12 @@ containing a value of this type.
         public static final int loading_section=0x7f0e00d7;
         public static final int login_section=0x7f0e00ce;
         public static final int logo=0x7f0e008b;
-        public static final int main_text1=0x7f0e0132;
+        public static final int main_text1=0x7f0e0133;
         public static final int main_text2=0x7f0e0131;
-        public static final int main_text3=0x7f0e0133;
-        public static final int main_textView=0x7f0e0134;
+        public static final int main_text3=0x7f0e0134;
+        public static final int main_text6=0x7f0e0132;
+        public static final int main_text7=0x7f0e0135;
+        public static final int main_textView=0x7f0e0136;
         public static final int marquee=0x7f0e0035;
         public static final int match_parent=0x7f0e003e;
         public static final int md_buttonDefaultNegative=0x7f0e00ee;
@@ -4517,8 +4530,8 @@ containing a value of this type.
         public static final int pin=0x7f0e002e;
         public static final int placardCod=0x7f0e011d;
         public static final int placardCode=0x7f0e011e;
-        public static final int placard_link=0x7f0e0147;
-        public static final int pressed=0x7f0e0144;
+        public static final int placard_link=0x7f0e0157;
+        public static final int pressed=0x7f0e0154;
         public static final int progressBar=0x7f0e00d8;
         public static final int progressBar2=0x7f0e00b2;
         public static final int progress_bar=0x7f0e00a7;
@@ -4543,10 +4556,10 @@ containing a value of this type.
         public static final int search_src_text=0x7f0e0080;
         public static final int search_voice_btn=0x7f0e0084;
         public static final int select_dialog_listview=0x7f0e0085;
-        public static final int selected=0x7f0e0145;
-        public static final int share_text22=0x7f0e013c;
-        public static final int share_text42=0x7f0e013d;
-        public static final int share_text52=0x7f0e013e;
+        public static final int selected=0x7f0e0155;
+        public static final int share_text22=0x7f0e013e;
+        public static final int share_text42=0x7f0e013f;
+        public static final int share_text52=0x7f0e0140;
         public static final int shortcut=0x7f0e006f;
         public static final int showCustom=0x7f0e0015;
         public static final int showHome=0x7f0e0016;
@@ -4563,12 +4576,13 @@ containing a value of this type.
         public static final int src_over=0x7f0e0023;
         public static final int standard=0x7f0e0045;
         public static final int start=0x7f0e000e;
-        public static final int stats_chartCard=0x7f0e013f;
+        public static final int stats_chartCard=0x7f0e0141;
         public static final int stats_mainCard=0x7f0e0130;
-        public static final int stats_shareCard=0x7f0e013b;
+        public static final int stats_shareCard=0x7f0e013d;
         public static final int stats_text1=0x7f0e00b6;
         public static final int stats_text2=0x7f0e00b5;
         public static final int stats_text3=0x7f0e00b7;
+        public static final int stats_votesCard=0x7f0e0144;
         public static final int stats_winLostCard=0x7f0e00b3;
         public static final int status_bar_latest_event_content=0x7f0e0112;
         public static final int submenuarrow=0x7f0e0071;
@@ -4599,16 +4613,23 @@ containing a value of this type.
         public static final int up=0x7f0e000a;
         public static final int useLogo=0x7f0e0018;
         public static final int view_offset_helper=0x7f0e000b;
-        public static final int welcome_back_idp_button=0x7f0e0142;
-        public static final int welcome_back_idp_prompt=0x7f0e0141;
-        public static final int welcome_back_password_body=0x7f0e0143;
+        public static final int votes_chicoText=0x7f0e014a;
+        public static final int votes_lóisText=0x7f0e014b;
+        public static final int votes_meloText=0x7f0e014c;
+        public static final int votes_nunoText=0x7f0e0149;
+        public static final int votes_salgadoText=0x7f0e014e;
+        public static final int votes_text1=0x7f0e0145;
+        public static final int votes_textView=0x7f0e0150;
+        public static final int welcome_back_idp_button=0x7f0e0152;
+        public static final int welcome_back_idp_prompt=0x7f0e0151;
+        public static final int welcome_back_password_body=0x7f0e0153;
         public static final int wide=0x7f0e0046;
-        public static final int winLost_text1=0x7f0e0137;
-        public static final int winLost_text2=0x7f0e0135;
-        public static final int winLost_text3=0x7f0e013a;
-        public static final int winLost_text4=0x7f0e0136;
-        public static final int winLost_text5=0x7f0e0138;
-        public static final int winLost_textView=0x7f0e0139;
+        public static final int winLost_text1=0x7f0e0139;
+        public static final int winLost_text2=0x7f0e0137;
+        public static final int winLost_text3=0x7f0e013c;
+        public static final int winLost_text4=0x7f0e0138;
+        public static final int winLost_text5=0x7f0e013a;
+        public static final int winLost_textView=0x7f0e013b;
         public static final int withText=0x7f0e0043;
         public static final int wrap_content=0x7f0e0024;
     }
@@ -5122,6 +5143,8 @@ containing a value of this type.
         public static final int CardView=0x7f0900a1;
         public static final int CardView_Dark=0x7f0900dd;
         public static final int CardView_Light=0x7f0900de;
+        /**  colorControlActivated & colorControlHighlight use the colorAccent color by default 
+         */
         public static final int FirebaseEditTextTheme=0x7f0900df;
         public static final int FirebaseUI=0x7f09008c;
         public static final int FirebaseUI_AuthMethodPicker=0x7f0900e0;
@@ -5390,6 +5413,8 @@ containing a value of this type.
         public static final int Widget_MaterialProgressBar_ProgressBar_NoPadding=0x7f0901bc;
         public static final int Widget_MaterialProgressBar_ProgressBar_Small=0x7f0901bd;
         public static final int Widget_MaterialProgressBar_ProgressBar_Small_NoPadding=0x7f0901be;
+        /**  this style should be empty 
+         */
         public static final int card=0x7f09002f;
         public static final int card_base_simple_title=0x7f090030;
         public static final int card_content_outer_layout=0x7f0901bf;
@@ -5407,6 +5432,8 @@ containing a value of this type.
         public static final int card_main_layout_kitkat=0x7f0901c6;
         public static final int card_main_layout_foreground=0x7f0901c7;
         public static final int card_main_layout_foreground_kitkat=0x7f0901c8;
+        /**  this style should be empty 
+         */
         public static final int card_native=0x7f0901c9;
         public static final int card_native_actions=0x7f090033;
         public static final int card_native_actions_button=0x7f0901ca;
