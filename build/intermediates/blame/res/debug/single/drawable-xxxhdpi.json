@@ -12,12 +12,32 @@
         "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_expand_less_black_24dp.png"
     },
     {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_expand_more_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_expand_more_grey600_24dp.png"
+    },
+    {
         "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_more_vert_black_24dp.png",
         "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_more_vert_black_24dp.png"
     },
     {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_more_vert_black_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_more_vert_black_24dp.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_expand_less_black_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_expand_less_black_24dp.png"
+    },
+    {
         "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_expand_more_grey600_24dp.png",
         "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_expand_more_grey600_24dp.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_expand_more_black_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_expand_more_black_24dp.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_expand_less_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_expand_less_grey600_24dp.png"
     },
     {
         "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_expand_more_black_24dp.png",
@@ -26,5 +46,13 @@
     {
         "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_more_vert_grey600_24dp.png",
         "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_more_vert_grey600_24dp.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_chevron_right_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_chevron_right_grey600_24dp.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_more_vert_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxxhdpi\\ic_more_vert_grey600_24dp.png"
     }
 ]

@@ -347,6 +347,19 @@ public class MainActivity extends AppCompatActivity {
         String formattedDate = df.format(c.getTime());
         final String date = formattedDate.split("_")[1];
 
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Confirmar Aposta")
+                .customView(R.layout.dialog_confirmgames, true)
+                .positiveText("Confirmar")
+                .negativeText("Cancelar")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                    }
+                })
+                .build();
+
     }
 
     public void parseInput() {

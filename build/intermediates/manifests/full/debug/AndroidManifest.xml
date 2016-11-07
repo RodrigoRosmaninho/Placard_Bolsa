@@ -30,7 +30,6 @@
             android:name="com.firebaseio.placardbolsa.MainActivity"
             android:colorPrimaryDark="#880000"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,8 +40,9 @@
         <activity
             android:name="com.firebaseio.placardbolsa.StatsActivity"
             android:colorPrimaryDark="#880000"
-            android:label="Placard Bolsa"
+            android:label="Estatísticas"
             android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

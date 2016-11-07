@@ -31,6 +31,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardViewNative;
+
 
 public class StatsActivity extends AppCompatActivity {
     @Override
@@ -42,6 +46,21 @@ public class StatsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        Card card = new Card(this);
+
+        //Create a CardHeader
+        CardHeader header = new CardHeader(this);
+
+        CardViewNative cardView = (CardViewNative) this.findViewById(R.id.stats_mainCard);
+
+        card.addCardHeader(header);
+
+        header.setButtonExpandVisible(false);
+        header.setButtonOverflowVisible(false);
+        header.setTitle("Geral");
+
+        cardView.setCard(card);
 
         final TextView main_text3 = (TextView) findViewById(R.id.main_text3);
         final TextView main_text7 = (TextView) findViewById(R.id.main_text7);

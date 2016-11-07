@@ -35,7 +35,7 @@ public final class R {
 		public static final int wrap_content = 0x7f0e0024;
 	}
 	public static final class layout {
-		public static final int ms__list_item = 0x7f04006c;
+		public static final int ms__list_item = 0x7f04006d;
 	}
 	public static final class styleable {
 		public static final int[] MaterialSpinner = { 0x7f010141, 0x7f010142, 0x7f010143, 0x7f010144, 0x7f010145, 0x7f010146 };
