@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:2:1-46:12
 	package
 		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:3:5-42
 		INJECTED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:2:1
 		INJECTED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml
 		INJECTED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml
 application
-ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:5:5-34:19
+ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:5:5-44:19
 MERGED from [com.google.firebase:firebase-core:9.6.1] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.6.1\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics:9.6.1] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.6.1\AndroidManifest.xml:24:5-33:19
 MERGED from [com.google.android.gms:play-services-basement:9.6.1] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.6.1\AndroidManifest.xml:19:5-21:19
@@ -101,14 +101,26 @@ ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:29:
 		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:31:17-73
 	android:name
 		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:30:17-63
+activity#com.firebaseio.placardbolsa.BetActivity
+ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:33:9-42:20
+	android:screenOrientation
+		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:35:13-49
+	android:colorPrimaryDark
+		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:37:13-47
+	android:parentActivityName
+		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:38:13-82
+	android:theme
+		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:36:13-56
+	android:name
+		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:34:13-67
 uses-permission#android.permission.INTERNET
-ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:33:9-71
+ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:43:9-71
 MERGED from [com.google.firebase:firebase-analytics-impl:9.6.1] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.6.1\AndroidManifest.xml:20:5-66
 MERGED from [com.google.firebase:firebase-iid:9.6.1] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.6.1\AndroidManifest.xml:20:5-66
 MERGED from [com.firebaseui:firebase-ui:0.6.0] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.firebaseui\firebase-ui\0.6.0\AndroidManifest.xml:11:5-67
 MERGED from [com.firebaseui:firebase-ui-database:0.6.0] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.firebaseui\firebase-ui-database\0.6.0\AndroidManifest.xml:11:5-67
 	android:name
-		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:33:26-68
+		ADDED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml:43:26-68
 uses-sdk
 INJECTED from H:\Android\Projects\PlacardBolsa\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.firebase:firebase-core:9.6.1] H:\Android\Projects\PlacardBolsa\app\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.6.1\AndroidManifest.xml:4:5-42

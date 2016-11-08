@@ -1,39 +1,27 @@
 [
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_rounded_dark_pressed.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_rounded_dark_pressed.png"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_dark_normal.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_dark_normal.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_button_focused.9.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_button_focused.9.png"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_rounded_dark_pressed.png",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_rounded_dark_pressed.png"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_dark_normal.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_dark_normal.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_less_black_24dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_less_black_24dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_grey600_24dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_grey600_24dp.png"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_grey600_24dp.png"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_more_vert_grey600_36dp.png",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_more_vert_grey600_36dp.png"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_button_focused.9.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_button_focused.9.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_black_36dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_black_36dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_less_grey600_24dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_less_grey600_24dp.png"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_less_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_less_grey600_24dp.png"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar.9.png",
@@ -48,12 +36,20 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_black_24dp.png"
     },
     {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_chevron_right_grey600_24dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_chevron_right_grey600_24dp.png"
+    },
+    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_more_vert_black_36dp.png",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_more_vert_black_36dp.png"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_grey600_36dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_grey600_36dp.png"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_divider.9.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_divider.9.png"
+    },
+    {
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_black_36dp.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_black_36dp.png"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_dark_pressed.png",
@@ -64,92 +60,12 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_expand_card_dark_pressed.png"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_rounded_dark_normal.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_rounded_dark_normal.png"
-    },
-    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_undobar_undo.png",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_undobar_undo.png"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_expand_card_dark_pressed.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_expand_card_dark_pressed.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_expand_card_dark_normal.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_expand_card_dark_normal.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_button_pressed.9.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_button_pressed.9.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_dark_normal.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_dark_normal.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar.9.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar.9.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_button_focused.9.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_button_focused.9.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_grey600_24dp.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_grey600_24dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_divider.9.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_divider.9.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_more_vert_black_36dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_more_vert_black_36dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_menu_overflow_card_dark_pressed.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_overflow_card_dark_pressed.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_less_grey600_24dp.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_less_grey600_24dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_chevron_right_grey600_24dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_chevron_right_grey600_24dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_undobar_undo.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_undobar_undo.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_black_24dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_black_24dp.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_chevron_right_grey600_24dp.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_chevron_right_grey600_24dp.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_divider.9.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_divider.9.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_button_pressed.9.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_button_pressed.9.png"
-    },
-    {
-        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_black_36dp.png",
-        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_more_black_36dp.png"
-    },
-    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_less_black_24dp.png",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_expand_less_black_24dp.png"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_more_vert_grey600_36dp.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_more_vert_grey600_36dp.png"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\card_drag.png",
@@ -160,8 +76,8 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\ic_menu_expand_card_dark_normal.png"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\card_drag.png",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-extra-dragdrop\\2.1.0\\res\\drawable-xhdpi\\card_drag.png"
+        "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\undobar_button_pressed.9.png",
+        "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xhdpi\\undobar_button_pressed.9.png"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_expand_more_grey600_36dp.png",

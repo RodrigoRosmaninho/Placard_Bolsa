@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter mAdapter = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, ref) {
             @Override
             public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
+                betViewHolder.callExpand(MainActivity.this, specificBet.getBet_index());
                 betViewHolder.setIndex(specificBet.getBet_index());
                 betViewHolder.setDate(specificBet.getDate());
                 betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
@@ -362,6 +363,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void expandBet(String index) {
+        Intent intent = new Intent(this, BetActivity.class);
+        Bundle b = new Bundle();
+        b.putString("index", index);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+    }
+
     public void parseInput() {
         int number = MyAdapter.getPosition();
         int i = 0;
@@ -447,6 +457,22 @@ public class MainActivity extends AppCompatActivity {
             super(itemView);
             mView = itemView;
 
+        }
+
+        public void callExpand(Context ctx, String index) {
+            CardViewNative card_view = (CardViewNative) mView.findViewById(R.id.list_cardId);
+            final String finalIndex = index;
+            final Context ctxx = ctx;
+            card_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ctxx, BetActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("index", finalIndex);
+                    intent.putExtras(b);
+                    ctxx.startActivity(intent);
+                }
+            });
         }
 
         public void setIndex(String index) {

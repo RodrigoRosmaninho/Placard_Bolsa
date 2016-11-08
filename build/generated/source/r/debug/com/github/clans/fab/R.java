@@ -82,7 +82,7 @@ public final class R {
 		public static final int labels_text_size = 0x7f080106;
 	}
 	public static final class drawable {
-		public static final int fab_add = 0x7f02009a;
+		public static final int fab_add = 0x7f02009c;
 	}
 	public static final class id {
 		public static final int down = 0x7f0e0037;

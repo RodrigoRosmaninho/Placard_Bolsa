@@ -30,6 +30,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.firebaseio.placardbolsa.MainActivity" />
         </activity>
+        <activity
+            android:name="com.firebaseio.placardbolsa.BetActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:colorPrimaryDark="#880000"
+            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.firebaseio.placardbolsa.MainActivity" />
+        </activity>
         <uses-permission android:name="android.permission.INTERNET" />
     </application>
 

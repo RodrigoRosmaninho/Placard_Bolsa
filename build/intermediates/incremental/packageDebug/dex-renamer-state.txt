@@ -1,4 +1,4 @@
-#Mon Nov 07 22:59:34 GMT 2016
+#Tue Nov 08 22:55:14 GMT 2016
 base.0=H\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_769d4adc5cfb1ee75267bb7923f6b21ae982a882
 renamed.1=classes2.dex
 renamed.0=classes.dex

@@ -4,14 +4,6 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\layout-ldrtl-v17\\md_listitem_multichoice.xml"
     },
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout-ldrtl-v17\\md_listitem_singlechoice.xml",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\layout-ldrtl-v17\\md_listitem_singlechoice.xml"
-    },
-    {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout-ldrtl-v17\\md_listitem_multichoice.xml",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\layout-ldrtl-v17\\md_listitem_multichoice.xml"
-    },
-    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout-ldrtl-v17\\md_listitem_singlechoice.xml",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\layout-ldrtl-v17\\md_listitem_singlechoice.xml"
     }
