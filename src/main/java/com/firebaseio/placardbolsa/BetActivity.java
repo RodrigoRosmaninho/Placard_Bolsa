@@ -115,7 +115,7 @@ public class BetActivity  extends AppCompatActivity {
             @Override
             public void populateViewHolder(gameHolder gameViewHolder, Game specificGame, int position) {
                 // betViewHolder.callExpand(MainActivity.this, specificBet.getBet_index());
-                gameViewHolder.setCode(BetActivity.this, specificGame.getEvent_index());
+                gameViewHolder.setCode(specificGame.getEvent_index());
                 gameViewHolder.setType(specificGame.getDesired_outcome().toString().split("\\{")[2].split("\\}")[0].split(", ")[1].split("=")[1]);
                 gameViewHolder.setHomeOpp(specificGame.getHome_opponent());
                 gameViewHolder.setAwayOpp(specificGame.getAway_opponent());
@@ -157,18 +157,10 @@ public class BetActivity  extends AppCompatActivity {
             });
         }**/
 
-        public void setCode(Context ctx, String code) {
+        public void setCode(String code) {
             // mView.setPadding(20, 0, 20, 0);
             TextView field = (TextView) mView.findViewById(R.id.game_code);
             field.setText(code);
-
-            Card card = new Card(ctx);
-            CardHeader header = new CardHeader(ctx);
-            CardViewNative gameCard = (CardViewNative) mView.findViewById(R.id.gameCard);
-            card.addCardHeader(header);
-            header.setButtonExpandVisible(false);
-            header.setButtonOverflowVisible(false);
-            gameCard.setCard(card);
         }
 
         public void setType(String type) {

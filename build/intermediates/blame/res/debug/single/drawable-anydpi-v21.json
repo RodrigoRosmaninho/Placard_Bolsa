@@ -12,11 +12,31 @@
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui\\0.6.0\\res\\drawable-anydpi-v21\\ic_facebook.xml"
     },
     {
+        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ms__menu_down.xml",
+        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.jaredrummler\\material-spinner\\1.1.0\\res\\drawable-anydpi-v21\\ms__menu_down.xml"
+    },
+    {
+        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_twitter.xml",
+        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui\\0.6.0\\res\\drawable-anydpi-v21\\ic_twitter.xml"
+    },
+    {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_twitter.xml",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui\\0.6.0\\res\\drawable-anydpi-v21\\ic_twitter.xml"
     },
     {
         "merged": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_google.xml",
         "source": "H:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui\\0.6.0\\res\\drawable-anydpi-v21\\ic_google.xml"
+    },
+    {
+        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\md_nav_back.xml",
+        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\drawable-anydpi-v21\\md_nav_back.xml"
+    },
+    {
+        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_facebook.xml",
+        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui\\0.6.0\\res\\drawable-anydpi-v21\\ic_facebook.xml"
+    },
+    {
+        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_google.xml",
+        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.firebaseui\\firebase-ui\\0.6.0\\res\\drawable-anydpi-v21\\ic_google.xml"
     }
 ]

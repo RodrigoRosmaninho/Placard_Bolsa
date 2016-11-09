@@ -5,55 +5,87 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="108044601181689"
+    timestamp="10871503539256"
     token="3413955696348547010"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="1894" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="201" />
     <task
         name="verifier"
-        duration="0" />
+        duration="84" />
 
     <artifact
-        location="H:\Android\Projects\PlacardBolsa\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
         type="RESOURCES" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+        type="DEX" />
+    <artifact
+        location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="105559201763709"
+        timestamp="10536636493176"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="H:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"
+            location="E:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="106069419153336"
+        timestamp="10871503539256"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="H:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
             type="DEX" />
         <artifact
-            location="H:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
             type="DEX" />
         <artifact
-            location="H:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
             type="DEX" />
         <artifact
-            location="H:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
             type="DEX" />
-    </build>
-    <build
-        timestamp="107403498486650"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="H:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
+            type="DEX" />
+        <artifact
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
+        <artifact
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
+        <artifact
+            location="E:\Android\Projects\PlacardBolsa\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
             type="DEX" />
     </build>
     <build

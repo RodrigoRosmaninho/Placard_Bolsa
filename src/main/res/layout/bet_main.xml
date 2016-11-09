@@ -199,17 +199,30 @@
                 android:layout_below="@+id/bet_mainCard"
                 android:layout_alignParentStart="true">
 
-                <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    card:list_card_layout_resourceID="@layout/populate_this_detail"
-                    android:id="@+id/games_view"
-                    android:layout_alignParentBottom="true"
-                    android:paddingBottom="1dp"
-                    android:paddingTop="1dp"
-                    android:layout_marginTop="50dp">
+                    android:layout_height="match_parent">
 
-                </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
+                    <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card:list_card_layout_resourceID="@layout/populate_this_detail"
+                        android:id="@+id/games_view"
+                        android:layout_alignParentBottom="true"
+                        android:paddingBottom="1dp"
+                        android:paddingTop="1dp"
+                        android:layout_marginTop="50dp">
+
+                    </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/view5"
+                        android:background="@color/bodyTextColor"
+                        android:layout_alignTop="@+id/games_view"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
 
             </it.gmariotti.cardslib.library.view.CardViewNative>
 
