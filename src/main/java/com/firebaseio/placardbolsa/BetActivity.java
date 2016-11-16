@@ -1,15 +1,15 @@
 package com.firebaseio.placardbolsa;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -34,13 +34,18 @@ public class BetActivity  extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         String value = "";
-        if(b != null)
+
+        if(b != null) {
+            //TODO: Make snackbar "Critical Error"
+
             value = b.getString("index");
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
 
         toolbar.setTitle("Aposta " + value.substring(1));
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -49,7 +54,18 @@ public class BetActivity  extends AppCompatActivity {
 
         final TextView result = (TextView) findViewById(R.id.bet_textResult);
 
-        CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view);
+        final TextView odds = (TextView) findViewById(R.id.oddsTextView);
+        final TextView spent = (TextView) findViewById(R.id.spentTextView);
+        final TextView winnings = (TextView) findViewById(R.id.winningsTextView);
+        final TextView balance = (TextView) findViewById(R.id.balanceTextView);
+
+        final ImageView nuno = (ImageView) findViewById(R.id.imageView2);
+        final ImageView chico = (ImageView) findViewById(R.id.imageView3);
+        final ImageView lois = (ImageView) findViewById(R.id.imageView4);
+        final ImageView melo = (ImageView) findViewById(R.id.imageView5);
+        final ImageView salgado = (ImageView) findViewById(R.id.imageView6);
+
+        CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view2);
 
         Card card = new Card(this);
         CardHeader header = new CardHeader(this);
@@ -81,23 +97,68 @@ public class BetActivity  extends AppCompatActivity {
                 String bet_result = bet_class.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
 
                 if(bet_result.equals("1")) {
+                    balance.setTextColor(Color.parseColor("#FF669900"));
                     result.setTextColor(Color.parseColor("#FF669900"));
                     int emoji = 0x1F44D;
-                    String string = "Positivo " + getEmijoByUnicode(emoji);
+                    String string = "Positivo " + getEmojiByUnicode(emoji);
                     result.setText(string);
+
+                    String preBalance = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(bet_class.getProjected_winnings())) + "€";
+                    balance.setText("+" + preBalance);
                 }
                 else if (bet_result.equals("0")) {
+                    balance.setTextColor(Color.parseColor("#FFCC0000"));
                     result.setTextColor(Color.parseColor("#FFCC0000"));
                     int emoji = 0x1F44E;
-                    String string = "Negativo " + getEmijoByUnicode(emoji);
+                    String string = "Negativo " + getEmojiByUnicode(emoji);
                     result.setText(string);
+
+                    String preBalance = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(bet_class.getBet_price())) + "€";
+                    balance.setText("-" + preBalance);
                 }
                 else if (bet_result.equals("2")) {
+                    balance.setTextColor(Color.parseColor("#FFFF8800"));
                     result.setTextColor(Color.parseColor("#FFFF8800"));
                     int emoji = 0x23F0;
-                    String string = "Pendente " + getEmijoByUnicode(emoji);
+                    String string = "Pendente " + getEmojiByUnicode(emoji);
                     result.setText(string);
+
+                    balance.setText("Pendente");
                 }
+
+                String preSpent = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(bet_class.getBet_price())) + "€";
+                String preWinnings = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(bet_class.getProjected_winnings())) + "€";
+                String preOdds = bet_class.getOdd_total() + "€";
+
+                odds.setText(preOdds);
+                spent.setText(preSpent);
+                winnings.setText(preWinnings);
+
+                String nuno_vote = bet_class.getVotes().toString().split("\\{")[1].split("\\}")[0].split(", ")[1].split("=")[1];
+                String chico_vote = bet_class.getVotes().toString().split("\\{")[1].split("\\}")[0].split(", ")[4].split("=")[1];
+                String lois_vote = bet_class.getVotes().toString().split("\\{")[1].split("\\}")[0].split(", ")[2].split("=")[1];
+                String melo_vote = bet_class.getVotes().toString().split("\\{")[1].split("\\}")[0].split(", ")[3].split("=")[1];
+                String salgado_vote = bet_class.getVotes().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
+
+                Log.d("DEBUG", "votes: " + bet_class.getVotes().toString() + ", melo: " + melo_vote);
+
+                if(nuno_vote.equals("0")){
+                    nuno.setColorFilter(ContextCompat.getColor(BetActivity.this,R.color.md_divider_white));
+                }
+                if(chico_vote.equals("0")){
+                    chico.setColorFilter(ContextCompat.getColor(BetActivity.this,R.color.md_divider_white));
+                }
+                if(lois_vote.equals("0")){
+                    lois.setColorFilter(ContextCompat.getColor(BetActivity.this,R.color.md_divider_white));
+                }
+                if(melo_vote.equals("0")){
+                    Log.d("DEBUG", "called Melo");
+                    melo.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
+                }
+                if(salgado_vote.equals("0")){
+                    salgado.setColorFilter(ContextCompat.getColor(BetActivity.this,R.color.md_divider_white));
+                }
+
 
             }
 
@@ -128,7 +189,7 @@ public class BetActivity  extends AppCompatActivity {
 
     }
 
-    public String getEmijoByUnicode(int unicode){
+    public String getEmojiByUnicode(int unicode){
         return new String(Character.toChars(unicode));
     }
 

@@ -8,6 +8,7 @@ public class Bet {
     private String game_number;
     private String projected_winnings;
     private String general_betType;
+    private String odd_total;
     private Object result;
     private Object votes;
 
@@ -15,7 +16,7 @@ public class Bet {
     public Bet() {
     }
 
-    public Bet(String bet_index, String Date, String bet_price, Object games, String game_number, String projected_winnings, String general_betType, Object result, Object votes) {
+    public Bet(String bet_index, String Date, String bet_price, Object games, String game_number, String projected_winnings, String general_betType, String odd_total, Object result, Object votes) {
         this.Date = Date;
         this.bet_index = bet_index;
         this.bet_price = bet_price;
@@ -23,6 +24,7 @@ public class Bet {
         this.game_number = game_number;
         this.projected_winnings = projected_winnings;
         this.general_betType = general_betType;
+        this.odd_total = odd_total;
         this.result = result;
         this.votes = votes;
     }
@@ -53,6 +55,10 @@ public class Bet {
 
     public String getGeneral_betType() {
         return general_betType;
+    }
+
+    public String getOdd_total() {
+        return odd_total;
     }
 
     public Object getResult() {

@@ -1,5 +1,8 @@
 package com.firebaseio.placardbolsa;
 
+import android.content.Context;
+import android.view.View;
+
 import java.util.ArrayList;
 
 public class gameCode {
@@ -30,6 +33,11 @@ public static ArrayList<gameCode> createEmpty() {
     gameCodes.add(new gameCode("", "", ""));
     return gameCodes;
 }
+public static ArrayList<gameCode> createEmpty2() {
+    ArrayList<gameCode> gameCodes = new ArrayList<gameCode>();
+    gameCodes.add(new gameCode("", "", ""));
+    return gameCodes;
+    }
 
 
 }

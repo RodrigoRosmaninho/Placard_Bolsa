@@ -2,6 +2,7 @@ package com.firebaseio.placardbolsa;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -29,24 +30,43 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
 // Rodrigo Rosmaninho - 2016
@@ -62,6 +82,17 @@ public class MainActivity extends AppCompatActivity {
     private static RecyclerView.LayoutManager mLayoutManager;
     public static List<gameCode> myDataset;
 
+    ArrayList<String> markets = new ArrayList<String>();
+    ArrayList<String> homeOpponents = new ArrayList<String>();
+    ArrayList<String> awayOpponents = new ArrayList<String>();
+    ArrayList<String> prices = new ArrayList<String>();
+    ArrayList<String> codes = new ArrayList<String>();
+    ArrayList<String> types = new ArrayList<String>();
+    ArrayList<String> outcomes = new ArrayList<String>();
+
+    String spent = "";
+    String overallType = "";
+
     static boolean calledAlready = false;
 
     @Override
@@ -69,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        markets.clear();
+        homeOpponents.clear();
+        awayOpponents.clear();
+        prices.clear();
+        codes.clear();
+        types.clear();
+        outcomes.clear();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -88,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView transactions_view = (RecyclerView) findViewById(R.id.transactions_view);
+        CardRecyclerView transactions_view = (CardRecyclerView) findViewById(R.id.transactions_view);
         transactions_view.setHasFixedSize(true);
         LinearLayoutManager bet_layoutManager = new LinearLayoutManager(this);
         bet_layoutManager.setReverseLayout(true);
@@ -141,117 +181,58 @@ public class MainActivity extends AppCompatActivity {
         transactions_view.setAdapter(mAdapter);
 
         /**Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                ProgressBar spinner;
-                spinner = (ProgressBar)findViewById(R.id.progressBar1);
-                spinner.setVisibility(View.GONE);
-            }
-        }, 2700);**/
+         handler.postDelayed(new Runnable() {
+         public void run() {
+         ProgressBar spinner;
+         spinner = (ProgressBar)findViewById(R.id.progressBar1);
+         spinner.setVisibility(View.GONE);
+         }
+         }, 2700);**/
 
         //final EditText mMessage = (EditText) findViewById(R.id.message_text);
         //findViewById(R.id.send_button).setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View v) {
-                //ref.push().setValue(new Chat("puf", "1234", mMessage.getText().toString()));
-                //mMessage.setText("");
-            //}
+        //@Override
+        //public void onClick(View v) {
+        //ref.push().setValue(new Chat("puf", "1234", mMessage.getText().toString()));
+        //mMessage.setText("");
+        //}
         //});
 
     }
-        public void addEntries() {
-            final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                    .title("Adicionar Nova Aposta")
-                    .customView(R.layout.dialog_addentries, true)
-                    .positiveText("Adicionar Jogos")
-                    .negativeText("Cancelar")
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                            MaterialDialog dialog2 = new MaterialDialog.Builder(MainActivity.this)
-                                    .title("Adicionar Jogos")
-                                    .customView(R.layout.dialog_addgames, true)
-                                    .positiveText("Confirmar")
-                                    .negativeText("Cancelar")
-                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                        @Override
-                                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                            parseInput();
-                                        }
-                                    })
-                                    .build();
 
-                            myDataset = gameCode.createEmpty();
-                            number_of_games = 1;
-
-                            mRecyclerView = (RecyclerView) dialog2.getCustomView().findViewById(R.id.games_list);
-
-                            mRecyclerView.setHasFixedSize(true);
-
-                            mLayoutManager = new LinearLayoutManager(MainActivity.this);
-                            mRecyclerView.setLayoutManager(mLayoutManager);
-
-                            mAdapter = new MyAdapter(MainActivity.this, myDataset);
-                            mRecyclerView.setAdapter(mAdapter);
-
-
-
-                            dialog2.show();
-                        }
-                    })
-                    .build();
-
-            final TextView n_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta);
-            final TextView d_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.d_da_aposta);
-
-            DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
-            statsRef = statsRef.child("Statistics");
-
-            Calendar c = Calendar.getInstance();
-            SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
-            String formattedDate = df.format(c.getTime());
-            final String date = formattedDate.split("_")[1];
-
-            ValueEventListener postListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Statistics stats_class = dataSnapshot.getValue(Statistics.class);
-
-                    String bet_number_string = stats_class.getNumber_ofBets();
-                    int bet_number_int = Integer.parseInt(bet_number_string) + 1;
-                    String bet_number_result = "Aposta " + bet_number_int;
-
-                    n_da_aposta.setText(bet_number_result);
-                    d_da_aposta.setText(date);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            };
-            statsRef.addListenerForSingleValueEvent(postListener);
-
-            MaterialSpinner typeSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
-            View spinner_tipo = (View) dialog.getCustomView().findViewById(R.id.type_spinner);
-            spinner_tipo.isInEditMode();
-            typeSpinner.setItems("Combinada", "Simples", "Múltipla");
-
-            MaterialSpinner ammountSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
-            ammountSpinner.setItems("5€", "1€", "2€", "10€", "20€", "50€", "75€", "100€");
-
-            dialog.show();
-
-        }
-
-    public void addSuggestions() {
+    public void addEntries() {
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title("Adicionar Nova Sugestão")
+                .title("Adicionar Nova Aposta")
                 .customView(R.layout.dialog_addentries, true)
                 .positiveText("Adicionar Jogos")
                 .negativeText("Cancelar")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        MaterialSpinner ammount = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
+                        MaterialSpinner type = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
+
+                        int ammountInt = ammount.getSelectedIndex();
+                        int typeInt = type.getSelectedIndex();
+
+                        ArrayList<String> a = new ArrayList<String>();
+                        ArrayList<String> t = new ArrayList<String>();
+
+                        a.add("5");
+                        a.add("1");
+                        a.add("2");
+                        a.add("10");
+                        a.add("20");
+                        a.add("50");
+                        a.add("75");
+                        a.add("100");
+                        t.add("Combinada");
+                        t.add("Simples");
+                        t.add("Múltipla");
+
+                        spent = a.get(ammountInt);
+                        overallType = t.get(typeInt);
+
                         MaterialDialog dialog2 = new MaterialDialog.Builder(MainActivity.this)
                                 .title("Adicionar Jogos")
                                 .customView(R.layout.dialog_addgames, true)
@@ -259,8 +240,29 @@ public class MainActivity extends AppCompatActivity {
                                 .negativeText("Cancelar")
                                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                                     @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        parseInput();
+                                    public void onClick(@NonNull MaterialDialog dialog2, @NonNull DialogAction which) {
+                                        MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.betType_spinner);
+                                        MaterialSpinner outcome = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.betType_spinner);
+
+                                        int tipoBodge = type.getSelectedIndex();
+                                        int outcomeBodge = outcome.getSelectedIndex();
+
+                                        ArrayList<String> t = new ArrayList<String>();
+                                        ArrayList<String> o = new ArrayList<String>();
+
+                                        //TODO: Check 1 x 2 + - compatibility with betType
+
+                                        t.add("1");
+                                        t.add("x");
+                                        t.add("2");
+                                        t.add("+");
+                                        t.add("-");
+                                        o.add("TR");
+                                        o.add("INT");
+                                        o.add("DV");
+                                        o.add("+/-");
+
+                                        parseInput("1", t.get(tipoBodge), o.get(outcomeBodge));
                                     }
                                 })
                                 .build();
@@ -277,7 +279,6 @@ public class MainActivity extends AppCompatActivity {
 
                         mAdapter = new MyAdapter(MainActivity.this, myDataset);
                         mRecyclerView.setAdapter(mAdapter);
-
 
 
                         dialog2.show();
@@ -327,40 +328,153 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void parseJSON(String JSON_String) throws JSONException {
-        JSONObject mainObject = new JSONObject(JSON_String);
+    public void addSuggestions() {
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Adicionar Nova Sugestão")
+                .customView(R.layout.dialog_addentries, true)
+                .positiveText("Adicionar Jogos")
+                .negativeText("Cancelar")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        MaterialDialog dialog2 = new MaterialDialog.Builder(MainActivity.this)
+                                .title("Adicionar Jogos")
+                                .customView(R.layout.dialog_addgames, true)
+                                .positiveText("Confirmar")
+                                .negativeText("Cancelar")
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog2, @NonNull DialogAction which) {
+                                        MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.betType_spinner);
+                                        MaterialSpinner outcome = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.betType_spinner);
 
-        JSONObject marketsObject = mainObject.getJSONObject("markets");
-        JSONArray outcomesArray = marketsObject.getJSONArray("outcomes");
+                                        int tipoBodge = type.getSelectedIndex();
+                                        int outcomeBodge = outcome.getSelectedIndex();
 
-        String homeOpponent = mainObject.getString("homeOpponentDescription");
-        String awayOpponent = mainObject.getString("awayOpponentDescription");
+                                        ArrayList<String> t = new ArrayList<String>();
+                                        ArrayList<String> o = new ArrayList<String>();
 
-        JSONObject outcomeObject = outcomesArray.getJSONObject(0);
-        JSONObject outcomePriceObj = outcomeObject.getJSONObject("price");
+                                        //TODO: Check 1 x 2 + - compatibility with betType
 
-        String price = outcomePriceObj.getString("decimalPrice");
+                                        t.add("1");
+                                        t.add("x");
+                                        t.add("2");
+                                        t.add("+");
+                                        t.add("-");
+                                        o.add("TR");
+                                        o.add("INT");
+                                        o.add("DV");
+                                        o.add("+/-");
+
+                                        parseInput("2", o.get(tipoBodge), t.get(outcomeBodge));
+                                    }
+                                })
+                                .build();
+
+                        myDataset = gameCode.createEmpty();
+                        number_of_games = 1;
+
+                        mRecyclerView = (RecyclerView) dialog2.getCustomView().findViewById(R.id.games_list);
+
+                        mRecyclerView.setHasFixedSize(true);
+
+                        mLayoutManager = new LinearLayoutManager(MainActivity.this);
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+
+                        mAdapter = new MyAdapter(MainActivity.this, myDataset);
+                        mRecyclerView.setAdapter(mAdapter);
 
 
+                        dialog2.show();
+                    }
+                })
+                .build();
+
+        final TextView n_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta);
+        final TextView d_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.d_da_aposta);
+
+        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
+        statsRef = statsRef.child("Statistics");
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
         String formattedDate = df.format(c.getTime());
         final String date = formattedDate.split("_")[1];
 
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title("Confirmar Aposta")
-                .customView(R.layout.dialog_confirmgames, true)
-                .positiveText("Confirmar")
-                .negativeText("Cancelar")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
 
-                    }
-                })
-                .build();
+                String bet_number_string = stats_class.getNumber_ofBets();
+                int bet_number_int = Integer.parseInt(bet_number_string) + 1;
+                String bet_number_result = "Aposta " + bet_number_int;
 
+                n_da_aposta.setText(bet_number_result);
+                d_da_aposta.setText(date);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        statsRef.addListenerForSingleValueEvent(postListener);
+
+        MaterialSpinner typeSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
+        MaterialSpinner spinner_tipo = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
+        spinner_tipo.isInEditMode();
+        typeSpinner.setItems("Combinada", "Simples", "Múltipla");
+
+        MaterialSpinner ammountSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
+        ammountSpinner.setItems("5€", "1€", "2€", "10€", "20€", "50€", "75€", "100€");
+
+        dialog.show();
+
+    }
+
+    public void parserJSON(JsonElement root) throws JSONException {
+        JsonObject mainObject = root.getAsJsonObject();
+
+        JsonArray marketsArray = mainObject.get("markets").getAsJsonArray();
+        JsonObject marketsObject = marketsArray.get(0).getAsJsonObject();
+        JsonArray outcomesArray = marketsObject.get("outcomes").getAsJsonArray();
+
+        String homeOpponent = mainObject.get("homeOpponentDescription").getAsString();
+        Log.d("DEBUG", "ALLOALLO: " + homeOpponent);
+        String awayOpponent = mainObject.get("awayOpponentDescription").getAsString();
+
+        JsonObject outcomeObject = outcomesArray.get(0).getAsJsonObject();
+        JsonObject outcomePriceObj = outcomeObject.get("price").getAsJsonObject();
+
+        String price = outcomePriceObj.get("decimalPrice").getAsString();
+
+        markets.add(marketsObject.toString());
+        homeOpponents.add(homeOpponent);
+        awayOpponents.add(awayOpponent);
+        prices.add(price);
+
+        Log.d("DEBUG", "HERE: " + homeOpponents.toString());
+
+    }
+
+    public void showConfirmActivity(String mode) {
+        Log.d("DEBUG", "ALLO: " + outcomes.toString());
+        Intent intent = new Intent(this, ConfirmActivity.class);
+        Bundle b = new Bundle();
+        b.putString("mode", mode);
+        b.putStringArrayList("markets", markets);
+        b.putStringArrayList("homeOpponents", homeOpponents);
+        b.putStringArrayList("awayOpponents", awayOpponents);
+        b.putStringArrayList("prices", prices);
+        b.putStringArrayList("codes", codes);
+        b.putStringArrayList("types", types);
+        b.putStringArrayList("outcomes", outcomes);
+        b.putString("spent", spent);
+        b.putString("overallType", overallType);
+        intent.putExtras(b);
+
+        startActivity(intent);
+        finish();
     }
 
     public void expandBet(String index) {
@@ -372,24 +486,39 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void parseInput() {
+    public void parseInput(String mode, String tt, String oo) {
         int number = MyAdapter.getPosition();
         int i = 0;
 
-        while(i != number + 1) {
+        while (i != number + 1) {
             View v = mRecyclerView.getLayoutManager().findViewByPosition(i);
             EditText placardCode = (EditText) v.findViewById(R.id.placardCode);
             String código = placardCode.getText().toString();
             Log.d("DEBUG", "Código: " + código + ", Posição: " + number);
 
             String api_url = "https://runkit.io/rodrigorosmaninho/pb-placard-api/branches/master/" + código;
+            codes.add(código);
 
-            new JsonTask().execute(api_url);
+            types.add(oo);
+            outcomes.add(tt);
+            Log.d("DEBUG", "oo: " + types.toString());
 
-            i = i + 1;
+            TestAsyncTask testAsyncTask = new TestAsyncTask(api_url);
+            testAsyncTask.execute();
+
+            Log.d("DEBUG", "Executed loop");
+
+                i = i + 1;
+            }
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        showConfirmActivity(mode);
 
-    }
+        }
 
     public void prePreAdd(View v) {
         MyAdapter.preAdd(v);
@@ -404,9 +533,7 @@ public class MainActivity extends AppCompatActivity {
 
             number_of_games = number_of_games + 1;
             mRecyclerView.invalidate();
-        }
-
-        else {
+        } else {
             Snackbar.make(v, "Ja tens 8 jogos listados!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
@@ -436,8 +563,7 @@ public class MainActivity extends AppCompatActivity {
             Intent launchIntent = getPackageManager().getLaunchIntentForPackage("pt.scml.placard");
             if (launchIntent != null) {
                 startActivity(launchIntent);//null pointer check in case package name was not found
-            }
-            else {
+            } else {
                 Snackbar.make(findViewById(android.R.id.content), "A app Placard não está instalada!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -448,6 +574,63 @@ public class MainActivity extends AppCompatActivity {
 
     public void expandStats(View v) {
         startActivity(new Intent(this, StatsActivity.class));
+    }
+
+    public class TestAsyncTask extends AsyncTask<Void, Void, JsonElement> {
+        private String mUrl;
+
+        public TestAsyncTask(String url) {
+            mUrl = url;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JsonElement doInBackground(Void... params) {
+            Log.d("DEBUG", "doInBackground started");
+            // Connect to the URL using java's native library
+            URL url = null;
+            try {
+                url = new URL(mUrl);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            HttpURLConnection request = null;
+            try {
+                request = (HttpURLConnection) url.openConnection();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                request.connect();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Convert to a JSON object to print data
+            JsonParser jp = new JsonParser(); //from gson
+            JsonElement root = null;
+            try {
+                root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d("DEBUG", "COME_SEE_THIS: " + root.getAsJsonObject().toString());
+            return root;
+        }
+
+        @Override
+        protected void onPostExecute(JsonElement root) {
+            super.onPostExecute(root);
+            try {
+                parserJSON(root);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static class betHolder extends RecyclerView.ViewHolder {
@@ -492,12 +675,11 @@ public class MainActivity extends AppCompatActivity {
             TextView field = (TextView) mView.findViewById(R.id.bet_text3);
             String balance;
 
-            if(result.equals("1")) {
+            if (result.equals("1")) {
                 float math_result = Float.parseFloat(winnings) - Float.parseFloat(losses);
                 balance = String.format(Locale.ENGLISH, "%.2f", math_result) + "€";
                 field.setTextColor(Color.parseColor("#FF669900"));
-            }
-            else {
+            } else {
                 balance = "-" + String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(losses)) + "€";
                 field.setTextColor(Color.parseColor("#FFCC0000"));
             }
@@ -591,78 +773,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return myDataset.size();
-        }
-    }
-
-    private class JsonTask extends AsyncTask<String, String, String> {
-
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            pd = new ProgressDialog(MainActivity.this);
-            pd.setMessage("A obter informações dos servidores do Placard...");
-            pd.setCancelable(false);
-            pd.show();
-        }
-
-        protected String doInBackground(String... params) {
-
-
-            HttpURLConnection connection = null;
-            BufferedReader reader = null;
-
-            try {
-                URL url = new URL(params[0]);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-
-
-                InputStream stream = connection.getInputStream();
-
-                reader = new BufferedReader(new InputStreamReader(stream));
-
-                StringBuffer buffer = new StringBuffer();
-                String line = "";
-
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);
-
-                }
-
-                return buffer.toString();
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            if (pd.isShowing()){
-                pd.dismiss();
-            }
-            try {
-                parseJSON(result);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
         }
     }
 

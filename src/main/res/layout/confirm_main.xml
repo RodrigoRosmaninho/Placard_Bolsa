@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/main.appbar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true"
+        >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/main.collapsing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main.toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin"
+                />
+
+            <ImageView
+                android:id="@+id/main.backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/soccer"
+                app:layout_collapseMode="parallax"
+                />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_tick"
+        app:layout_anchor="@id/main.appbar"
+        app:layout_anchorGravity="bottom|right|end"
+        android:id="@+id/bet_fab" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:paddingBottom="1dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="1dp">
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/bet_mainCard"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_alignEnd="@+id/textView"
+                android:layout_height="100dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <GridLayout
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_height="33dp"
+                        android:layout_width="match_parent"
+                        android:paddingLeft="2dp"
+                        android:paddingTop="2dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="2dp">
+
+                        <ImageView
+                            card:srcCompat="@drawable/icon_ticket_calendar"
+                            android:id="@+id/imageView"
+                            android:layout_row="1"
+                            android:layout_column="0"
+                            android:layout_height="match_parent"
+                            android:layout_width="35dp" />
+
+                        <TextView
+                            android:id="@+id/bet_textDate"
+                            android:layout_width="185dp"
+                            android:layout_height="match_parent"
+                            android:layout_row="1"
+                            android:paddingLeft="3dp"
+                            android:layout_column="1"
+                            android:textSize="21sp"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/card_text_color_header" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_row="2"
+                        android:layout_column="0"
+                        android:layout_height="33dp"
+                        android:layout_width="match_parent"
+                        android:paddingLeft="4dp"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:id="@+id/bet_textType"
+                            android:layout_height="wrap_content"
+                            android:layout_row="0"
+                            android:layout_column="0"
+                            android:textSize="18sp"
+                            android:paddingRight="10dp"
+                            android:layout_width="match_parent"
+                            android:paddingLeft="5dp"
+                            android:paddingBottom="1dp"
+                            android:gravity="left"
+                            android:textColor="@color/card_text_color_header" />
+
+                    </GridLayout>
+
+                </GridLayout>
+
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/bet_resultCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_below="@+id/stats_mainCard"
+                android:layout_toEndOf="@+id/bet_mainCard"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:id="@+id/bet_textResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="3dp"
+                    android:textSize="23sp"
+                    android:text="..."
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/com_facebook_button_background_color"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:paddingTop="2dp" />
+
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+            <TextView
+                android:textSize="23sp"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="97dp"
+                android:layout_width="50dp" />
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/stats_votesCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/bet_gamesCard"
+                android:layout_height="110dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/votes_text1"
+                        android:textStyle="bold"
+                        android:layout_height="37dp"
+                        android:textSize="21sp"
+                        android:paddingTop="4dp"
+                        android:paddingLeft="5dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="Votos:"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="75dp" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_row="1"
+                        android:layout_column="2"
+                        android:layout_height="44dp"
+                        app:srcCompat="@drawable/pb_lois"
+                        android:id="@+id/imageView4" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:layout_height="44dp"
+                        app:srcCompat="@drawable/pb_chico"
+                        android:id="@+id/imageView3" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_row="1"
+                        android:layout_column="3"
+                        android:layout_height="44dp"
+                        app:srcCompat="@drawable/pb_melo"
+                        android:id="@+id/imageView5" />
+
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_row="1"
+                        android:layout_column="4"
+                        android:layout_height="44dp"
+                        app:srcCompat="@drawable/pb_salgado"
+                        android:id="@+id/imageView6" />
+
+                    <ImageView
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_height="44dp"
+                        app:srcCompat="@drawable/pb_nuno"
+                        android:id="@+id/imageView2"
+                        android:layout_width="65dp"
+                        android:layout_gravity="right" />
+
+                    <TextView
+                        android:textSize="23sp"
+                        android:layout_row="0"
+                        android:layout_column="4"
+                        android:id="@+id/votes_textView"
+                        android:background="@color/buttonTextColor"
+                        android:layout_height="37dp"
+                        android:layout_width="115dp" />
+
+                </GridLayout>
+
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+            <it.gmariotti.cardslib.library.view.CardViewNative
+                android:id="@+id/bet_gamesCard"
+                card:cardPreventCornerOverlap="true"
+                card:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                style="@style/native_recyclerview_card.base"
+                card:card_layout_resourceID="@layout/native_card_layout"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bet_mainCard"
+                android:layout_alignParentStart="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/view5"
+                        android:background="@color/bodyTextColor"
+                        android:layout_alignTop="@+id/games_view2"
+                        android:layout_alignParentStart="true" />
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/view6"
+                        android:background="@color/bodyTextColor"
+                        android:layout_alignBottom="@+id/games_view2"
+                        android:layout_alignParentStart="true" />
+
+                    <TextView
+                        android:id="@+id/bet_textSpent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="Montante Base"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/buttonTextColor"
+                        android:layout_below="@+id/bet_textOdds"
+                        android:layout_marginBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textColor="@color/btn_colored_borderless_text_material" />
+
+                    <TextView
+                        android:id="@+id/bet_textWinnings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="Ganhos Possíveis"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/buttonTextColor"
+                        android:layout_below="@+id/bet_textSpent"
+                        android:layout_marginBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textColor="@color/btn_colored_borderless_text_material" />
+
+                    <TextView
+                        android:id="@+id/math_textBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="Resultado Final"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/buttonTextColor"
+                        android:layout_below="@+id/bet_textWinnings"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/btn_colored_borderless_text_material"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:text="144.00€"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/oddsTextView"
+                        android:layout_alignBottom="@+id/bet_textOdds"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:text="+ 720.00€"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/math_textBalance"
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/balanceTextView"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:text="5.00€"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spentTextView"
+                        android:layout_above="@+id/bet_textWinnings"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:text="720.00€"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/winningsTextView"
+                        android:textSize="20sp"
+                        android:layout_alignBottom="@+id/bet_textWinnings"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="5dp" />
+
+                    <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card:list_card_layout_resourceID="@layout/populate_this_detail"
+                        android:id="@+id/games_view2"
+                        android:paddingBottom="1dp"
+                        android:paddingTop="1dp"
+                        android:layout_marginTop="53dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true">
+
+                    </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
+
+                    <TextView
+                        android:id="@+id/bet_textOdds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="Total de Cotas"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="15sp"
+                        android:background="@color/buttonTextColor"
+                        android:textColor="@color/btn_colored_borderless_text_material"
+                        android:layout_below="@+id/view6" />
+
+                </RelativeLayout>
+
+            </it.gmariotti.cardslib.library.view.CardViewNative>
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
