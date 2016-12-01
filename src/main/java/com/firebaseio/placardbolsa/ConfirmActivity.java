@@ -64,7 +64,7 @@ public class ConfirmActivity  extends AppCompatActivity {
     String projected_win;
     String oddTotal;
 
-    String datef = "";
+    String formattedDate = "";
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -72,6 +72,14 @@ public class ConfirmActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirm_main);
+
+        markets.clear();
+        homeOpponents.clear();
+        awayOpponents.clear();
+        prices.clear();
+        codes.clear();
+        types.clear();
+        outcomes.clear();
 
         Bundle b = getIntent().getExtras();
 
@@ -132,8 +140,8 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
-        String formattedDate = df.format(c.getTime());
-        datef = formattedDate.split("_")[1];
+        formattedDate = df.format(c.getTime());
+        String datef = formattedDate.split("_")[1];
 
         CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view2);
 
@@ -191,12 +199,12 @@ public class ConfirmActivity  extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         for (int i = 0; i < codes.size(); i++) {
-            prePreAdd(this.findViewById(android.R.id.content));
+            prePreAdd2(this.findViewById(android.R.id.content));
         }
 
     }
 
-    public void prePreAdd(View v) {
+    public void prePreAdd2(View v) {
         MyAdapter.preAdd(v);
     }
 
@@ -266,7 +274,8 @@ public class ConfirmActivity  extends AppCompatActivity {
             gameCode = myDataset.get(position);
             String outcome = "";
 
-            Log.d("DEBUG", "Debugg: " + homeOpponents.toString());
+            Log.d("DEBUG", "Debugg: " + outcomes.toString());
+
 
             if(outcomes.get(pos).equals("1")){
                 outcome = homeOpponents.get(pos);
@@ -283,8 +292,6 @@ public class ConfirmActivity  extends AppCompatActivity {
             String home_opp = homeOpponents.get(pos);
             String away_opp = awayOpponents.get(pos);
             String odd = prices.get(pos);
-
-            Log.d("DEBUG", "Strings: " + code + ", " + type + ", " + home_opp + ", " + away_opp + ", " + odd + ", " + outcome);
 
             TextView field1 = (TextView) mView.findViewById(R.id.game_code);
             field1.setText(code);
@@ -349,9 +356,9 @@ public class ConfirmActivity  extends AppCompatActivity {
     public void sendToDatabase(boolean[] votes) {
         betResult resultObj = new betResult("0", "2");
         betVotes votesObj = new betVotes(translateBool(votes[0]), translateBool(votes[1]), translateBool(votes[2]), translateBool(votes[3]), translateBool(votes[4]));
-        Bet bet = new Bet("0" + index[0], datef, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj, votesObj);
+        Bet bet = new Bet("0" + String.valueOf(Integer.parseInt(index[0]) + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj, votesObj);
 
-        mDatabase.child("Pending").child("0" + index[0]).setValue(bet);
+        mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).setValue(bet);
 
         for(int i = 1; i < homeOpponents.size() + 1; i++) {
             int ind = i - 1;
@@ -372,7 +379,9 @@ public class ConfirmActivity  extends AppCompatActivity {
             desiredOutcome outcome = new desiredOutcome(outcomeD, outcomes.get(ind), prices.get(ind), gType);
             Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), outcome, sports.get(ind), gOut);
 
-            mDatabase.child("Pending").child("0" + index[0]).child("games").child("game_0" + i).setValue(game);
+            mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("games").child("game_0" + i).setValue(game);
+            mDatabase.child("Statistics").child("number_ofBets").setValue(String.valueOf(Integer.parseInt(index[0]) + 1));
+            mDatabase.child("Statistics").child("pendingBetsExist").setValue("1");
 
             Context context = getApplicationContext();
             CharSequence text = "A aposta foi adicionada à Base de Dados!";
@@ -380,6 +389,8 @@ public class ConfirmActivity  extends AppCompatActivity {
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+
+            myDataset.clear();
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.firebaseio.placardbolsa">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +12,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:colorPrimaryDark="#880000"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:colorPrimaryDark="#880000">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,37 +22,41 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.firebaseio.placardbolsa.StatsActivity"
+            android:name=".StatsActivity"
+            android:colorPrimaryDark="#880000"
             android:label="Estatísticas"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:colorPrimaryDark="#880000"
-            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity" >
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.firebaseio.placardbolsa.MainActivity" />
         </activity>
         <activity
-            android:name="com.firebaseio.placardbolsa.BetActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".BetActivity"
+            android:colorPrimaryDark="#880000"
             android:label="Confirmar Adição"
-            android:colorPrimaryDark="#880000"
-            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.firebaseio.placardbolsa.MainActivity" />
         </activity>
         <activity
-            android:name="com.firebaseio.placardbolsa.ConfirmActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".ConfirmActivity"
             android:colorPrimaryDark="#880000"
-            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.firebaseio.placardbolsa.MainActivity" />
         </activity>
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

@@ -40,6 +40,10 @@
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\list_card_undo_material_message.xml"
     },
     {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main2.xml",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\layout\\activity_main2.xml"
+    },
+    {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_fragment.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.14.1\\res\\layout\\com_facebook_login_fragment.xml"
     },
@@ -50,10 +54,6 @@
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\card_base_layout.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\card_base_layout.xml"
-    },
-    {
-        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_main.xml",
-        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\layout\\content_main.xml"
     },
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
@@ -150,6 +150,10 @@
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_header_layout.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\layout\\base_header_layout.xml"
+    },
+    {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_main2.xml",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\layout\\fragment_main2.xml"
     },
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
@@ -290,6 +294,10 @@
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_main.xml",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\layout\\fragment_main.xml"
     },
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\save_credentials_layout.xml",
@@ -598,9 +606,5 @@
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\native_card_thumbnail_layout_progress.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\layout\\native_card_thumbnail_layout_progress.xml"
-    },
-    {
-        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\layout\\activity_main.xml"
     }
 ]

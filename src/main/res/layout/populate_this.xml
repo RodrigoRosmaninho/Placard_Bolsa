@@ -12,8 +12,8 @@ android:layout_height="wrap_content">
     card:card_layout_resourceID="@layout/native_card_layout"
     card:cardPreventCornerOverlap="true"
     card:cardUseCompatPadding="true"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginBottom="1dp"
     android:layout_height="110dp"
     android:paddingBottom="3dp">
 

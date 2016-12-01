@@ -34,11 +34,13 @@ public class BetActivity  extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         String value = "";
+        String mode2 = "";
 
         if(b != null) {
             //TODO: Make snackbar "Critical Error"
 
             value = b.getString("index");
+            mode2 = b.getString("mode");
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -66,6 +68,7 @@ public class BetActivity  extends AppCompatActivity {
         final ImageView salgado = (ImageView) findViewById(R.id.imageView6);
 
         CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view2);
+        games_view.setNestedScrollingEnabled(false);
 
         Card card = new Card(this);
         CardHeader header = new CardHeader(this);
@@ -82,14 +85,21 @@ public class BetActivity  extends AppCompatActivity {
         gamesCard.setCard(card);
 
         DatabaseReference betRef = FirebaseDatabase.getInstance().getReference();
-        betRef = betRef.child("Transactions").child(value);
+
+        if(mode2.equals("1")) {
+            betRef = betRef.child("Transactions").child(value);
+        }
+
+        else if(mode2.equals("2")) {
+            betRef = betRef.child("Pending").child(value);
+        }
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Bet bet_class = dataSnapshot.getValue(Bet.class);
 
-                String general_bet_type = "Aposta " + bet_class.getGeneral_betType();
+                String general_bet_type = "Aposta " + bet_class.getGeneral_bet_type();
 
                 date.setText(bet_class.getDate().split("_")[1]);
                 type.setText(general_bet_type);

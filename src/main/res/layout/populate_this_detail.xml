@@ -6,191 +6,210 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="left|center_vertical"
+            android:layout_centerVertical="true"
+            android:id="@+id/gridLayout"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:id="@+id/game_type"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:textSize="17sp"
+                android:paddingBottom="1dp"
+                android:text="1x2 TR"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:paddingEnd="1dp" />
+
+            <TextView
+                android:id="@+id/game_code"
+                android:layout_width="59dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:paddingBottom="7dp"
+                android:textSize="18sp"
+                android:paddingTop="3dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                tools:text="117"
+                android:gravity="center_horizontal" />
+        </GridLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:id="@+id/view"
+            android:background="@color/bodyTextColor"
+            android:layout_toEndOf="@+id/gridLayout"
+            android:layout_alignBottom="@+id/gridLayout"
+            android:layout_alignTop="@+id/gridLayout"
+            android:layout_marginStart="5dp" />
+
+        <View
+            android:layout_height="fill_parent"
+            android:background="#FF669900"
+            android:layout_alignParentTop="true"
+            android:id="@+id/game_result"
+            android:layout_alignParentEnd="true"
+            android:layout_width="8dp" />
+
+        <View
+            android:layout_height="1dp"
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:id="@+id/view3"
+            android:background="@color/bodyTextColor"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/game_result" />
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:id="@+id/view4"
+            android:background="@color/bodyTextColor"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/game_result" />
+
+        <RelativeLayout
+            android:layout_width="335dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/view"
+            android:layout_alignLeft="@+id/view"
+            android:layout_alignRight="@+id/game_result"
+            android:id="@+id/two">
+
+            <TextView
+                android:text="Liverpool FC"
+                android:layout_height="wrap_content"
+                android:id="@+id/game_outcome"
+                android:layout_alignBaseline="@+id/game_odd"
+                android:layout_alignBottom="@+id/game_odd"
+                android:textSize="22sp"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/game_odd"
+                android:gravity="center_horizontal"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="10dp"
+                android:layout_width="wrap_content" />
+
+            <TextView
+                android:text="1.80"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/game_odd"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="28dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/com_facebook_button_background_color" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/view"
+            android:layout_alignLeft="@+id/view"
+            android:layout_alignRight="@+id/game_result">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/game_vs"
+                android:layout_marginEnd="11dp">
+
+                <TextView
+                    android:text="Manchester City"
+                    android:layout_height="25dp"
+                    android:id="@+id/game_home"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:gravity="center_vertical|end"
+                    android:textSize="14sp"
+                    android:layout_marginStart="1dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:paddingStart="5dp"
+                    android:layout_width="95dp"
+                    android:paddingEnd="4dp" />
+
+                <ImageView
+                    card:srcCompat="@drawable/copenhaga"
+                    android:id="@+id/game_homeImage"
+                    android:layout_alignTop="@+id/game_awayImage"
+                    android:layout_toStartOf="@+id/game_vs"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end"
+                    android:layout_width="25dp" />
+
+            </GridLayout>
 
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_gravity="left|center_vertical"
-                android:layout_centerVertical="true"
-                android:id="@+id/gridLayout"
-                android:layout_alignParentStart="true">
-
-                <TextView
-                    android:id="@+id/game_type"
-                    android:layout_height="wrap_content"
-                    android:layout_row="2"
-                    android:layout_column="0"
-                    android:textSize="17sp"
-                    android:paddingBottom="1dp"
-                    android:text="1x2 TR"
-                    android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:paddingEnd="1dp" />
-
-                <TextView
-                    android:id="@+id/game_code"
-                    android:layout_width="59dp"
-                    android:textStyle="bold"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="7dp"
-                    android:textSize="18sp"
-                    android:paddingTop="3dp"
-                    android:layout_row="1"
-                    android:layout_column="0"
-                    tools:text="117"
-                    android:gravity="center_horizontal" />
-            </GridLayout>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:id="@+id/view"
-                android:background="@color/bodyTextColor"
-                android:layout_toEndOf="@+id/gridLayout"
-                android:layout_alignBottom="@+id/gridLayout"
-                android:layout_alignTop="@+id/gridLayout"
-                android:layout_marginStart="5dp" />
-
-            <View
-                android:layout_height="fill_parent"
-                android:background="#FF669900"
-                android:layout_alignParentTop="true"
-                android:id="@+id/game_result"
                 android:layout_alignParentEnd="true"
-                android:layout_width="8dp" />
+                android:layout_toEndOf="@+id/game_vs"
+                android:layout_marginStart="11dp"
+                android:layout_centerVertical="true">
 
-            <View
-                android:layout_height="1dp"
-                android:layout_width="match_parent"
-                android:id="@+id/view3"
-                android:background="@color/bodyTextColor"
-                android:layout_alignParentBottom="true"
-                android:layout_toStartOf="@+id/game_result" />
-
-            <View
-                android:layout_height="1dp"
-                android:layout_width="match_parent"
-                android:id="@+id/view4"
-                android:background="@color/bodyTextColor"
-                android:layout_alignParentTop="true"
-                android:layout_toStartOf="@+id/game_result" />
-
-            <RelativeLayout
-                android:layout_width="335dp"
-                android:layout_column="0"
-                android:layout_row="2"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/view"
-                android:layout_toEndOf="@+id/view"
-                android:id="@+id/two">
+                <ImageView
+                    card:srcCompat="@drawable/leicester"
+                    android:id="@+id/game_awayImage"
+                    android:layout_centerVertical="false"
+                    android:layout_height="25dp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_width="25dp"
+                    android:layout_gravity="start" />
 
                 <TextView
                     android:text="Liverpool FC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/game_outcome"
-                    android:layout_alignBaseline="@+id/game_odd"
-                    android:layout_alignBottom="@+id/game_odd"
-                    android:textSize="22sp"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/game_odd"
-                    android:gravity="center_horizontal"
-                    android:paddingStart="1dp"
-                    android:paddingEnd="10dp" />
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical|start"
+                    android:id="@+id/game_away"
+                    android:ellipsize="end"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:maxLines="1"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="1dp"
+                    android:paddingStart="4dp"
+                    android:layout_gravity="clip_vertical|start"
+                    android:paddingEnd="5dp"
+                    android:layout_width="89dp" />
+            </GridLayout>
 
-                <TextView
-                    android:text="1.80"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/game_odd"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="28dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/com_facebook_button_background_color" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="335dp"
+            <TextView
+                android:text="vs"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/view"
-                android:layout_toEndOf="@+id/gridLayout">
-
-                <TextView
-                    android:text="vs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/game_vs"
-                    android:textStyle="bold"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
-
-                <GridLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@+id/game_vs"
-                    android:layout_marginEnd="11dp">
-
-                    <TextView
-                        android:text="Manchester City"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:id="@+id/game_home"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@+id/game_homeImage"
-                        android:textSize="14sp"
-                        android:layout_marginStart="1dp"
-                        android:paddingEnd="2dp" />
-
-                    <ImageView
-                        card:srcCompat="@drawable/copenhaga"
-                        android:id="@+id/game_homeImage"
-                        android:layout_alignTop="@+id/game_awayImage"
-                        android:layout_toStartOf="@+id/game_vs"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center_horizontal" />
-
-                </GridLayout>
-
-                <GridLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/game_vs"
-                    android:layout_marginStart="11dp"
-                    android:layout_centerVertical="true">
-
-                    <ImageView
-                        card:srcCompat="@drawable/leicester"
-                        android:id="@+id/game_awayImage"
-                        android:layout_centerVertical="true"
-                        android:layout_height="25dp"
-                        android:layout_width="25dp"
-                        android:layout_marginStart="4dp" />
-
-                    <TextView
-                        android:text="Liverpool FC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:id="@+id/game_away"
-                        android:textSize="14sp"
-                        android:layout_marginEnd="1dp"
-                        android:paddingStart="4dp" />
-                </GridLayout>
-
-            </RelativeLayout>
+                android:id="@+id/game_vs"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>
