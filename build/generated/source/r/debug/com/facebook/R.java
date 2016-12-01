@@ -143,7 +143,7 @@ public final class R {
 		public static final int inline = 0x7f0e0050;
 		public static final int large = 0x7f0e0054;
 		public static final int left = 0x7f0e002a;
-		public static final int messenger_send_button = 0x7f0e0122;
+		public static final int messenger_send_button = 0x7f0e0128;
 		public static final int never_display = 0x7f0e0053;
 		public static final int normal = 0x7f0e0010;
 		public static final int open_graph = 0x7f0e004b;
@@ -206,14 +206,14 @@ public final class R {
 		public static final int MessengerButton_White = 0x7f09010c;
 		public static final int MessengerButton_White_Large = 0x7f09010d;
 		public static final int MessengerButton_White_Small = 0x7f09010e;
-		public static final int com_facebook_auth_dialog = 0x7f0901e7;
-		public static final int com_facebook_button = 0x7f0901e8;
-		public static final int com_facebook_button_like = 0x7f0901e9;
-		public static final int com_facebook_button_send = 0x7f0901ea;
-		public static final int com_facebook_button_share = 0x7f0901eb;
-		public static final int com_facebook_loginview_default_style = 0x7f0901ec;
-		public static final int com_facebook_loginview_silver_style = 0x7f0901ed;
-		public static final int tooltip_bubble_text = 0x7f090204;
+		public static final int com_facebook_auth_dialog = 0x7f0901e8;
+		public static final int com_facebook_button = 0x7f0901e9;
+		public static final int com_facebook_button_like = 0x7f0901ea;
+		public static final int com_facebook_button_send = 0x7f0901eb;
+		public static final int com_facebook_button_share = 0x7f0901ec;
+		public static final int com_facebook_loginview_default_style = 0x7f0901ed;
+		public static final int com_facebook_loginview_silver_style = 0x7f0901ee;
+		public static final int tooltip_bubble_text = 0x7f090205;
 	}
 	public static final class styleable {
 		public static final int[] CardView = { 0x0101013f, 0x01010140, 0x7f0100c1, 0x7f0100c2, 0x7f0100c3, 0x7f0100c4, 0x7f0100c5, 0x7f0100c6, 0x7f0100c7, 0x7f0100c8, 0x7f0100c9, 0x7f0100ca, 0x7f0100cb };

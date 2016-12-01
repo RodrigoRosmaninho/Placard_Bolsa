@@ -25,11 +25,11 @@ public class desiredOutcome {
     }
 
     public String getOutcome_odd() {
-        return index;
+        return outcome_odd;
     }
 
     public Object getType() {
-        return index;
+        return type;
     }
 }
 

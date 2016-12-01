@@ -12,11 +12,11 @@ public class gameOutcome {
         this.game_result = game_result;
     }
 
-    public String getNumber_wrong() {
+    public String getActual_outcome() {
         return actual_outcome;
     }
 
-    public String getTotal_result() {
+    public String getGame_result() {
         return game_result;
     }
 }

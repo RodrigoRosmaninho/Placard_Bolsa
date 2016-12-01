@@ -12,11 +12,11 @@ public class gameType {
         this.handicap_value = handicap_value;
     }
 
-    public String getNumber_wrong() {
+    public String getBet_type() {
         return bet_type;
     }
 
-    public String getTotal_result() {
+    public String getHandicap_value() {
         return handicap_value;
     }
 }

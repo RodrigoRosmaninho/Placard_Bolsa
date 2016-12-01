@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -15,9 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +42,7 @@ import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
 public class ConfirmActivity  extends AppCompatActivity {
+    static boolean firstHasPassed = false;
     private static RecyclerView mRecyclerView;
     private static RecyclerView.Adapter mAdapter;
     private static RecyclerView.LayoutManager mLayoutManager;
@@ -52,8 +56,17 @@ public class ConfirmActivity  extends AppCompatActivity {
     static ArrayList<String> codes= new ArrayList<String>();
     static ArrayList<String> types= new ArrayList<String>();
     static ArrayList<String> outcomes= new ArrayList<String>();
+    static ArrayList<String> sports = new ArrayList<String>();
+    static String[] index = new String[1];
     static String spent = "";
     static String overallType = "";
+
+    String projected_win;
+    String oddTotal;
+
+    String datef = "";
+
+    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +75,8 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
 
-        FloatingActionButton bet_fab = (FloatingActionButton) findViewById(R.id.bet_fab);
-
         if (b != null) {
-            //TODO: Make snackbar "Critical Error"
+            //TODO: Make snackbar "Critical Error" on else
 
             mode = b.getString("mode");
             markets = b.getStringArrayList("markets");
@@ -77,7 +88,8 @@ public class ConfirmActivity  extends AppCompatActivity {
             outcomes = b.getStringArrayList("outcomes");
             spent = b.getString("spent");
             overallType = b.getString("overallType");
-
+            index = b.getStringArray("index");
+            sports = b.getStringArrayList("sports");
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -104,10 +116,24 @@ public class ConfirmActivity  extends AppCompatActivity {
         final ImageView melo = (ImageView) findViewById(R.id.imageView5);
         final ImageView salgado = (ImageView) findViewById(R.id.imageView6);
 
+        final CheckBox nunoV = (CheckBox) findViewById(R.id.votes_nunoCheck);
+        final CheckBox chicoV = (CheckBox) findViewById(R.id.votes_chicoCheck);
+        final CheckBox loisV = (CheckBox) findViewById(R.id.votes_lóisCheck);
+        final CheckBox meloV = (CheckBox) findViewById(R.id.votes_meloCheck);
+        final CheckBox salgadoV = (CheckBox) findViewById(R.id.votes_salgadoCheck);
+
+        FloatingActionButton confirmFAB = (FloatingActionButton) findViewById(R.id.confirm_fab);
+        confirmFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validationChecks(nunoV, chicoV, loisV, meloV, salgadoV, view);
+            }
+        });
+
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
         String formattedDate = df.format(c.getTime());
-        final String datef = formattedDate.split("_")[1];
+        datef = formattedDate.split("_")[1];
 
         CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view2);
 
@@ -116,6 +142,7 @@ public class ConfirmActivity  extends AppCompatActivity {
         CardViewNative resultCard = (CardViewNative) findViewById(R.id.bet_resultCard);
         CardViewNative mainCard = (CardViewNative) findViewById(R.id.bet_mainCard);
         CardViewNative gamesCard = (CardViewNative) findViewById(R.id.bet_gamesCard);
+        CardViewNative votesCard = (CardViewNative) findViewById(R.id.stats_votesCard);
         card.addCardHeader(header);
         header.setButtonExpandVisible(false);
         header.setButtonOverflowVisible(false);
@@ -124,6 +151,8 @@ public class ConfirmActivity  extends AppCompatActivity {
         resultCard.setCard(card);
         header.setTitle("Jogos");
         gamesCard.setCard(card);
+        header.setTitle("Votos");
+        votesCard.setCard(card);
 
         balance.setTextColor(Color.parseColor("#FFFF8800"));
         result.setTextColor(Color.parseColor("#FFFF8800"));
@@ -133,11 +162,21 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         balance.setText("Pendente");
 
+        float totalOdd = 1;
+        for(int i=1; i <= prices.size(); i++){
+            totalOdd = totalOdd * Float.parseFloat(prices.get(i - 1));
+        }
+
         date.setText(datef);
         type.setText("Aposta " + overallType);
-        odds.setText("");
-        spentTV.setText(spent);
-        winnings.setText("");
+
+        oddTotal = String.format(Locale.ENGLISH, "%.2f", totalOdd);
+        odds.setText(oddTotal);
+
+        spentTV.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(spent)));
+
+        projected_win = String.format(Locale.ENGLISH, "%.2f", totalOdd * Float.parseFloat(spent));
+        winnings.setText(projected_win);
 
         myDataset = gameCode.createEmpty2();
 
@@ -162,7 +201,7 @@ public class ConfirmActivity  extends AppCompatActivity {
     }
 
     public static void addLineToList(View v, int pos, Context context) {
-        if (true) {
+        if (firstHasPassed == true) {
             myDataset.add(pos + 1, new gameCode("", "", ""));
             mAdapter.notifyItemInserted(pos + 1);
 
@@ -172,8 +211,7 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
 
         else {
-            Snackbar.make(v, "Ja tens 8 jogos listados!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            firstHasPassed = true;
         }
     }
 
@@ -230,8 +268,8 @@ public class ConfirmActivity  extends AppCompatActivity {
 
             Log.d("DEBUG", "Debugg: " + homeOpponents.toString());
 
-            if(outcomes.get(0).equals("1")){
-                outcome = homeOpponents.get(0);
+            if(outcomes.get(pos).equals("1")){
+                outcome = homeOpponents.get(pos);
             }
             else if(outcomes.get(pos).equals("x")) {
                 outcome = "Empate";
@@ -240,11 +278,11 @@ public class ConfirmActivity  extends AppCompatActivity {
                 outcome = awayOpponents.get(pos);
             }
 
-            String code = codes.get(0);
-            String type = types.get(0);
-            String home_opp = homeOpponents.get(0);
-            String away_opp = awayOpponents.get(0);
-            String odd = prices.get(0);
+            String code = codes.get(pos);
+            String type = types.get(pos);
+            String home_opp = homeOpponents.get(pos);
+            String away_opp = awayOpponents.get(pos);
+            String odd = prices.get(pos);
 
             Log.d("DEBUG", "Strings: " + code + ", " + type + ", " + home_opp + ", " + away_opp + ", " + odd + ", " + outcome);
 
@@ -280,6 +318,80 @@ public class ConfirmActivity  extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return myDataset.size();
+        }
+    }
+
+    public void validationChecks(CheckBox nunoV, CheckBox chicoV, CheckBox loisV, CheckBox meloV, CheckBox salgadoV, View v) {
+        int numberYes = 0;
+
+        boolean[] votes = new boolean[5];
+        votes[0] = nunoV.isChecked();
+        votes[1] = chicoV.isChecked();
+        votes[2] = loisV.isChecked();
+        votes[3] = meloV.isChecked();
+        votes[4] = salgadoV.isChecked();
+
+        for(int i = 0; i < 5; i++) {
+            if (votes[i]) {
+                numberYes = numberYes + 1;
+            }
+        }
+
+        if(numberYes == 4 | numberYes == 5) {
+            sendToDatabase(votes);
+        }
+        else {
+            Snackbar.make(v, "Apenas pode haver 1 voto contra a aposta!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+    }
+
+    public void sendToDatabase(boolean[] votes) {
+        betResult resultObj = new betResult("0", "2");
+        betVotes votesObj = new betVotes(translateBool(votes[0]), translateBool(votes[1]), translateBool(votes[2]), translateBool(votes[3]), translateBool(votes[4]));
+        Bet bet = new Bet("0" + index[0], datef, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj, votesObj);
+
+        mDatabase.child("Pending").child("0" + index[0]).setValue(bet);
+
+        for(int i = 1; i < homeOpponents.size() + 1; i++) {
+            int ind = i - 1;
+            String outcomeD = "";
+
+            if(outcomes.get(ind).equals("1")){
+                outcomeD = homeOpponents.get(ind);
+            }
+            else if(outcomes.get(ind).equals("x")) {
+                outcomeD = "Empate";
+            }
+            else if(outcomes.get(ind).equals("2")){
+                outcomeD = awayOpponents.get(ind);
+            }
+
+            gameOutcome gOut = new gameOutcome("3", "2");
+            gameType gType = new gameType(types.get(ind), "0");
+            desiredOutcome outcome = new desiredOutcome(outcomeD, outcomes.get(ind), prices.get(ind), gType);
+            Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), outcome, sports.get(ind), gOut);
+
+            mDatabase.child("Pending").child("0" + index[0]).child("games").child("game_0" + i).setValue(game);
+
+            Context context = getApplicationContext();
+            CharSequence text = "A aposta foi adicionada à Base de Dados!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public String translateBool(Boolean bool) {
+        if(bool) {
+            return "1";
+        }
+        else {
+            return "0";
         }
     }
 

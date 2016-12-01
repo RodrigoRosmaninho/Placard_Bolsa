@@ -74,6 +74,11 @@ import it.gmariotti.cardslib.library.view.CardViewNative;
 public class MainActivity extends AppCompatActivity {
 
     public static int number_of_games;
+    int passes = 0;
+    int number;
+    int goForIt = 0;
+
+    String modey;
 
     ProgressDialog pd;
 
@@ -82,12 +87,15 @@ public class MainActivity extends AppCompatActivity {
     private static RecyclerView.LayoutManager mLayoutManager;
     public static List<gameCode> myDataset;
 
+    final String[] code = new String[1];
+
     ArrayList<String> markets = new ArrayList<String>();
     ArrayList<String> homeOpponents = new ArrayList<String>();
     ArrayList<String> awayOpponents = new ArrayList<String>();
     ArrayList<String> prices = new ArrayList<String>();
     ArrayList<String> codes = new ArrayList<String>();
     ArrayList<String> types = new ArrayList<String>();
+    ArrayList<String> sports = new ArrayList<String>();
     ArrayList<String> outcomes = new ArrayList<String>();
 
     String spent = "";
@@ -152,6 +160,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Statistics stats_class = dataSnapshot.getValue(Statistics.class);
+
+                // DO NOT REMOVE!!!
+                code[0] = stats_class.getNumber_ofBets();
 
                 String ammount = stats_class.getOn_pouch();
                 ammount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(ammount)) + "€";
@@ -448,12 +459,21 @@ public class MainActivity extends AppCompatActivity {
 
         String price = outcomePriceObj.get("decimalPrice").getAsString();
 
+        String sport = mainObject.get("sportCode").getAsString();
+
         markets.add(marketsObject.toString());
         homeOpponents.add(homeOpponent);
         awayOpponents.add(awayOpponent);
         prices.add(price);
+        sports.add(sport);
+
+        goForIt = goForIt + 1;
 
         Log.d("DEBUG", "HERE: " + homeOpponents.toString());
+        if (goForIt == number + 1) {
+            Log.d("DEBUG", "Wait is over");
+            showConfirmActivity(modey);
+        }
 
     }
 
@@ -471,6 +491,8 @@ public class MainActivity extends AppCompatActivity {
         b.putStringArrayList("outcomes", outcomes);
         b.putString("spent", spent);
         b.putString("overallType", overallType);
+        b.putStringArray("index", code);
+        b.putStringArrayList("sports", sports);
         intent.putExtras(b);
 
         startActivity(intent);
@@ -487,11 +509,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void parseInput(String mode, String tt, String oo) {
-        int number = MyAdapter.getPosition();
-        int i = 0;
+        number = MyAdapter.getPosition();
+        modey = mode;
 
-        while (i != number + 1) {
-            View v = mRecyclerView.getLayoutManager().findViewByPosition(i);
+        while (passes != number + 1) {
+            View v = mRecyclerView.getLayoutManager().findViewByPosition(passes);
             EditText placardCode = (EditText) v.findViewById(R.id.placardCode);
             String código = placardCode.getText().toString();
             Log.d("DEBUG", "Código: " + código + ", Posição: " + number);
@@ -508,17 +530,10 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d("DEBUG", "Executed loop");
 
-                i = i + 1;
-            }
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            passes = passes + 1;
         }
-        showConfirmActivity(mode);
 
-        }
+    }
 
     public void prePreAdd(View v) {
         MyAdapter.preAdd(v);
@@ -586,6 +601,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+            pd = new ProgressDialog(MainActivity.this);
+            pd.setMessage("A obter dados dos servidores do Placard...");
+            pd.setCancelable(false);
+            pd.show();
         }
 
         @Override
@@ -625,6 +645,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(JsonElement root) {
             super.onPostExecute(root);
+                pd.dismiss();
             try {
                 parserJSON(root);
             } catch (JSONException e) {
