@@ -260,12 +260,12 @@
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
-        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\md_btn_selector.xml",
-        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\drawable\\md_btn_selector.xml"
-    },
-    {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\md_item_selected_dark.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\drawable\\md_item_selected_dark.xml"
+    },
+    {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\md_btn_selector.xml",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.afollestad.material-dialogs\\core\\0.9.0.2\\res\\drawable\\md_btn_selector.xml"
     },
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",

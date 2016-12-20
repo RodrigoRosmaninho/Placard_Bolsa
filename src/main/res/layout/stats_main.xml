@@ -42,7 +42,8 @@
                         android:layout_width="138dp"
                         android:layout_row="1"
                         android:layout_column="0"
-                        android:layout_height="26dp">
+                        android:layout_height="26dp"
+                        android:layout_marginLeft="25dp">
 
                         <TextView
                             android:id="@+id/main_text2"
@@ -60,7 +61,8 @@
                         android:layout_width="138dp"
                         android:layout_row="2"
                         android:layout_column="0"
-                        android:layout_height="26dp">
+                        android:layout_height="26dp"
+                        android:layout_marginLeft="25dp">
 
                         <TextView
                             android:id="@+id/main_text6"
@@ -150,7 +152,7 @@
                         android:layout_width="138dp"
                         android:layout_row="1"
                         android:layout_column="0"
-                        android:layout_height="26dp">
+                        android:paddingTop="3dp">
 
                         <TextView
                             android:id="@+id/winLost_text2"
@@ -168,7 +170,7 @@
                         android:layout_width="138dp"
                         android:layout_row="2"
                         android:layout_column="0"
-                        android:layout_height="26dp">
+                        android:paddingTop="2dp">
 
                         <TextView
                             android:id="@+id/winLost_text4"
@@ -181,18 +183,6 @@
                             android:text="Perdidas:" />
 
                     </GridLayout>
-
-                    <TextView
-                        android:id="@+id/winLost_text1"
-                        android:textStyle="bold"
-                        android:layout_height="wrap_content"
-                        android:textSize="21sp"
-                        android:paddingTop="4dp"
-                        android:paddingLeft="5dp"
-                        android:layout_row="0"
-                        android:layout_column="0"
-                        android:text="Apostas:"
-                        android:layout_width="140dp" />
 
                     <TextView
                         android:id="@+id/winLost_text5"
@@ -266,25 +256,6 @@
                     android:layout_height="match_parent"
                     android:paddingBottom="5dp">
 
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_row="0"
-                        android:layout_column="0"
-                        android:background="@color/buttonTextColor"
-                        android:layout_height="32dp">
-
-                    </GridLayout>
-
-                    <TextView
-                        android:id="@+id/share_text22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_row="0"
-                        android:paddingLeft="3dp"
-                        android:layout_column="0"
-                        android:textSize="21sp"
-                        android:text="Divisão:" />
-
                     <TextView
                         android:id="@+id/share_text42"
                         android:layout_width="match_parent"
@@ -294,7 +265,7 @@
                         android:layout_column="0"
                         android:textSize="24sp"
                         android:text="5€"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/com_facebook_button_background_color"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center" />
@@ -329,29 +300,18 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:layout_alignParentStart="true"
-                android:layout_height="240dp">
+                android:layout_height="260dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/chart_text2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="3dp"
-                        android:textSize="22sp"
-                        android:text="Na bolsa: "
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@color/buttonTextColor"
-                        android:layout_marginBottom="2dp"/>
-
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/chart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@+id/chart_text2" />
+                        android:layout_below="@+id/chart_text2"
+                        android:layout_marginTop="40dp" />
                 </RelativeLayout>
 
             </it.gmariotti.cardslib.library.view.CardViewNative>
@@ -367,140 +327,152 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:layout_alignParentStart="true"
-                android:layout_height="137dp">
+                android:layout_height="267dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingBottom="5dp">
 
-                    <TextView
-                        android:id="@+id/votes_text1"
-                        android:textStyle="bold"
-                        android:layout_height="37dp"
-                        android:textSize="21sp"
-                        android:paddingTop="4dp"
-                        android:paddingLeft="5dp"
-                        android:layout_row="0"
+                    <ImageView
+                        android:layout_row="4"
                         android:layout_column="0"
-                        android:text="Votos:"
-                        android:layout_marginBottom="10dp"
-                        android:layout_width="75dp" />
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="2"
-                        android:layout_height="44dp"
-                        app:srcCompat="@drawable/pb_lois"
-                        android:id="@+id/imageView4" />
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:layout_height="44dp"
-                        app:srcCompat="@drawable/pb_chico"
-                        android:id="@+id/imageView3" />
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="3"
-                        android:layout_height="44dp"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
                         app:srcCompat="@drawable/pb_melo"
-                        android:id="@+id/imageView5" />
+                        android:id="@+id/imageView5"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
+
+                    <ImageView
+                        android:layout_row="4"
+                        android:layout_column="2"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_lameiro"
+                        android:id="@+id/imageView7"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp" />
 
                     <TextView
+                        android:layout_height="wrap_content"
                         android:id="@+id/votes_nunoText"
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
                         android:layout_column="0"
-                        android:textSize="18sp"
+                        android:layout_row="3"
                         android:text="5€"
-                        android:layout_marginTop="5dp"
                         android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="right|center_horizontal"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:id="@+id/votes_chicoText"
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
-                        android:layout_column="1"
                         android:textSize="18sp"
-                        android:text="5€"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
                         android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
+                        android:layout_width="70dp"
+                        android:gravity="end"
+                        android:paddingEnd="10dp" />
 
                     <TextView
-                        android:id="@+id/votes_lóisText"
-                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
+                        android:id="@+id/votes_meloText"
+                        android:layout_column="0"
+                        android:layout_row="5"
+                        android:text="5€"
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textSize="18sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="70dp"
+                        android:gravity="end"
+                        android:paddingEnd="10dp" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:id="@+id/votes_chicoText"
+                        android:layout_column="1"
+                        android:layout_row="3"
+                        android:text="5€"
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textSize="18sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="70dp"
+                        android:gravity="end"
+                        android:paddingEnd="18dp" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:id="@+id/votes_salgadoText"
+                        android:layout_column="1"
+                        android:layout_row="5"
+                        android:text="5€"
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textSize="18sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="70dp"
+                        android:gravity="end"
+                        android:paddingEnd="18dp" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:id="@+id/votes_lóisText"
+                        android:layout_column="2"
+                        android:layout_row="3"
+                        android:text="5€"
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textSize="18sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="70dp"
+                        android:gravity="start"
+                        android:paddingEnd="10dp" />
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:id="@+id/votes_lameiroText"
+                        android:layout_column="2"
+                        android:layout_row="5"
+                        android:text="5€"
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textSize="18sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="70dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="start" />
+
+                    <ImageView
                         android:layout_row="2"
                         android:layout_column="2"
-                        android:textSize="18sp"
-                        android:text="5€"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:id="@+id/votes_meloText"
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
-                        android:layout_column="3"
-                        android:textSize="18sp"
-                        android:text="5€"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_lois"
+                        android:id="@+id/imageView4"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="4"
-                        android:layout_height="44dp"
-                        app:srcCompat="@drawable/pb_salgado"
-                        android:id="@+id/imageView6" />
-
-                    <TextView
-                        android:id="@+id/votes_salgadoText"
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
                         android:layout_row="2"
-                        android:layout_column="4"
-                        android:textSize="18sp"
-                        android:text="5€"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="left|center_horizontal"
-                        android:gravity="center" />
-
-                    <ImageView
-                        android:layout_row="1"
                         android:layout_column="0"
-                        android:layout_height="44dp"
                         app:srcCompat="@drawable/pb_nuno"
                         android:id="@+id/imageView2"
-                        android:layout_width="65dp"
-                        android:layout_gravity="right" />
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="30dp" />
 
-                    <TextView
-                        android:textSize="23sp"
-                        android:layout_row="0"
-                        android:layout_column="4"
-                        android:id="@+id/votes_textView"
-                        android:background="@color/buttonTextColor"
-                        android:layout_height="37dp"
-                        android:layout_width="115dp" />
+                    <ImageView
+                        android:layout_row="2"
+                        android:layout_column="1"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_chico"
+                        android:id="@+id/imageView3"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp" />
+
+                    <ImageView
+                        android:layout_row="4"
+                        android:layout_column="1"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_salgado"
+                        android:id="@+id/imageView6"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp" />
 
                 </GridLayout>
 

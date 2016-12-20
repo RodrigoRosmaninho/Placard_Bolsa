@@ -14,11 +14,13 @@ public class Statistics {
     private String number_ofBets;
     private Object pouch_history;
     private String pendingBetsExist;
+    private String number_ofSugg;
+    private String suggestionsExist;
 
     public Statistics() {
     }
 
-    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, Object best_winnings, Object worst_fuckUp, String number_ofBets, Object pouch_history, String pendingBetsExist) {
+    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, Object best_winnings, Object worst_fuckUp, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofSugg, String suggestionsExist) {
         this.all_earnings = all_earnings;
         this.current_share = current_share;
         this.on_pouch = on_pouch;
@@ -30,6 +32,8 @@ public class Statistics {
         this.number_ofBets = number_ofBets;
         this.pouch_history = pouch_history;
         this.pendingBetsExist = pendingBetsExist;
+        this.number_ofSugg = number_ofSugg;
+        this.suggestionsExist = suggestionsExist;
 
 
     }
@@ -77,6 +81,10 @@ public class Statistics {
     public String getPendingBetsExist() {
         return pendingBetsExist;
     }
+
+    public String getNumber_ofSugg() {return number_ofSugg;}
+
+    public String getSuggestionsExist() {return suggestionsExist;}
 
 
 

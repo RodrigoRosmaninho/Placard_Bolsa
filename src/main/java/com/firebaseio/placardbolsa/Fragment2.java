@@ -45,15 +45,27 @@ public class Fragment2 extends Fragment {
         //Create a CardHeader
         CardHeader header = new CardHeader(getContext());
 
-        CardViewNative cardView = (CardViewNative) rootView.findViewById(R.id.stats_mainCard);
+        CardViewNative geralView = (CardViewNative) rootView.findViewById(R.id.stats_mainCard);
+        CardViewNative winLostView = (CardViewNative) rootView.findViewById(R.id.stats_winLostCard);
+        CardViewNative shareView = (CardViewNative) rootView.findViewById(R.id.stats_shareCard);
+        CardViewNative chartView = (CardViewNative) rootView.findViewById(R.id.stats_chartCard);
+        CardViewNative votesView = (CardViewNative) rootView.findViewById(R.id.stats_votesCard);
 
         card.addCardHeader(header);
 
         header.setButtonExpandVisible(false);
         header.setButtonOverflowVisible(false);
-        header.setTitle("Geral");
 
-        cardView.setCard(card);
+        header.setTitle("Geral");
+        geralView.setCard(card);
+        header.setTitle("Apostas");
+        winLostView.setCard(card);
+        header.setTitle("Distribuição");
+        shareView.setCard(card);
+        header.setTitle("Na Bolsa");
+        chartView.setCard(card);
+        header.setTitle("Votos");
+        votesView.setCard(card);
 
         final TextView main_text3 = (TextView) rootView.findViewById(R.id.main_text3);
         final TextView main_text7 = (TextView) rootView.findViewById(R.id.main_text7);
@@ -66,6 +78,7 @@ public class Fragment2 extends Fragment {
         final TextView votes_lóisText = (TextView) rootView.findViewById(R.id.votes_lóisText);
         final TextView votes_meloText = (TextView) rootView.findViewById(R.id.votes_meloText);
         final TextView votes_salgadoText = (TextView) rootView.findViewById(R.id.votes_salgadoText);
+        final TextView votes_lameiroText = (TextView) rootView.findViewById(R.id.votes_lameiroText);
 
         final LineChart chart = (LineChart) rootView.findViewById(R.id.chart);
         final String[] dataObjects;
@@ -113,11 +126,21 @@ public class Fragment2 extends Fragment {
 
                 String share = stats_class.getCurrent_share();
 
-                String nuno = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[1].split("=")[1];
-                String chico = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[4].split("=")[1];
-                String lóis = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[2].split("=")[1];
-                String melo = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[3].split("=")[1];
+                String nuno = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[2].split("=")[1];
+                String chico = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[5].split("=")[1];
+                String lóis = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[3].split("=")[1];
+                String melo = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[4].split("=")[1];
                 String salgado = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
+                String lameiro = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[1].split("=")[1];
+
+                float lameiroBodge = Float.parseFloat(stats_class.getNumber_ofBets()) - 17;
+
+                if (lameiroBodge == 0) {
+                    lameiro = "0%";
+                }
+                else {
+                    lameiro = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lameiro) / lameiroBodge) * 100 ) + "%";
+                }
 
                 nuno = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(nuno) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
                 chico = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(chico) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
@@ -147,6 +170,7 @@ public class Fragment2 extends Fragment {
                 votes_lóisText.setText(lóis);
                 votes_meloText.setText(melo);
                 votes_salgadoText.setText(salgado);
+                votes_lameiroText.setText(lameiro);
 
             }
 

@@ -1,7 +1,9 @@
 package com.firebaseio.placardbolsa;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -83,6 +85,8 @@ import java.util.Locale;
 import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Fragment1 extends Fragment {
 
     public static Fragment1 newInstance() {
@@ -99,6 +103,7 @@ public class Fragment1 extends Fragment {
     int number;
     int goForIt = 0;
     int pass = 0;
+    int typeBodge = 0;
 
     String modey;
 
@@ -109,7 +114,7 @@ public class Fragment1 extends Fragment {
     private static RecyclerView.LayoutManager mLayoutManager;
     public static List<gameCode> myDataset;
 
-    final String[] code = new String[1];
+    final String[] code = new String[2];
 
     ArrayList<String> markets = new ArrayList<String>();
     ArrayList<String> homeOpponents = new ArrayList<String>();
@@ -125,9 +130,21 @@ public class Fragment1 extends Fragment {
 
     static boolean calledAlready = false;
 
+    public static final String MyPREFERENCES = "PlacardBolsaPrefs" ;
+    public static final String userName = "Nuno";
+    public static final int userID = 01;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        SharedPreferences sp = getContext().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.putString("userName", userName);
+        editor.putInt("UserID", userID);
+        editor.apply();
 
         markets.clear();
         homeOpponents.clear();
@@ -165,14 +182,20 @@ public class Fragment1 extends Fragment {
         transactions_view.setLayoutManager(bet_layoutManager);
 
         final CardRecyclerView pending_transactions_view = (CardRecyclerView) rootView.findViewById(R.id.pending_transactions_view);
+        final CardRecyclerView suggestions_view = (CardRecyclerView) rootView.findViewById(R.id.suggestions_view);
 
         transactions_view.setNestedScrollingEnabled(false);
         pending_transactions_view.setNestedScrollingEnabled(false);
+        suggestions_view.setNestedScrollingEnabled(false);
 
         // pending_transactions_view.setHasFixedSize(true);
         LinearLayoutManager bet_layoutManager2 = new LinearLayoutManager(getContext());
         bet_layoutManager2.setReverseLayout(true);
         pending_transactions_view.setLayoutManager(bet_layoutManager2);
+
+        LinearLayoutManager bet_layoutManager3 = new LinearLayoutManager(getContext());
+        bet_layoutManager3.setReverseLayout(true);
+        suggestions_view.setLayoutManager(bet_layoutManager3);
 
         if (!calledAlready) {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -186,6 +209,7 @@ public class Fragment1 extends Fragment {
         statsRef = statsRef.child("Statistics");
 
         final ProgressBar pb2 = (ProgressBar) rootView.findViewById(R.id.progressBar2);
+        final ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar3);
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
@@ -194,6 +218,7 @@ public class Fragment1 extends Fragment {
 
                 // DO NOT REMOVE!!!
                 code[0] = stats_class.getNumber_ofBets();
+                code[1] = stats_class.getNumber_ofSugg();
 
                 if(stats_class.getPendingBetsExist().equals("0")) {
                     pb2.setVisibility(View.GONE);
@@ -202,6 +227,15 @@ public class Fragment1 extends Fragment {
                 else {
                     pb2.setVisibility(View.VISIBLE);
                     pending_transactions_view.setVisibility(View.VISIBLE);
+                }
+
+                if(stats_class.getSuggestionsExist().equals("0")) {
+                    pb3.setVisibility(View.GONE);
+                    suggestions_view.setVisibility(View.GONE);
+                }
+                else {
+                    pb3.setVisibility(View.VISIBLE);
+                    suggestions_view.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -216,7 +250,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
                 betViewHolder.callExpand(getContext(), specificBet.getBet_index(), "1");
-                betViewHolder.setIndex(specificBet.getBet_index());
+                betViewHolder.setIndex(specificBet.getBet_index(), "1");
                 betViewHolder.setDate(specificBet.getDate());
                 betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
                 betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
@@ -231,7 +265,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
                 betViewHolder.callExpand(getContext(), specificBet.getBet_index(), "2");
-                betViewHolder.setIndex(specificBet.getBet_index());
+                betViewHolder.setIndex(specificBet.getBet_index(), "2");
                 betViewHolder.setDate(specificBet.getDate());
                 betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
                 betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
@@ -239,6 +273,21 @@ public class Fragment1 extends Fragment {
             }
         };
         pending_transactions_view.setAdapter(mAdapter2);
+
+        DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("Suggestions");
+
+        FirebaseRecyclerAdapter mAdapter3 = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, ref3) {
+            @Override
+            public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
+                betViewHolder.callExpand(getContext(), specificBet.getBet_index(), "3");
+                betViewHolder.setIndex(specificBet.getBet_index(), "3");
+                betViewHolder.setDate(specificBet.getDate());
+                betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
+                betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
+                betViewHolder.setGameNumber(specificBet.getGame_number());
+            }
+        };
+        suggestions_view.setAdapter(mAdapter3);
 
         /**Handler handler = new Handler();
          handler.postDelayed(new Runnable() {
@@ -387,6 +436,30 @@ public class Fragment1 extends Fragment {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        MaterialSpinner ammount = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
+                        MaterialSpinner type = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
+
+                        int ammountInt = ammount.getSelectedIndex();
+                        int typeInt = type.getSelectedIndex();
+
+                        ArrayList<String> a = new ArrayList<String>();
+                        ArrayList<String> t = new ArrayList<String>();
+
+                        a.add("5");
+                        a.add("1");
+                        a.add("2");
+                        a.add("10");
+                        a.add("20");
+                        a.add("50");
+                        a.add("75");
+                        a.add("100");
+                        t.add("Combinada");
+                        t.add("Simples");
+                        t.add("Múltipla");
+
+                        spent = a.get(ammountInt);
+                        overallType = t.get(typeInt);
+
                         MaterialDialog dialog2 = new MaterialDialog.Builder(getContext())
                                 .title("Adicionar Jogos")
                                 .customView(R.layout.dialog_addgames, true)
@@ -472,22 +545,53 @@ public class Fragment1 extends Fragment {
     }
 
     public void parserJSON(JsonElement root) throws JSONException {
+
         JsonObject mainObject = root.getAsJsonObject();
 
         JsonArray marketsArray = mainObject.get("markets").getAsJsonArray();
-        JsonObject marketsObject = marketsArray.get(0).getAsJsonObject();
+
+        int indexToUseOne = 0;
+
+        if (types.get(typeBodge).equals("INT")) {
+            indexToUseOne = 1;
+        }
+
+        else if (types.get(typeBodge).equals("DV")) {
+            indexToUseOne = 2;
+        }
+
+        else if (types.get(typeBodge).equals("+/-")) {
+            indexToUseOne = 3;
+        }
+
+
+        JsonObject marketsObject = marketsArray.get(indexToUseOne).getAsJsonObject();
         JsonArray outcomesArray = marketsObject.get("outcomes").getAsJsonArray();
 
         String homeOpponent = mainObject.get("homeOpponentDescription").getAsString();
         Log.d("DEBUG", "ALLOALLO: " + homeOpponent);
         String awayOpponent = mainObject.get("awayOpponentDescription").getAsString();
 
-        JsonObject outcomeObject = outcomesArray.get(0).getAsJsonObject();
-        JsonObject outcomePriceObj = outcomeObject.get("price").getAsJsonObject();
-
-        String price = outcomePriceObj.get("decimalPrice").getAsString();
-
         String sport = mainObject.get("sportCode").getAsString();
+
+        int indexToUseTwo = 0;
+
+        if (outcomes.get(typeBodge).equals("x")) {
+            indexToUseTwo = 1;
+        }
+
+        else if (outcomes.get(typeBodge).equals("2")) {
+            indexToUseTwo = 2;
+        }
+
+        else if (outcomes.get(typeBodge).equals("-")) {
+            indexToUseTwo = 1;
+        }
+
+        JsonObject outcomeObject = outcomesArray.get(indexToUseTwo).getAsJsonObject();
+        typeBodge = typeBodge + 1;
+        JsonObject outcomePriceObj = outcomeObject.get("price").getAsJsonObject();
+        String price = outcomePriceObj.get("decimalPrice").getAsString();
 
         markets.add(marketsObject.toString());
         homeOpponents.add(homeOpponent);
@@ -527,14 +631,6 @@ public class Fragment1 extends Fragment {
         pd.dismiss();
         pass = 0;
         goForIt = 0;
-        startActivity(intent);
-    }
-
-    public void expandBet(String index) {
-        Intent intent = new Intent(getContext(), BetActivity.class);
-        Bundle b = new Bundle();
-        b.putString("index", index);
-        intent.putExtras(b);
         startActivity(intent);
     }
 
@@ -607,10 +703,6 @@ public class Fragment1 extends Fragment {
             Snackbar.make(v, "Ja tens 8 jogos listados!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
-    }
-
-    public void expandStats(View v) {
-        startActivity(new Intent(getContext(), StatsActivity.class));
     }
 
     public class TestAsyncTask extends AsyncTask<Void, Void, JsonElement> {
@@ -706,10 +798,17 @@ public class Fragment1 extends Fragment {
             });
         }
 
-        public void setIndex(String index) {
+        public void setIndex(String index, String mode) {
             // mView.setPadding(20, 0, 20, 0);
             TextView field = (TextView) mView.findViewById(R.id.bet_text1);
-            index = "Aposta " + index.substring(1);
+
+            if (mode.equals("3")) {
+                index = "Sugestão " + index.substring(1);
+            }
+            else {
+                index = "Aposta " + index.substring(1);
+            }
+
             field.setText(index);
         }
 
@@ -735,6 +834,11 @@ public class Fragment1 extends Fragment {
                 float math_result = Float.parseFloat(winnings) - Float.parseFloat(losses);
                 balance = String.format(Locale.ENGLISH, "%.2f", math_result) + "€";
                 field.setTextColor(Color.parseColor("#FFFF8800"));
+            }
+            else if (result.equals("3")) {
+                float math_result = Float.parseFloat(winnings) - Float.parseFloat(losses);
+                balance = String.format(Locale.ENGLISH, "%.2f", math_result) + "€";
+                field.setTextColor(Color.parseColor("#415dae"));
             }
 
             field.setText(balance);

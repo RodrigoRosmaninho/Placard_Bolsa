@@ -72,14 +72,6 @@
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/game_result" />
 
-        <View
-            android:layout_height="1dp"
-            android:layout_width="match_parent"
-            android:id="@+id/view4"
-            android:background="@color/bodyTextColor"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/game_result" />
-
         <RelativeLayout
             android:layout_width="335dp"
             android:layout_column="0"
@@ -148,19 +140,8 @@
                     android:layout_marginStart="1dp"
                     android:layout_gravity="center_vertical|end"
                     android:paddingStart="5dp"
-                    android:layout_width="95dp"
+                    android:layout_width="match_parent"
                     android:paddingEnd="4dp" />
-
-                <ImageView
-                    card:srcCompat="@drawable/copenhaga"
-                    android:id="@+id/game_homeImage"
-                    android:layout_alignTop="@+id/game_awayImage"
-                    android:layout_toStartOf="@+id/game_vs"
-                    android:layout_row="0"
-                    android:layout_column="1"
-                    android:layout_height="25dp"
-                    android:layout_gravity="end"
-                    android:layout_width="25dp" />
 
             </GridLayout>
 
@@ -171,16 +152,6 @@
                 android:layout_toEndOf="@+id/game_vs"
                 android:layout_marginStart="11dp"
                 android:layout_centerVertical="true">
-
-                <ImageView
-                    card:srcCompat="@drawable/leicester"
-                    android:id="@+id/game_awayImage"
-                    android:layout_centerVertical="false"
-                    android:layout_height="25dp"
-                    android:layout_row="0"
-                    android:layout_column="0"
-                    android:layout_width="25dp"
-                    android:layout_gravity="start" />
 
                 <TextView
                     android:text="Liverpool FC"
@@ -196,7 +167,7 @@
                     android:paddingStart="4dp"
                     android:layout_gravity="clip_vertical|start"
                     android:paddingEnd="5dp"
-                    android:layout_width="89dp" />
+                    android:layout_width="match_parent" />
             </GridLayout>
 
             <TextView

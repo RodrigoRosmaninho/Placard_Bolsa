@@ -2,6 +2,7 @@ package com.firebaseio.placardbolsa;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -41,6 +42,9 @@ import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
+import static com.firebaseio.placardbolsa.Fragment1.MyPREFERENCES;
+import static java.security.AccessController.getContext;
+
 public class ConfirmActivity  extends AppCompatActivity {
     static boolean firstHasPassed = false;
     private static RecyclerView mRecyclerView;
@@ -57,9 +61,11 @@ public class ConfirmActivity  extends AppCompatActivity {
     static ArrayList<String> types= new ArrayList<String>();
     static ArrayList<String> outcomes= new ArrayList<String>();
     static ArrayList<String> sports = new ArrayList<String>();
-    static String[] index = new String[1];
+    static String[] index = new String[2];
     static String spent = "";
     static String overallType = "";
+    static String uName = "";
+    static int uID = 001;
 
     String projected_win;
     String oddTotal;
@@ -71,7 +77,10 @@ public class ConfirmActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.confirm_main);
+
+        SharedPreferences sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        uName = sp.getString("UserName", null);
+        uID = sp.getInt("UserID", 01);
 
         markets.clear();
         homeOpponents.clear();
@@ -100,9 +109,23 @@ public class ConfirmActivity  extends AppCompatActivity {
             sports = b.getStringArrayList("sports");
         }
 
+        if (mode.equals("1")) {
+            setContentView(R.layout.confirm_main);
+        }
+        else {
+            setContentView(R.layout.confirm_sugg);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
 
-        toolbar.setTitle("Confirmar Adição");
+        if (mode.equals("1")) {
+            toolbar.setTitle("Confirmar Adição");
+        }
+
+        else {
+            toolbar.setTitle("Confirmar Sugestão");
+        }
+
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -118,23 +141,36 @@ public class ConfirmActivity  extends AppCompatActivity {
         final TextView winnings = (TextView) findViewById(R.id.winningsTextView);
         final TextView balance = (TextView) findViewById(R.id.balanceTextView);
 
-        final ImageView nuno = (ImageView) findViewById(R.id.imageView2);
-        final ImageView chico = (ImageView) findViewById(R.id.imageView3);
-        final ImageView lois = (ImageView) findViewById(R.id.imageView4);
-        final ImageView melo = (ImageView) findViewById(R.id.imageView5);
-        final ImageView salgado = (ImageView) findViewById(R.id.imageView6);
+        final CheckBox nunoV;
+        final CheckBox chicoV;
+        final CheckBox loisV;
+        final CheckBox meloV;
+        final CheckBox salgadoV;
+        final CheckBox lameiroV;
 
-        final CheckBox nunoV = (CheckBox) findViewById(R.id.votes_nunoCheck);
-        final CheckBox chicoV = (CheckBox) findViewById(R.id.votes_chicoCheck);
-        final CheckBox loisV = (CheckBox) findViewById(R.id.votes_lóisCheck);
-        final CheckBox meloV = (CheckBox) findViewById(R.id.votes_meloCheck);
-        final CheckBox salgadoV = (CheckBox) findViewById(R.id.votes_salgadoCheck);
+        if (mode.equals("1")) {
+            nunoV = (CheckBox) findViewById(R.id.checkBox1);
+            chicoV = (CheckBox) findViewById(R.id.checkBox2);
+            loisV = (CheckBox) findViewById(R.id.checkBox3);
+            meloV = (CheckBox) findViewById(R.id.checkBox4);
+            salgadoV = (CheckBox) findViewById(R.id.checkBox5);
+            lameiroV = (CheckBox) findViewById(R.id.checkBox6);
+        }
+
+        else {
+            nunoV = null;
+            chicoV = null;
+            loisV = null;
+            meloV = null;
+            salgadoV = null;
+            lameiroV = null;
+        }
 
         FloatingActionButton confirmFAB = (FloatingActionButton) findViewById(R.id.confirm_fab);
         confirmFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validationChecks(nunoV, chicoV, loisV, meloV, salgadoV, view);
+                validationChecks(nunoV, chicoV, loisV, meloV, salgadoV, lameiroV, view);
             }
         });
 
@@ -151,6 +187,11 @@ public class ConfirmActivity  extends AppCompatActivity {
         CardViewNative mainCard = (CardViewNative) findViewById(R.id.bet_mainCard);
         CardViewNative gamesCard = (CardViewNative) findViewById(R.id.bet_gamesCard);
         CardViewNative votesCard = (CardViewNative) findViewById(R.id.stats_votesCard);
+
+        if(mode.equals("1")) {
+            votesCard = (CardViewNative) findViewById(R.id.stats_votesCard);
+        }
+
         card.addCardHeader(header);
         header.setButtonExpandVisible(false);
         header.setButtonOverflowVisible(false);
@@ -161,6 +202,10 @@ public class ConfirmActivity  extends AppCompatActivity {
         gamesCard.setCard(card);
         header.setTitle("Votos");
         votesCard.setCard(card);
+
+        if (mode.equals("1")) {
+            votesCard.setCard(card);
+        }
 
         balance.setTextColor(Color.parseColor("#FFFF8800"));
         result.setTextColor(Color.parseColor("#FFFF8800"));
@@ -180,6 +225,8 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         oddTotal = String.format(Locale.ENGLISH, "%.2f", totalOdd);
         odds.setText(oddTotal);
+
+        Log.d("DEBUG", "Spent: " + spent);
 
         spentTV.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(spent)));
 
@@ -286,6 +333,12 @@ public class ConfirmActivity  extends AppCompatActivity {
             else if(outcomes.get(pos).equals("2")){
                 outcome = awayOpponents.get(pos);
             }
+            else if(outcomes.get(pos).equals("+")){
+                outcome = "Mais 2.5";
+            }
+            else if(outcomes.get(pos).equals("-")){
+                outcome = "Menos 2.5";
+            }
 
             String code = codes.get(pos);
             String type = types.get(pos);
@@ -328,37 +381,62 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
     }
 
-    public void validationChecks(CheckBox nunoV, CheckBox chicoV, CheckBox loisV, CheckBox meloV, CheckBox salgadoV, View v) {
-        int numberYes = 0;
+    public void validationChecks(CheckBox nunoV, CheckBox chicoV, CheckBox loisV, CheckBox meloV, CheckBox salgadoV, CheckBox lameiroV , View v) {
+        if (mode.equals("1")) {
+            int numberYes = 0;
 
-        boolean[] votes = new boolean[5];
-        votes[0] = nunoV.isChecked();
-        votes[1] = chicoV.isChecked();
-        votes[2] = loisV.isChecked();
-        votes[3] = meloV.isChecked();
-        votes[4] = salgadoV.isChecked();
+            boolean[] votes = new boolean[6];
+            votes[0] = nunoV.isChecked();
+            votes[1] = chicoV.isChecked();
+            votes[2] = loisV.isChecked();
+            votes[3] = meloV.isChecked();
+            votes[4] = salgadoV.isChecked();
+            votes[5] = lameiroV.isChecked();
 
-        for(int i = 0; i < 5; i++) {
-            if (votes[i]) {
-                numberYes = numberYes + 1;
+            for (int i = 0; i < 6; i++) {
+                if (votes[i]) {
+                    numberYes = numberYes + 1;
+                }
+            }
+
+            if (numberYes > 3) {
+                sendToDatabase(votes);
+            } else {
+                Snackbar.make(v, "Apenas pode haver 1 voto contra a aposta!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         }
 
-        if(numberYes == 4 | numberYes == 5) {
-            sendToDatabase(votes);
-        }
         else {
-            Snackbar.make(v, "Apenas pode haver 1 voto contra a aposta!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            sendToDatabase(new boolean[1]);
         }
     }
 
     public void sendToDatabase(boolean[] votes) {
-        betResult resultObj = new betResult("0", "2");
-        betVotes votesObj = new betVotes(translateBool(votes[0]), translateBool(votes[1]), translateBool(votes[2]), translateBool(votes[3]), translateBool(votes[4]));
-        Bet bet = new Bet("0" + String.valueOf(Integer.parseInt(index[0]) + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj, votesObj);
+        betResult resultObj;
+        betVotes votesObj = null;
+        int intSugg = 0;
+        Bet bet;
 
-        mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).setValue(bet);
+        if (mode.equals("1")) {
+            resultObj = new betResult("0", "2");
+            votesObj = new betVotes(translateBool(votes[0]), translateBool(votes[1]), translateBool(votes[2]), translateBool(votes[3]), translateBool(votes[4]), translateBool(votes[5]));
+            bet = new Bet("0" + String.valueOf(Integer.parseInt(index[0]) + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
+        }
+        else {
+            resultObj = new betResult("0", "3");
+            bet = new Bet(String.format(Locale.ENGLISH, "%03d", intSugg + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
+        }
+
+        if (mode.equals("1")) {
+            mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).setValue(bet);
+        }
+
+        else {
+            Log.d("DEBUG", "Array2: " + index[1]);
+            intSugg = Integer.parseInt(index[1]);
+            mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).setValue(bet);
+        }
 
         for(int i = 1; i < homeOpponents.size() + 1; i++) {
             int ind = i - 1;
@@ -373,28 +451,52 @@ public class ConfirmActivity  extends AppCompatActivity {
             else if(outcomes.get(ind).equals("2")){
                 outcomeD = awayOpponents.get(ind);
             }
+            else if(outcomes.get(ind).equals("+")){
+                outcomeD = "Mais 2.5";
+            }
+            else if(outcomes.get(ind).equals("-")){
+                outcomeD = "Menos 2.5";
+            }
 
             gameOutcome gOut = new gameOutcome("3", "2");
             gameType gType = new gameType(types.get(ind), "0");
             desiredOutcome outcome = new desiredOutcome(outcomeD, outcomes.get(ind), prices.get(ind), gType);
             Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), outcome, sports.get(ind), gOut);
 
-            mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("games").child("game_0" + i).setValue(game);
-            mDatabase.child("Statistics").child("number_ofBets").setValue(String.valueOf(Integer.parseInt(index[0]) + 1));
-            mDatabase.child("Statistics").child("pendingBetsExist").setValue("1");
-
-            Context context = getApplicationContext();
-            CharSequence text = "A aposta foi adicionada à Base de Dados!";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-
-            myDataset.clear();
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            if(mode.equals("1")) {
+                mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("games").child("game_0" + i).setValue(game);
+                mDatabase.child("Statistics").child("number_ofBets").setValue(String.valueOf(Integer.parseInt(index[0]) + 1));
+                mDatabase.child("Statistics").child("pendingBetsExist").setValue("1");
+            }
+            else {
+                mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).child("games").child("game_0" + i).setValue(game);
+                mDatabase.child("Statistics").child("number_ofSugg").setValue(String.valueOf(intSugg + 1));
+                mDatabase.child("Statistics").child("suggestionsExist").setValue("1");
+            }
         }
+        CharSequence text;
+
+        if (mode.equals("1")) {
+            mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("votes").setValue(votesObj);
+            text = "A aposta foi adicionada à Base de Dados!";
+        }
+
+        else {
+            mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).child("votes").setValue(getVotesObj());
+            text = "A sugestão foi adicionada à Base de Dados!";
+        }
+
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        myDataset.clear();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 
     public String translateBool(Boolean bool) {
@@ -403,6 +505,31 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
         else {
             return "0";
+        }
+    }
+
+    public Object getVotesObj() {
+        if (uID == 1) {
+            return new betVotes("1", "0", "0", "0", "0", "0");
+        }
+        else if (uID == 2) {
+            return new betVotes("0", "1", "0", "0", "0", "0");
+        }
+        else if (uID == 3) {
+            return new betVotes("0", "0", "1", "0", "0", "0");
+        }
+        else if (uID == 4) {
+            return new betVotes("0", "0", "0", "1", "0", "0");
+        }
+        else if (uID == 5) {
+            return new betVotes("0", "0", "0", "0", "1", "0");
+        }
+        else if (uID == 6) {
+            return new betVotes("0", "0", "0", "0", "0", "1");
+        }
+
+        else {
+            return new betVotes("0", "0", "0", "0", "0", "0");
         }
     }
 

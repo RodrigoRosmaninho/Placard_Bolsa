@@ -18,12 +18,12 @@ public final class R {
 		public static final int scopeUris = 0x7f01016b;
 	}
 	public static final class color {
-		public static final int common_google_signin_btn_text_dark = 0x7f0d00a5;
+		public static final int common_google_signin_btn_text_dark = 0x7f0d00a6;
 		public static final int common_google_signin_btn_text_dark_default = 0x7f0d004b;
 		public static final int common_google_signin_btn_text_dark_disabled = 0x7f0d004c;
 		public static final int common_google_signin_btn_text_dark_focused = 0x7f0d004d;
 		public static final int common_google_signin_btn_text_dark_pressed = 0x7f0d004e;
-		public static final int common_google_signin_btn_text_light = 0x7f0d00a6;
+		public static final int common_google_signin_btn_text_light = 0x7f0d00a7;
 		public static final int common_google_signin_btn_text_light_default = 0x7f0d004f;
 		public static final int common_google_signin_btn_text_light_disabled = 0x7f0d0050;
 		public static final int common_google_signin_btn_text_light_focused = 0x7f0d0051;
@@ -62,17 +62,17 @@ public final class R {
 		public static final int button = 0x7f0e004f;
 		public static final int center = 0x7f0e000c;
 		public static final int dark = 0x7f0e0047;
-		public static final int email = 0x7f0e00ea;
+		public static final int email = 0x7f0e00ee;
 		public static final int icon_only = 0x7f0e0044;
 		public static final int light = 0x7f0e0048;
 		public static final int match_parent = 0x7f0e003e;
 		public static final int none = 0x7f0e0014;
 		public static final int normal = 0x7f0e0010;
-		public static final int progressBar = 0x7f0e00f5;
+		public static final int progressBar = 0x7f0e00f9;
 		public static final int radio = 0x7f0e0070;
 		public static final int standard = 0x7f0e0045;
-		public static final int text = 0x7f0e013f;
-		public static final int text2 = 0x7f0e013d;
+		public static final int text = 0x7f0e0145;
+		public static final int text2 = 0x7f0e0143;
 		public static final int toolbar = 0x7f0e0087;
 		public static final int wide = 0x7f0e0046;
 		public static final int wrap_content = 0x7f0e0024;

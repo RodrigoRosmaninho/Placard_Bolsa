@@ -200,7 +200,7 @@
                 android:layout_marginBottom="2dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/bet_gamesCard"
-                android:layout_height="145dp">
+                android:layout_height="260dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -208,105 +208,121 @@
                     android:paddingBottom="5dp">
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="2"
-                        android:layout_height="44dp"
-                        app:srcCompat="@drawable/pb_lois"
-                        android:id="@+id/imageView4" />
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:layout_height="44dp"
-                        app:srcCompat="@drawable/pb_chico"
-                        android:id="@+id/imageView3" />
-
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="3"
-                        android:layout_height="44dp"
+                        android:layout_row="4"
+                        android:layout_column="0"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
                         app:srcCompat="@drawable/pb_melo"
-                        android:id="@+id/imageView5" />
+                        android:id="@+id/imageView5"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="15dp" />
+
+                    <ImageView
+                        android:layout_row="4"
+                        android:layout_column="2"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_lameiro"
+                        android:id="@+id/imageView7"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp" />
 
                     <CheckBox
-                        android:id="@+id/votes_nunoCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_row="2"
+                        android:id="@+id/checkBox1"
                         android:layout_column="0"
-                        android:textSize="18sp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_horizontal|center" />
-
+                        android:layout_row="3"
+                        android:paddingLeft="25dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_gravity="end"
+                        android:layout_marginLeft="10dp" />
                     <CheckBox
-                        android:id="@+id/votes_chicoCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_row="2"
+                        android:id="@+id/checkBox2"
+                        android:layout_column="0"
+                        android:layout_row="5"
+                        android:paddingLeft="25dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_gravity="end" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBox3"
                         android:layout_column="1"
-                        android:textSize="18sp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
-
+                        android:layout_row="3"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_gravity="end"
+                        android:paddingLeft="25dp" />
                     <CheckBox
-                        android:id="@+id/votes_lóisCheck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/checkBox4"
+                        android:layout_column="1"
+                        android:layout_row="5"
+                        android:paddingLeft="25dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_gravity="end" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBox5"
+                        android:layout_column="2"
+                        android:layout_row="3"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_gravity="center"
+                        android:paddingLeft="45dp" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBox6"
+                        android:layout_column="2"
+                        android:layout_row="5"
+                        android:paddingLeft="45dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_gravity="center" />
+
+                    <ImageView
                         android:layout_row="2"
                         android:layout_column="2"
-                        android:textSize="18sp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
-
-                    <CheckBox
-                        android:id="@+id/votes_meloCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
-                        android:layout_column="3"
-                        android:textSize="18sp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_lois"
+                        android:id="@+id/imageView4"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp" />
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_row="1"
-                        android:layout_column="4"
-                        android:layout_height="44dp"
-                        app:srcCompat="@drawable/pb_salgado"
-                        android:id="@+id/imageView6" />
-
-                    <CheckBox
-                        android:id="@+id/votes_salgadoCheck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_row="2"
-                        android:layout_column="4"
-                        android:textSize="18sp"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal" />
-
-                    <ImageView
-                        android:layout_row="1"
                         android:layout_column="0"
-                        android:layout_height="44dp"
                         app:srcCompat="@drawable/pb_nuno"
                         android:id="@+id/imageView2"
-                        android:layout_width="65dp"
-                        android:layout_gravity="right" />
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="30dp" />
+
+                    <ImageView
+                        android:layout_row="2"
+                        android:layout_column="1"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_chico"
+                        android:id="@+id/imageView3"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp" />
+
+                    <ImageView
+                        android:layout_row="4"
+                        android:layout_column="1"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_salgado"
+                        android:id="@+id/imageView6"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp" />
 
                 </GridLayout>
 
@@ -458,4 +474,5 @@
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
+
 </android.support.design.widget.CoordinatorLayout>

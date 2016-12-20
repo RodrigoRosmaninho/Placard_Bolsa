@@ -26,9 +26,31 @@
             <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
                 android:layout_width="match_parent"
                 card:list_card_layout_resourceID="@layout/populate_this"
-                android:id="@+id/pending_transactions_view"
+                android:id="@+id/suggestions_view"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="12dp"
+                android:layout_height="wrap_content">
+
+            </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:id="@+id/progressBar3"
+                android:layout_below="@+id/suggestions_view"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:progress="0"
+                android:progressTint="@android:color/darker_gray"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp" />
+
+            <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+                android:layout_width="match_parent"
+                card:list_card_layout_resourceID="@layout/populate_this"
+                android:id="@+id/pending_transactions_view"
+                android:layout_below="@+id/progressBar3"
                 android:layout_height="wrap_content">
 
             </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
@@ -63,7 +85,6 @@
         android:id="@+id/fab"
         android:layout_width="match_parent"
         android:layout_gravity="top|left"
-        android:layout_margin="@dimen/fab_margin"
         fab:menu_fab_size="normal"
         fab:menu_showShadow="false"
         fab:menu_shadowColor="#66000000"
@@ -96,7 +117,11 @@
         fab:menu_labels_maxLines="-1"
         fab:menu_labels_position="left"
         fab:menu_openDirection="up"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="15dp">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/add_bet_fab"

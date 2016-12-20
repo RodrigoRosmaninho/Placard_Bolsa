@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#880000</color>
     <color name="colorAccent">#FFCC0000</color>
     <color name="btn_colored_borderless_text_material">#9d0000</color>
+    <color name="whitey">#ffffffff</color>
 </resources>
