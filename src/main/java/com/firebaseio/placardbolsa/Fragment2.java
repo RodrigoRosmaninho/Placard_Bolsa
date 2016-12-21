@@ -133,7 +133,7 @@ public class Fragment2 extends Fragment {
                 String salgado = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
                 String lameiro = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[1].split("=")[1];
 
-                float lameiroBodge = Float.parseFloat(stats_class.getNumber_ofBets()) - 17;
+                float lameiroBodge = Float.parseFloat(stats_class.getNumber_ofBets()) - 21;
 
                 if (lameiroBodge == 0) {
                     lameiro = "0%";

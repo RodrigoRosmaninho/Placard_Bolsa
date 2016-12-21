@@ -6,18 +6,18 @@ public class Game {
     private String away_opponent;
     private Object desired_outcome;
     private String sport;
-    private Object outcome;
+    private String game_result;
 
     public Game() {
     }
 
-    public Game(String event_index, String home_opponent, String away_opponent, Object desired_outcome, String sport, Object outcome) {
+    public Game(String event_index, String home_opponent, String away_opponent, Object desired_outcome, String sport, String game_result) {
         this.event_index = event_index;
         this.home_opponent = home_opponent;
         this.away_opponent = away_opponent;
         this.desired_outcome = desired_outcome;
         this.sport = sport;
-        this.outcome = outcome;
+        this.game_result = game_result;
 
 
     }
@@ -40,7 +40,8 @@ public class Game {
     public String getSport() {
         return sport;
     }
-    public Object getOutcome() {
-        return outcome;
+
+    public String getGame_result() {
+        return game_result;
     }
 }

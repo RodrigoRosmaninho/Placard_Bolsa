@@ -9,8 +9,6 @@ public class Statistics {
     private String value_spent;
     private Object general_stats;
     private Object vote_stats;
-    private Object best_winnings;
-    private Object worst_fuckUp;
     private String number_ofBets;
     private Object pouch_history;
     private String pendingBetsExist;
@@ -20,15 +18,13 @@ public class Statistics {
     public Statistics() {
     }
 
-    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, Object best_winnings, Object worst_fuckUp, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofSugg, String suggestionsExist) {
+    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofSugg, String suggestionsExist) {
         this.all_earnings = all_earnings;
         this.current_share = current_share;
         this.on_pouch = on_pouch;
         this.value_spent = value_spent;
         this.general_stats = general_stats;
         this.vote_stats = vote_stats;
-        this.best_winnings = best_winnings;
-        this.worst_fuckUp = worst_fuckUp;
         this.number_ofBets = number_ofBets;
         this.pouch_history = pouch_history;
         this.pendingBetsExist = pendingBetsExist;
@@ -60,14 +56,6 @@ public class Statistics {
 
     public Object getVote_stats() {
         return vote_stats;
-    }
-
-    public Object getBest_winnings() {
-        return best_winnings;
-    }
-
-    public Object getWorst_fuckUp() {
-        return worst_fuckUp;
     }
 
     public String getNumber_ofBets() {
@@ -152,50 +140,6 @@ public class Statistics {
 
         public String getWin_number() {
             return win_number;
-        }
-    }
-
-
-    public class bestWinnings {
-        private String best_bet;
-        private String best_value;
-
-        public bestWinnings() {
-        }
-
-        public bestWinnings(String best_bet, String best_value) {
-            this.best_bet = best_bet;
-            this.best_value = best_value;
-        }
-
-        public String getBest_bet() {
-            return best_bet;
-        }
-
-        public String getBest_value() {
-            return best_value;
-        }
-    }
-
-
-    public class worstFuckUp {
-        private String worst_bet;
-        private String worst_value;
-
-        public worstFuckUp() {
-        }
-
-        public worstFuckUp(String worst_bet, String worst_value) {
-            this.worst_bet = worst_bet;
-            this.worst_value = worst_value;
-        }
-
-        public String getWorst_bet() {
-            return worst_bet;
-        }
-
-        public String getWorst_value() {
-            return worst_value;
         }
     }
 

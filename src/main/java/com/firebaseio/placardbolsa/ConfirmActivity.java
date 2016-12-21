@@ -458,10 +458,9 @@ public class ConfirmActivity  extends AppCompatActivity {
                 outcomeD = "Menos 2.5";
             }
 
-            gameOutcome gOut = new gameOutcome("3", "2");
             gameType gType = new gameType(types.get(ind), "0");
             desiredOutcome outcome = new desiredOutcome(outcomeD, outcomes.get(ind), prices.get(ind), gType);
-            Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), outcome, sports.get(ind), gOut);
+            Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), outcome, sports.get(ind), "3");
 
             if(mode.equals("1")) {
                 mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("games").child("game_0" + i).setValue(game);

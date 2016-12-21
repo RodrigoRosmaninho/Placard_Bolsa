@@ -2,6 +2,8 @@ package com.firebaseio.placardbolsa;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,9 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 
 import it.gmariotti.cardslib.library.internal.Card;
@@ -31,6 +39,14 @@ public class BetActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bet_main);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.bet_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editEntries();
+            }
+        });
 
         Bundle b = getIntent().getExtras();
         String value = "";
@@ -240,14 +256,30 @@ public class BetActivity  extends AppCompatActivity {
                 gameViewHolder.setType(specificGame.getDesired_outcome().toString().split("\\{")[2].split("\\}")[0].split(", ")[1].split("=")[1]);
                 gameViewHolder.setHomeOpp(specificGame.getHome_opponent());
                 gameViewHolder.setAwayOpp(specificGame.getAway_opponent());
-                Log.d("DEBUG", "Current bug: " + specificGame.getDesired_outcome().toString());
                 gameViewHolder.setOutcome(specificGame.getDesired_outcome().toString().split("\\{")[1].split(", ")[2].split("=")[1]);
                 gameViewHolder.setOdd(specificGame.getDesired_outcome().toString().split("\\{")[1].split(", ")[0].split("=")[1]);
-                gameViewHolder.setResult(specificGame.getOutcome().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1]);
+                gameViewHolder.setResult(specificGame.getGame_result());
             }
         };
         games_view.setAdapter(mAdapter);
 
+    }
+
+    public void editEntries() {
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Alterar Resultados")
+                .customView(R.layout.dialog_editentries, true)
+                .positiveText("Confirmar")
+                .negativeText("Cancelar")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                    }
+                })
+                .build();
+
+        dialog.show();
     }
 
     public String getEmojiByUnicode(int unicode){
@@ -319,10 +351,10 @@ public class BetActivity  extends AppCompatActivity {
             else if (result.equals("0")){
                 view.setBackgroundColor(Color.parseColor("#FFCC0000"));
             }
-            else if (result.equals("2")) {
+            else if (result.equals("3")) {
                 view.setBackgroundColor(Color.parseColor("#FFFF8800"));
             }
-            else if (result.equals("3")) {
+            else if (result.equals("2")) {
                 view.setBackgroundColor(Color.parseColor("#415dae"));
             }
         }
