@@ -37,17 +37,6 @@
                 android:value="com.firebaseio.placardbolsa.MainActivity" />
         </activity>
         <activity
-            android:name="com.firebaseio.placardbolsa.StatsActivity"
-            android:colorPrimaryDark="#880000"
-            android:label="Estatísticas"
-            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.firebaseio.placardbolsa.MainActivity" />
-        </activity>
-        <activity
             android:name="com.firebaseio.placardbolsa.BetActivity"
             android:colorPrimaryDark="#880000"
             android:label="Confirmar Adição"
@@ -69,8 +58,12 @@
                 android:value="com.firebaseio.placardbolsa.MainActivity" />
         </activity>
         <activity
+            android:name="com.firebaseio.placardbolsa.IntroActivity"
+            android:colorPrimaryDark="#880000"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.firebaseio.placardbolsa.SplashActivity"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

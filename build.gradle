@@ -37,6 +37,8 @@ dependencies {
 
     compile 'com.github.clans:fab:1.6.4'
 
+    compile 'com.github.paolorotolo:appintro:4.1.0'
+
     compile 'com.afollestad.material-dialogs:core:0.9.0.2'
     compile 'com.afollestad.material-dialogs:commons:0.9.0.2'
 

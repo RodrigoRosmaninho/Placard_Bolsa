@@ -131,20 +131,10 @@ public class Fragment1 extends Fragment {
     static boolean calledAlready = false;
 
     public static final String MyPREFERENCES = "PlacardBolsaPrefs" ;
-    public static final String userName = "Nuno";
-    public static final int userID = 01;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        SharedPreferences sp = getContext().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sp.edit();
-
-        editor.putString("userName", userName);
-        editor.putInt("UserID", userID);
-        editor.apply();
 
         markets.clear();
         homeOpponents.clear();
