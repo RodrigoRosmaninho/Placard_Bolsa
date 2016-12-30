@@ -13,12 +13,13 @@ public class Statistics {
     private Object pouch_history;
     private String pendingBetsExist;
     private String number_ofSugg;
+    private String number_ofPen;
     private String suggestionsExist;
 
     public Statistics() {
     }
 
-    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofSugg, String suggestionsExist) {
+    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, Object vote_stats, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofSugg, String number_ofPen, String suggestionsExist) {
         this.all_earnings = all_earnings;
         this.current_share = current_share;
         this.on_pouch = on_pouch;
@@ -29,6 +30,7 @@ public class Statistics {
         this.pouch_history = pouch_history;
         this.pendingBetsExist = pendingBetsExist;
         this.number_ofSugg = number_ofSugg;
+        this.number_ofPen = number_ofPen;
         this.suggestionsExist = suggestionsExist;
 
 
@@ -72,75 +74,10 @@ public class Statistics {
 
     public String getNumber_ofSugg() {return number_ofSugg;}
 
+    public String getNumber_ofPen() {
+        return number_ofPen;
+    }
+
     public String getSuggestionsExist() {return suggestionsExist;}
-
-
-
-    public class voteStats {
-        private String u01;
-        private String u02;
-        private String u03;
-        private String u04;
-        private String u05;
-
-        public voteStats() {
-        }
-
-        public voteStats(String u01, String u02, String u03, String u04, String u05) {
-            this.u01 = u01;
-            this.u02 = u02;
-            this.u03 = u03;
-            this.u04 = u04;
-            this.u05 = u05;
-        }
-
-        public String getU01() {
-            return u01;
-        }
-
-        public String getU02() {
-            return u02;
-        }
-
-        public String getU03() {
-            return u03;
-        }
-
-        public String getU04() {
-            return u04;
-        }
-
-        public String getU05() {
-            return u05;
-        }
-    }
-
-
-    public class generalStats {
-        private String bet_number;
-        private String lost_number;
-        private String win_number;
-
-        public generalStats() {
-        }
-
-        public generalStats(String bet_number, String lost_number, String win_number) {
-            this.bet_number = bet_number;
-            this.lost_number = lost_number;
-            this.win_number = win_number;
-        }
-
-        public String getBet_number() {
-            return bet_number;
-        }
-
-        public String getLost_number() {
-            return lost_number;
-        }
-
-        public String getWin_number() {
-            return win_number;
-        }
-    }
 
 }

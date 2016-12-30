@@ -4,7 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -76,6 +78,8 @@ import java.util.Locale;
 import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
+import static com.firebaseio.placardbolsa.Fragment1.MyPREFERENCES;
+
 // Rodrigo Rosmaninho - 2016
 
 public class MainActivity extends AppCompatActivity {
@@ -133,6 +137,109 @@ public class MainActivity extends AppCompatActivity {
      if (id == R.id.action_settings) {
      Snackbar.make(findViewById(android.R.id.content), "[Ainda não faz nada]", Snackbar.LENGTH_LONG)
      .setAction("Action", null).show();
+     }
+
+     if (id == R.id.bug_report) {
+         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://airtable.com/shrF9li4uv8gR4i0z"));
+         startActivity(browserIntent);
+     }
+
+     if (id == R.id.open_notes) {
+         final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Notes");
+         SharedPreferences sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+         final int uID = sp.getInt("UserID", 01);
+
+         final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                 .title("Editar Notas")
+                 .customView(R.layout.dialog_notes, true)
+                 .positiveText("Confirmar")
+                 .negativeText("Cancelar")
+                 .onPositive(new MaterialDialog.SingleButtonCallback() {
+                     @Override
+                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                         EditText ET = (EditText) dialog.getCustomView().findViewById(R.id.editText);
+                         TextView date = (TextView) dialog.getCustomView().findViewById(R.id.textView9);
+                         TextView author = (TextView) dialog.getCustomView().findViewById(R.id.textView8);
+
+                         ref.child("text").setValue(ET.getText().toString());
+
+                         Calendar c = Calendar.getInstance();
+                         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
+                         String formattedDate = df.format(c.getTime());
+
+                         ref.child("last_edited").setValue(formattedDate);
+
+                         String user;
+
+                         switch (uID) {
+                             case 1:
+                                 user = "Nuno";
+                                 break;
+
+                             case 2:
+                                 user = "Chico";
+                                 break;
+
+                             case 3:
+                                 user = "Lóis";
+                                 break;
+
+                             case 4:
+                                 user = "Melo";
+                                 break;
+
+                             case 5:
+                                 user = "Salgado";
+                                 break;
+
+                             case 6:
+                                 user = "Lameiro";
+                                 break;
+
+                             default:
+                                 user = "Quico";
+                                 break;
+                         }
+
+                         ref.child("last_author").setValue(user);
+
+                         Snackbar.make(findViewById(android.R.id.content), "Nota alterada com sucesso!", Snackbar.LENGTH_LONG)
+                                 .setAction("Action", null).show();
+
+                     }
+                 })
+                 .build();
+
+         final EditText ET = (EditText) dialog.getCustomView().findViewById(R.id.editText);
+         final TextView date = (TextView) dialog.getCustomView().findViewById(R.id.textView9);
+         final TextView author = (TextView) dialog.getCustomView().findViewById(R.id.textView8);
+
+         ValueEventListener postListener = new ValueEventListener() {
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                 Notes notes_class = dataSnapshot.getValue(Notes.class);
+
+                 ET.setText(notes_class.getText());
+
+                 String str = notes_class.getLast_edited().split("_")[0];
+                 String string1 = "Última Edição a:  " + notes_class.getLast_edited().split("_")[1] + ", às " + str.substring(0, str.length()-3);
+
+                 date.setText(string1);
+
+                 String string2 = "Por:  " + notes_class.getLast_author();
+
+                 author.setText(string2);
+
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+
+             }
+         };
+         ref.addListenerForSingleValueEvent(postListener);
+
+         dialog.show();
      }
 
      if (id == R.id.placard_link) {

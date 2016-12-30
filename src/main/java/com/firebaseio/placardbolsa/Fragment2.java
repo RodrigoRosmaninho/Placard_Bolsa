@@ -1,7 +1,9 @@
 package com.firebaseio.placardbolsa;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +37,7 @@ import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
 public class Fragment2 extends Fragment {
+    String[] betNumb = new String[1];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -114,6 +117,8 @@ public class Fragment2 extends Fragment {
         DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
         statsRef = statsRef.child("Statistics");
 
+        final String[] ammounty = new String[1];
+
         DatabaseReference pouchRef = statsRef.child("pouch_history");
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -121,36 +126,13 @@ public class Fragment2 extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Statistics stats_class = dataSnapshot.getValue(Statistics.class);
 
+                betNumb[0] = stats_class.getNumber_ofBets();
+
                 String ammount = stats_class.getOn_pouch();
+                ammounty[0] = ammount;
                 ammount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(ammount)) + "€";
 
                 String share = stats_class.getCurrent_share();
-
-                String nuno = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[2].split("=")[1];
-                String chico = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[5].split("=")[1];
-                String lóis = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[3].split("=")[1];
-                String melo = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[4].split("=")[1];
-                String salgado = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
-                String lameiro = stats_class.getVote_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[1].split("=")[1];
-
-                float lameiroBodge = Float.parseFloat(stats_class.getNumber_ofBets()) - 21;
-
-                if (lameiroBodge == 0) {
-                    lameiro = "0%";
-                }
-                else {
-                    lameiro = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lameiro) / lameiroBodge) * 100 ) + "%";
-                }
-
-                nuno = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(nuno) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
-                chico = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(chico) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
-                lóis = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lóis) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
-                melo = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(melo) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
-                salgado = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(salgado) / Float.parseFloat(stats_class.getNumber_ofBets())) * 100 ) + "%";
-
-                String win = stats_class.getGeneral_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
-
-                String lost = stats_class.getGeneral_stats().toString().split("\\{")[1].split("\\}")[0].split(", ")[2].split("=")[1];
 
                 main_text3.setTextColor(Color.parseColor("#FF669900"));
                 main_text3.setText(ammount);
@@ -158,19 +140,6 @@ public class Fragment2 extends Fragment {
                 main_text7.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(stats_class.getValue_spent())) + "€");
 
                 share_text42.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(share)) + "€");
-
-                winLost_text3.setTextColor(Color.parseColor("#FF669900"));
-                winLost_text3.setText(win);
-
-                winLost_text5.setTextColor(Color.parseColor("#FFCC0000"));
-                winLost_text5.setText(lost);
-
-                votes_nunoText.setText(nuno);
-                votes_chicoText.setText(chico);
-                votes_lóisText.setText(lóis);
-                votes_meloText.setText(melo);
-                votes_salgadoText.setText(salgado);
-                votes_lameiroText.setText(lameiro);
 
             }
 
@@ -185,13 +154,14 @@ public class Fragment2 extends Fragment {
         ValueEventListener postListener2 = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int pass = 0;
+
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                     pouchHistory pouchHistory = childSnapshot.getValue(pouchHistory.class);
 
                     SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
                     String inputString1 = "01-10-2016";
                     String inputString2 = pouchHistory.getEvent_date();
-                    Log.d("DEBUG", "date: " + inputString2 + ", content: " + pouchHistory.getPouch_content());
 
                     String days = "0";
 
@@ -204,9 +174,14 @@ public class Fragment2 extends Fragment {
                         e.printStackTrace();
                     }
 
-                    Log.d("DEBUG", "entry: " + Float.parseFloat(days) + ",, " + days + ",, " + Float.parseFloat(pouchHistory.getPouch_content()));
-                    entries.add(new Entry(Float.parseFloat(days), Float.parseFloat(pouchHistory.getPouch_content())));
-                    Log.d("DEBUG", "list: " + entries.toString());
+                    String stupidFix = pouchHistory.getPouch_content();
+
+                    if (pass == Integer.parseInt(betNumb[0])) {
+                        stupidFix = ammounty[0];
+                    }
+                    pass = pass + 1;
+
+                    entries.add(new Entry(Float.parseFloat(days), Float.parseFloat(stupidFix)));
 
                 }
 
@@ -228,6 +203,76 @@ public class Fragment2 extends Fragment {
             }
         };
         pouchRef.addValueEventListener(postListener2);
+
+        DatabaseReference votesRef = statsRef.child("vote_stats");
+
+        ValueEventListener postListener3 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                voteStats stats_class = dataSnapshot.getValue(voteStats.class);
+
+                String nuno = stats_class.getU01();
+                String chico = stats_class.getU02();
+                String lóis = stats_class.getU03();
+                String melo = stats_class.getU04();
+                String salgado = stats_class.getU05();
+                String lameiro = stats_class.getU06();
+
+                float lameiroBodge = Float.parseFloat(betNumb[0]) - 21;
+
+                if (lameiroBodge == 0) {
+                    lameiro = "0%";
+                }
+                else {
+                    lameiro = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lameiro) / lameiroBodge) * 100 ) + "%";
+                }
+
+                nuno = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(nuno) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
+                chico = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(chico) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
+                lóis = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lóis) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
+                melo = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(melo) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
+                salgado = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(salgado) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
+
+                votes_nunoText.setText(nuno);
+                votes_chicoText.setText(chico);
+                votes_lóisText.setText(lóis);
+                votes_meloText.setText(melo);
+                votes_salgadoText.setText(salgado);
+                votes_lameiroText.setText(lameiro);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        votesRef.addValueEventListener(postListener3);
+
+        DatabaseReference wonLostRef = statsRef.child("general_stats");
+
+        ValueEventListener postListener4 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                generalStats stats_class = dataSnapshot.getValue(generalStats.class);
+
+                String win = stats_class.getWin_number();
+                String lost = stats_class.getLost_number();
+
+                winLost_text3.setTextColor(Color.parseColor("#FF669900"));
+                winLost_text3.setText(win);
+
+                winLost_text5.setTextColor(Color.parseColor("#FFCC0000"));
+                winLost_text5.setText(lost);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        wonLostRef.addValueEventListener(postListener4);
 
         return rootView;
     }

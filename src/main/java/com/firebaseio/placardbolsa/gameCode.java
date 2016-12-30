@@ -35,7 +35,7 @@ public static ArrayList<gameCode> createEmpty() {
 }
 public static ArrayList<gameCode> createEmpty2() {
     ArrayList<gameCode> gameCodes = new ArrayList<gameCode>();
-    gameCodes.add(new gameCode("", "", ""));
+    gameCodes.add(0, new gameCode("", "", ""));
     return gameCodes;
     }
 

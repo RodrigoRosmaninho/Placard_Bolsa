@@ -548,64 +548,88 @@ public class Fragment1 extends Fragment {
 
         JsonObject mainObject = root.getAsJsonObject();
 
-        JsonArray marketsArray = mainObject.get("markets").getAsJsonArray();
+        if (mainObject.has("Error")) {
+            MaterialDialog dialog = new MaterialDialog.Builder(getContext())
+                    .title("Erro!")
+                    .customView(R.layout.dialog_fourzerofour, true)
+                    .positiveText("OK")
+                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull final MaterialDialog dialog2, @NonNull DialogAction which) {
+                            // Dismiss
+                        }
+                    })
+                    .build();
 
-        int indexToUseOne = 0;
+            TextView codeView = (TextView) dialog.getCustomView().findViewById(R.id.textView11);
 
-        if (types.get(typeBodge).equals("INT")) {
-            indexToUseOne = 1;
+            codeView.setText(mainObject.get("eID").getAsString());
+
+            pd.dismiss();
+            pass = 0;
+            passes = 0;
+            goForIt = 0;
+            typeBodge = 0;
+            codes.clear();
+            types.clear();
+            outcomes.clear();
+            dialog.show();
         }
 
-        else if (types.get(typeBodge).equals("DV")) {
-            indexToUseOne = 2;
-        }
+        else {
 
-        else if (types.get(typeBodge).equals("+/-")) {
-            indexToUseOne = 3;
-        }
+            JsonArray marketsArray = mainObject.get("markets").getAsJsonArray();
+
+            int indexToUseOne = 0;
+
+            if (types.get(typeBodge).equals("INT")) {
+                indexToUseOne = 1;
+            } else if (types.get(typeBodge).equals("DV")) {
+                indexToUseOne = 2;
+            } else if (types.get(typeBodge).equals("+/-")) {
+                indexToUseOne = 3;
+            }
 
 
-        JsonObject marketsObject = marketsArray.get(indexToUseOne).getAsJsonObject();
-        JsonArray outcomesArray = marketsObject.get("outcomes").getAsJsonArray();
+            JsonObject marketsObject = marketsArray.get(indexToUseOne).getAsJsonObject();
+            JsonArray outcomesArray = marketsObject.get("outcomes").getAsJsonArray();
 
-        String homeOpponent = mainObject.get("homeOpponentDescription").getAsString();
-        Log.d("DEBUG", "ALLOALLO: " + homeOpponent);
-        String awayOpponent = mainObject.get("awayOpponentDescription").getAsString();
+            String homeOpponent = mainObject.get("homeOpponentDescription").getAsString();
+            Log.d("DEBUG", "ALLOALLO: " + homeOpponent);
+            String awayOpponent = mainObject.get("awayOpponentDescription").getAsString();
 
-        String sport = mainObject.get("sportCode").getAsString();
+            String sport = mainObject.get("sportCode").getAsString();
 
-        int indexToUseTwo = 0;
+            int indexToUseTwo = 0;
 
-        if (outcomes.get(typeBodge).equals("x")) {
-            indexToUseTwo = 1;
-        }
+            if (outcomes.get(typeBodge).equals("x")) {
+                indexToUseTwo = 1;
+            } else if (outcomes.get(typeBodge).equals("2")) {
+                indexToUseTwo = 2;
+            } else if (outcomes.get(typeBodge).equals("-")) {
+                indexToUseTwo = 1;
+            }
 
-        else if (outcomes.get(typeBodge).equals("2")) {
-            indexToUseTwo = 2;
-        }
+            JsonObject outcomeObject = outcomesArray.get(indexToUseTwo).getAsJsonObject();
+            typeBodge = typeBodge + 1;
+            JsonObject outcomePriceObj = outcomeObject.get("price").getAsJsonObject();
+            String price = outcomePriceObj.get("decimalPrice").getAsString();
 
-        else if (outcomes.get(typeBodge).equals("-")) {
-            indexToUseTwo = 1;
-        }
+            markets.add(marketsObject.toString());
+            homeOpponents.add(homeOpponent);
+            awayOpponents.add(awayOpponent);
+            prices.add(price);
+            sports.add(sport);
 
-        JsonObject outcomeObject = outcomesArray.get(indexToUseTwo).getAsJsonObject();
-        typeBodge = typeBodge + 1;
-        JsonObject outcomePriceObj = outcomeObject.get("price").getAsJsonObject();
-        String price = outcomePriceObj.get("decimalPrice").getAsString();
+            goForIt = goForIt + 1;
+            pd.setMessage("A obter dados dos servidores do Placard...    (" + goForIt + "/" + (number + 1) + ")");
 
-        markets.add(marketsObject.toString());
-        homeOpponents.add(homeOpponent);
-        awayOpponents.add(awayOpponent);
-        prices.add(price);
-        sports.add(sport);
+            Log.d("DEBUG", "HERE: " + homeOpponents.toString());
+            if (goForIt == number + 1) {
+                Log.d("DEBUG", "Wait is over");
+                showConfirmActivity(modey);
+            }
 
-        goForIt = goForIt + 1;
-        pd.setMessage("A obter dados dos servidores do Placard...    (" + goForIt + "/" + (number + 1) + ")");
-
-        Log.d("DEBUG", "HERE: " + homeOpponents.toString());
-        if (goForIt == number + 1) {
-            Log.d("DEBUG", "Wait is over");
-            showConfirmActivity(modey);
         }
 
     }
@@ -632,9 +656,22 @@ public class Fragment1 extends Fragment {
         pass = 0;
         goForIt = 0;
         startActivity(intent);
+
+        markets.clear();
+        homeOpponents.clear();
+        awayOpponents.clear();
+        prices.clear();
+        codes.clear();
+        types.clear();
+        outcomes.clear();
+        sports.clear();
     }
 
     public void parseInput(String mode) {
+        pass = 0;
+        passes = 0;
+        goForIt = 0;
+        typeBodge = 0;
         number = MyAdapter.getPosition();
         modey = mode;
 

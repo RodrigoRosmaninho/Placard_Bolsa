@@ -141,7 +141,8 @@
                 android:layout_alignEnd="@+id/textView"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
-                android:layout_height="115dp">
+                android:layout_height="115dp"
+                android:layout_marginRight="10dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -249,7 +250,8 @@
                 card:card_layout_resourceID="@layout/native_card_layout"
                 android:layout_below="@+id/stats_mainCard"
                 android:layout_toEndOf="@+id/stats_winLostCard"
-                android:layout_height="115dp">
+                android:layout_height="115dp"
+                android:layout_marginLeft="-10dp">
 
                 <GridLayout
                     android:layout_width="match_parent"

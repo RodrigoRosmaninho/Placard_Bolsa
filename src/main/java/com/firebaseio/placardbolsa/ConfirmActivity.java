@@ -46,7 +46,7 @@ import static com.firebaseio.placardbolsa.Fragment1.MyPREFERENCES;
 import static java.security.AccessController.getContext;
 
 public class ConfirmActivity  extends AppCompatActivity {
-    static boolean firstHasPassed = false;
+    static boolean firstHasPassed;
     private static RecyclerView mRecyclerView;
     private static RecyclerView.Adapter mAdapter;
     private static RecyclerView.LayoutManager mLayoutManager;
@@ -62,6 +62,8 @@ public class ConfirmActivity  extends AppCompatActivity {
     static ArrayList<String> outcomes= new ArrayList<String>();
     static ArrayList<String> sports = new ArrayList<String>();
     static String[] index = new String[2];
+    static int[] suggBodge = new int[1];
+    static int[] penBodge = new int[1];
     static String spent = "";
     static String overallType = "";
     static String uName = "";
@@ -77,6 +79,7 @@ public class ConfirmActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firstHasPassed = false;
 
         SharedPreferences sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         uName = sp.getString("UserName", null);
@@ -174,6 +177,24 @@ public class ConfirmActivity  extends AppCompatActivity {
             }
         });
 
+        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference().child("Statistics");
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
+
+                suggBodge[0] = Integer.parseInt(stats_class.getNumber_ofSugg());
+                penBodge[0] = Integer.parseInt(stats_class.getNumber_ofPen());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        statsRef.addListenerForSingleValueEvent(postListener);
+
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
         formattedDate = df.format(c.getTime());
@@ -201,7 +222,6 @@ public class ConfirmActivity  extends AppCompatActivity {
         header.setTitle("Jogos");
         gamesCard.setCard(card);
         header.setTitle("Votos");
-        votesCard.setCard(card);
 
         if (mode.equals("1")) {
             votesCard.setCard(card);
@@ -272,7 +292,6 @@ public class ConfirmActivity  extends AppCompatActivity {
 
     public static class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         static View mView;
-        private List<gameCode> myDataset;
         private static Context cont;
         gameCode gameCode;
         static int pos;
@@ -293,7 +312,6 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public MyAdapter(Context context, List<gameCode> game_code) {
-            myDataset = game_code;
             cont = context;
 
         }
@@ -402,7 +420,7 @@ public class ConfirmActivity  extends AppCompatActivity {
             if (numberYes > 3) {
                 sendToDatabase(votes);
             } else {
-                Snackbar.make(v, "Apenas pode haver 1 voto contra a aposta!", Snackbar.LENGTH_LONG)
+                Snackbar.make(v, "Apenas podem haver 2 votos contra a aposta!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         }
@@ -415,7 +433,9 @@ public class ConfirmActivity  extends AppCompatActivity {
     public void sendToDatabase(boolean[] votes) {
         betResult resultObj;
         betVotes votesObj = null;
-        int intSugg = 0;
+
+        int intSugg = suggBodge[0];
+        int intPen = penBodge[0];
         Bet bet;
 
         if (mode.equals("1")) {
@@ -425,7 +445,7 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
         else {
             resultObj = new betResult("0", "3");
-            bet = new Bet(String.format(Locale.ENGLISH, "%03d", intSugg + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
+            bet = new Bet(String.format(Locale.ENGLISH, "%03d", (intSugg + 1)), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
         }
 
         if (mode.equals("1")) {
@@ -433,7 +453,6 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
 
         else {
-            Log.d("DEBUG", "Array2: " + index[1]);
             intSugg = Integer.parseInt(index[1]);
             mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).setValue(bet);
         }
@@ -458,13 +477,13 @@ public class ConfirmActivity  extends AppCompatActivity {
                 outcomeD = "Menos 2.5";
             }
 
-            gameType gType = new gameType(types.get(ind), "0");
-            desiredOutcome outcome = new desiredOutcome(outcomeD, outcomes.get(ind), prices.get(ind), gType);
-            Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), outcome, sports.get(ind), "3");
+            //TODO: Change hardcoded "0"!!!
+            Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), sports.get(ind), "3", outcomeD, outcomes.get(ind), prices.get(ind), "0", types.get(ind));
 
             if(mode.equals("1")) {
                 mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("games").child("game_0" + i).setValue(game);
                 mDatabase.child("Statistics").child("number_ofBets").setValue(String.valueOf(Integer.parseInt(index[0]) + 1));
+                mDatabase.child("Statistics").child("number_ofPen").setValue(String.valueOf(intPen + 1));
                 mDatabase.child("Statistics").child("pendingBetsExist").setValue("1");
             }
             else {
@@ -474,6 +493,8 @@ public class ConfirmActivity  extends AppCompatActivity {
             }
         }
         CharSequence text;
+
+        myDataset.clear();
 
         if (mode.equals("1")) {
             mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("votes").setValue(votesObj);
@@ -490,8 +511,6 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-
-        myDataset.clear();
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

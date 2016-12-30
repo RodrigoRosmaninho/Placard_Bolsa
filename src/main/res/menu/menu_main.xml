@@ -9,5 +9,10 @@
         app:showAsAction="never" />
     <item android:title="Abrir Placard"
         android:id="@+id/placard_link"
-        android:checkable="false" />
+        android:checkable="false"
+        android:icon="@drawable/placard" />
+    <item android:title="Notas"
+        android:id="@+id/open_notes" />
+    <item android:title="Reportar Bug"
+        android:id="@+id/bug_report" />
 </menu>

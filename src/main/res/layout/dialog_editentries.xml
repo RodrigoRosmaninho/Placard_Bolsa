@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             card:list_card_layout_resourceID="@layout/populate_this_detail1"
-            android:id="@+id/games_view1"
+            android:id="@+id/edit_view"
             android:paddingBottom="1dp"
             android:paddingTop="1dp">
 

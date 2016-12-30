@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:text="Liverpool FC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView7"
-            android:textSize="24sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp" />
 
         <RadioGroup
         android:layout_width="match_parent"
@@ -22,7 +13,7 @@
             android:layout_marginTop="9dp"
             android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView7"
+            android:layout_below="@+id/game_outcome"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="12dp">
 
@@ -30,26 +21,28 @@
             <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-                android:id="@+id/radioButton"
-            android:layout_below="@+id/textView7"
-            android:layout_alignEnd="@+id/textView7"
+                android:id="@+id/radioSuccess"
+            android:layout_below="@+id/game_outcome"
+            android:layout_alignEnd="@+id/game_outcome"
             android:text="Sucesso"
-                android:layout_marginStart="25dp" />
+                android:textSize="11sp" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/radioButton4"
+                android:id="@+id/radioDefeat"
                 android:text="Derrota"
-                android:layout_marginStart="35dp" />
+                android:layout_marginStart="5sp"
+                android:textSize="11sp" />
 
             <RadioButton
-            android:text="Cancelamento"
+            android:text="Cancelado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-                android:id="@+id/radioButton5"
-                android:layout_marginLeft="35dp" />
+                android:id="@+id/radioCancelled"
+                android:layout_marginLeft="5sp"
+                android:textSize="11sp" />
 
         </RadioGroup>
 
@@ -57,11 +50,29 @@
             android:text="117"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView7"
-            android:layout_alignEnd="@+id/myRadioGroup"
-            android:id="@+id/textView9"
+            android:id="@+id/game_code"
             android:textSize="24sp"
-            android:layout_marginRight="5dp" />
+            android:layout_alignBottom="@+id/game_outcome"
+            android:layout_alignStart="@+id/myRadioGroup" />
+
+        <TextView
+            android:text=" - "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/myRadioGroup"
+            android:layout_toEndOf="@+id/game_code"
+            android:id="@+id/textView7"
+            android:textSize="24sp" />
+
+        <TextView
+            android:text="Liverpool FC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/game_outcome"
+            android:textSize="24sp"
+            android:layout_marginTop="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView7" />
 
     </RelativeLayout>
 </LinearLayout>
