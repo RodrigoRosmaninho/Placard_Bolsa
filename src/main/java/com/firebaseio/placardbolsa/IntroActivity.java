@@ -15,6 +15,7 @@ import android.util.Log;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntro2Fragment;
 import com.github.paolorotolo.appintro.AppIntroFragment;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import static com.firebaseio.placardbolsa.Fragment1.MyPREFERENCES;
 import static com.firebaseio.placardbolsa.R.drawable.intro_1;
@@ -63,7 +64,7 @@ public class IntroActivity extends AppIntro2 {
                 device = "Samsung Galaxy S5";
                 image = pb_quico;
                 name = "Quico";
-                ID = 1;
+                ID = 7;
             }
             else if (deviceModel.equals("SM-G800F")){
                 device = "Samsung Galaxy S5 Mini";
@@ -77,14 +78,14 @@ public class IntroActivity extends AppIntro2 {
             device = "OnePlus 3T";
             image = pb_quico;
             name = "Quico";
-            ID = 1;
+            ID = 7;
         }
 
         else if (deviceMan.equals("unknown")) {
             device = "Android Emulator";
             image = pb_quico;
             name = "Quico";
-            ID = 1;
+            ID = 7;
         }
 
         SharedPreferences sp = this.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -94,6 +95,11 @@ public class IntroActivity extends AppIntro2 {
         editor.putString("userName", name);
         editor.putInt("UserID", 01);
         editor.apply();
+
+        // Obtain the FirebaseAnalytics instance.
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        mFirebaseAnalytics.setUserProperty("Name", name);
 
         addSlide(AppIntroFragment.newInstance("Bem-Vindo à App Placard Bolsa!", "(Também conhecida por DALFNA)\nDesenvolvida por Rodrigo Rosmaninho", web_hi_res_512, backgroundColor));
         addSlide(AppIntro2Fragment.newInstance("Lista de Apostas", "Com esta app tens acesso ao historial completo de apostas, sincronizado entre todos os dispositivos!", intro_1, backgroundColor));

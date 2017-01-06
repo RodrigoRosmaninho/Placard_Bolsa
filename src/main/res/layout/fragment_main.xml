@@ -44,7 +44,8 @@
                 android:progressTint="@android:color/darker_gray"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp" />
+                android:layout_marginBottom="1dp"
+                android:visibility="gone" />
 
             <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
                 android:layout_width="match_parent"
@@ -66,7 +67,8 @@
                 android:progressTint="@android:color/darker_gray"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp" />
+                android:layout_marginBottom="1dp"
+                android:visibility="gone" />
 
             <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
                 android:layout_width="match_parent"
@@ -119,9 +121,9 @@
         fab:menu_openDirection="up"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/fab_margin"
+        android:paddingBottom="15dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="15dp">
+        android:layout_centerHorizontal="true">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/add_bet_fab"

@@ -45,8 +45,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/games_list"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_weight="0.33" />
+        android:layout_weight="0.33"
+        android:layout_height="250dp" />
 
     <Button
         android:text="Adicionar Jogo"

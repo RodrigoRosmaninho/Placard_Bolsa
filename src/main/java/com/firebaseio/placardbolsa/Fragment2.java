@@ -63,7 +63,7 @@ public class Fragment2 extends Fragment {
         geralView.setCard(card);
         header.setTitle("Apostas");
         winLostView.setCard(card);
-        header.setTitle("Distribuição");
+        header.setTitle("Divisão");
         shareView.setCard(card);
         header.setTitle("Na Bolsa");
         chartView.setCard(card);

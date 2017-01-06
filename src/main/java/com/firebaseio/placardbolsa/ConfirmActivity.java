@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -73,6 +74,8 @@ public class ConfirmActivity  extends AppCompatActivity {
     String oddTotal;
 
     String formattedDate = "";
+
+    FirebaseAnalytics mFirebaseAnalytics;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -133,6 +136,8 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(ConfirmActivity.this);
 
         final TextView date = (TextView) findViewById(R.id.bet_textDate);
         final TextView type = (TextView) findViewById(R.id.bet_textType);
@@ -508,6 +513,12 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "bet_added");
+
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

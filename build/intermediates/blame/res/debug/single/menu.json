@@ -1,9 +1,5 @@
 [
     {
-        "merged": "E:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
-        "source": "E:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\menu\\menu_main.xml"
-    },
-    {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\menu\\menu_main.xml"
     }

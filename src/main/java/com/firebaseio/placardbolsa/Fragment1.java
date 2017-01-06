@@ -41,6 +41,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,6 +83,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
@@ -124,6 +127,8 @@ public class Fragment1 extends Fragment {
     ArrayList<String> types = new ArrayList<String>();
     ArrayList<String> sports = new ArrayList<String>();
     ArrayList<String> outcomes = new ArrayList<String>();
+
+    static ArrayList<View> viewArray = new ArrayList<View>();
 
     String spent = "";
     String overallType = "";
@@ -347,6 +352,7 @@ public class Fragment1 extends Fragment {
                                 })
                                 .build();
 
+                        viewArray.clear();
                         myDataset = gameCode.createEmpty();
                         number_of_games = 1;
 
@@ -464,6 +470,7 @@ public class Fragment1 extends Fragment {
                                 })
                                 .build();
 
+                        viewArray.clear();
                         myDataset = gameCode.createEmpty();
                         number_of_games = 1;
 
@@ -666,7 +673,9 @@ public class Fragment1 extends Fragment {
         modey = mode;
 
         while (passes != number + 1) {
-            View v = mRecyclerView.getLayoutManager().findViewByPosition(passes);
+            View v = viewArray.get(passes);
+            Log.d("DEBUG", "Child number: " + mRecyclerView.getAdapter().getItemCount());
+            Log.d("DEBUG", "passes: " + passes);
             EditText placardCode = (EditText) v.findViewById(R.id.placardCode);
             MaterialSpinner type = (MaterialSpinner) v.findViewById(R.id.betType_spinner);
             MaterialSpinner outcome = (MaterialSpinner) v.findViewById(R.id.outcome_spinner);
@@ -809,6 +818,16 @@ public class Fragment1 extends Fragment {
 
         public void callExpand(Context ctx, String index, String mode2) {
             CardViewNative card_view = (CardViewNative) mView.findViewById(R.id.list_cardId);
+
+            CardHeader header = new CardHeader(ctx);
+            Card card = new Card(ctx);
+
+            header.setButtonExpandVisible(false);
+            header.setButtonOverflowVisible(false);
+            card.addCardHeader(header);
+
+            card_view.setCard(card);
+
             final String finalIndex = index;
             final Context ctxx = ctx;
             final String mode22 = mode2;
@@ -934,6 +953,8 @@ public class Fragment1 extends Fragment {
         public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int position) {
             pos = position;
             gameCode = myDataset.get(position);
+
+            viewArray.add(viewHolder.itemView);
 
             EditText placardCode = (EditText) viewHolder.placardCode;
             MaterialSpinner outcome_spinner = (MaterialSpinner) viewHolder.outcomeSpinner;

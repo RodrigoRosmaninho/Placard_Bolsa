@@ -77,7 +77,6 @@ android:layout_height="wrap_content">
             android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:id="@+id/bet_text5"
-            android:background="@color/buttonTextColor"
             android:gravity="right"
             android:paddingRight="4dp"
             android:paddingTop="3dp" />
