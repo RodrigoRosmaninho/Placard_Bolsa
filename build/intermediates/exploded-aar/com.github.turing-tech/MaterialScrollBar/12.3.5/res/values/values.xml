@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaterialScrollBar"><attr format="reference" name="msb_recyclerView"/><attr format="boolean|reference" name="msb_lightOnTouch"/><attr format="color|reference" name="msb_handleColour"/><attr format="color|reference" name="msb_barColour"/><attr format="color|reference" name="msb_handleOffColour"/><attr format="color|reference" name="msb_textColour"/><attr format="dimension|reference" name="msb_barThickness"/><attr format="boolean|reference" name="msb_rightToLeft"/></declare-styleable>
+    <declare-styleable name="TouchScrollBar"><attr format="integer|reference" name="msb_hideDelayInMilliseconds"/><attr format="boolean|reference" name="msb_autoHide"/></declare-styleable>
+    <item name="reservedNamedId" type="id"/>
+</resources>

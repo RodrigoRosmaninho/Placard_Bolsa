@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_notes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.firebaseio.placardbolsa.NotesActivity"
+    tools:showIn="@layout/activity_notes"
+    android:paddingTop="5dp"
+    android:paddingBottom="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/edit"
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/card_background"
+        android:paddingBottom="1dp"
+        android:elevation="2dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_weight="1"
+            android:hint="Escreve Aqui!"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:gravity="top|center_vertical" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/metadata"
+        android:layout_below="@+id/edit"
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/card_background"
+        android:paddingBottom="15dp"
+        android:elevation="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/greetings"
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:elevation="0dp">
+
+            <TextView
+                android:id="@+id/Hello2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="Última Modificação por:"
+                android:paddingStart="10sp"
+                android:textColor="@color/card_section_title_color"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentStart="true"
+                android:paddingTop="5sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:id="@+id/last_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="Erro"
+                android:paddingStart="10sp"
+                android:textColor="@color/card_section_title_color"
+                android:layout_alignParentTop="false"
+                android:layout_toStartOf="@+id/user_photo2"
+                android:paddingTop="5sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_width="81dp"
+                android:layout_height="58dp"
+                app:srcCompat="@drawable/pb_chico"
+                android:id="@+id/user_photo2"
+                android:layout_marginEnd="20dp"
+                android:layout_centerInParent="true"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/view6"
+            android:layout_below="@+id/greetings"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:text="Data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view6"
+            android:id="@+id/textView14"
+            android:paddingStart="10sp"
+            android:textColor="@color/bodyTextColor"
+            android:textSize="18sp"
+            android:paddingTop="12sp" />
+
+        <TextView
+            android:text="22-12-2016, às 12:50"
+            android:layout_alignBottom="@+id/textView14"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/data"
+            android:paddingEnd="15sp"
+            android:textSize="18sp"
+            android:textColor="@color/com_facebook_messenger_blue" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

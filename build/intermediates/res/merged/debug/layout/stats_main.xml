@@ -4,12 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:animateLayoutChanges="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/com_facebook_button_border_color_focused">
 
     <ScrollView
         android:paddingBottom="1dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:paddingTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,212 +19,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <it.gmariotti.cardslib.library.view.CardViewNative
-                android:id="@+id/stats_mainCard"
-                card:cardPreventCornerOverlap="true"
-                card:cardUseCompatPadding="true"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                style="@style/native_recyclerview_card.base"
-                card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_height="130dp">
+                android:id="@+id/metadata"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp">
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="5dp">
+                <TextView
+                    android:id="@+id/bet_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="Filtrar:"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="10sp" />
 
-                    <GridLayout
-                        android:layout_width="138dp"
-                        android:layout_row="1"
-                        android:layout_column="0"
-                        android:layout_height="26dp"
-                        android:layout_marginLeft="25dp">
+                <Button
+                    android:text="Por Tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button3"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30sp" />
 
-                        <TextView
-                            android:id="@+id/main_text2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="1"
-                            android:paddingLeft="3dp"
-                            android:layout_column="1"
-                            android:textSize="23sp"
-                            android:text="Na bolsa: " />
+                <Button
+                    android:text="Por Data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button2"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
-                    </GridLayout>
+            </RelativeLayout>
 
-                    <GridLayout
-                        android:layout_width="138dp"
-                        android:layout_row="2"
-                        android:layout_column="0"
-                        android:layout_height="26dp"
-                        android:layout_marginLeft="25dp">
-
-                        <TextView
-                            android:id="@+id/main_text6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="1"
-                            android:paddingLeft="3dp"
-                            android:layout_column="1"
-                            android:textSize="21sp"
-                            android:text="Investimento: "
-                            android:paddingTop="2dp" />
-
-                    </GridLayout>
-
-                    <TextView
-                        android:id="@+id/main_text1"
-                        android:layout_width="185dp"
-                        android:textStyle="bold"
-                        android:layout_height="wrap_content"
-                        android:textSize="23sp"
-                        android:paddingTop="4dp"
-                        android:paddingLeft="5dp"
-                        android:layout_row="0"
-                        android:layout_column="0"
-                        android:text="Geral:"
-                        android:layout_marginBottom="10dp"
-                        android:visibility="invisible" />
-
-                    <TextView
-                        android:id="@+id/main_text3"
-                        android:layout_height="wrap_content"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:textSize="24sp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="1dp"
-                        android:gravity="right"
-                        android:layout_width="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/main_text7"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
-                        android:layout_column="1"
-                        android:textSize="24sp"
-                        android:paddingRight="10dp"
-                        android:layout_width="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:gravity="right"
-                        android:textColor="@color/com_facebook_button_background_color" />
-
-                    <TextView
-                        android:textSize="23sp"
-                        android:layout_row="0"
-                        android:layout_column="3"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/main_textView"
-                        android:background="@color/buttonTextColor" />
-
-                </GridLayout>
-
-
-            </it.gmariotti.cardslib.library.view.CardViewNative>
-
-
-            <it.gmariotti.cardslib.library.view.CardViewNative
-                android:id="@+id/stats_winLostCard"
-                card:cardPreventCornerOverlap="true"
-                card:cardUseCompatPadding="true"
-                android:layout_width="match_parent"
-                style="@style/native_recyclerview_card.base"
-                card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_below="@+id/stats_mainCard"
-                android:layout_alignParentStart="true"
-                android:layout_alignEnd="@+id/textView"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_height="115dp">
-
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="5dp">
-
-                    <GridLayout
-                        android:layout_width="138dp"
-                        android:layout_row="1"
-                        android:layout_column="0"
-                        android:paddingTop="3dp">
-
-                        <TextView
-                            android:id="@+id/winLost_text2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="1"
-                            android:paddingLeft="3dp"
-                            android:layout_column="1"
-                            android:textSize="23sp"
-                            android:text="Ganhas:" />
-
-                    </GridLayout>
-
-                    <GridLayout
-                        android:layout_width="138dp"
-                        android:layout_row="2"
-                        android:layout_column="0"
-                        android:paddingTop="2dp">
-
-                        <TextView
-                            android:id="@+id/winLost_text4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_row="1"
-                            android:paddingLeft="3dp"
-                            android:layout_column="1"
-                            android:textSize="23sp"
-                            android:text="Perdidas:" />
-
-                    </GridLayout>
-
-                    <TextView
-                        android:id="@+id/winLost_text5"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
-                        android:layout_column="1"
-                        android:textSize="24sp"
-                        android:paddingRight="22dp"
-                        android:layout_width="90dp"
-                        android:paddingBottom="1dp"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginRight="5dp" />
-
-                    <TextView
-                        android:textSize="23sp"
-                        android:layout_row="0"
-                        android:layout_column="1"
-                        android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/winLost_textView"
-                        android:background="@color/buttonTextColor"
-                        android:layout_below="@+id/stats_winLostCard"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="32dp" />
-
-                    <TextView
-                        android:id="@+id/winLost_text3"
-                        android:layout_height="wrap_content"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:textSize="24sp"
-                        android:paddingRight="22dp"
-                        android:layout_width="90dp"
-                        android:paddingBottom="1dp"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginRight="5dp" />
-
-                </GridLayout>
-
-
-            </it.gmariotti.cardslib.library.view.CardViewNative>
 
             <TextView
                 android:textSize="23sp"
@@ -238,246 +74,47 @@
                 android:layout_marginBottom="97dp"
                 android:layout_width="80dp" />
 
-            <it.gmariotti.cardslib.library.view.CardViewNative
-                android:id="@+id/stats_shareCard"
-                card:cardPreventCornerOverlap="true"
-                card:cardUseCompatPadding="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                style="@style/native_recyclerview_card.base"
-                card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_below="@+id/stats_mainCard"
-                android:layout_toEndOf="@+id/stats_winLostCard"
-                android:layout_height="115dp">
-
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:id="@+id/share_text42"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_row="1"
-                        android:paddingLeft="3dp"
-                        android:layout_column="0"
-                        android:textSize="24sp"
-                        android:text="5€"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center" />
-
-                    <TextView
-                        android:id="@+id/share_text52"
-                        android:layout_height="wrap_content"
-                        android:layout_row="2"
-                        android:layout_column="0"
-                        android:textSize="13sp"
-                        android:paddingRight="10dp"
-                        android:layout_width="90dp"
-                        android:paddingBottom="1dp"
-                        android:gravity="right"
-                        android:text="por pessoa"
-                        android:layout_marginTop="8dp"
-                        android:layout_gravity="center_horizontal" />
-
-                </GridLayout>
-
-
-            </it.gmariotti.cardslib.library.view.CardViewNative>
-
-            <it.gmariotti.cardslib.library.view.CardViewNative
-                android:id="@+id/stats_chartCard"
-                card:cardPreventCornerOverlap="true"
-                card:cardUseCompatPadding="true"
-                android:layout_width="match_parent"
-                style="@style/native_recyclerview_card.base"
-                card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_below="@+id/stats_winLostCard"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_alignParentStart="true"
-                android:layout_height="260dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                android:id="@+id/chart1_view"
+                android:layout_below="@+id/metadata"
+                android:layout_height="260dp"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp">
 
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/chart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@+id/chart_text2"
-                        android:layout_marginTop="40dp" />
-                </RelativeLayout>
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true" />
 
-            </it.gmariotti.cardslib.library.view.CardViewNative>
 
-            <it.gmariotti.cardslib.library.view.CardViewNative
-                android:id="@+id/stats_votesCard"
-                card:cardPreventCornerOverlap="true"
-                card:cardUseCompatPadding="true"
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                style="@style/native_recyclerview_card.base"
-                card:card_layout_resourceID="@layout/native_card_layout"
-                android:layout_below="@+id/stats_chartCard"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_alignParentStart="true"
-                android:layout_height="267dp">
+                android:id="@+id/chart2_view"
+                android:layout_below="@+id/chart1_view"
+                android:layout_height="240dp"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp">
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="5dp">
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true" />
 
-                    <ImageView
-                        android:layout_row="4"
-                        android:layout_column="0"
-                        android:layout_width="81dp"
-                        android:layout_height="58dp"
-                        app:srcCompat="@drawable/pb_melo"
-                        android:id="@+id/imageView5"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-
-                    <ImageView
-                        android:layout_row="4"
-                        android:layout_column="2"
-                        android:layout_width="81dp"
-                        android:layout_height="58dp"
-                        app:srcCompat="@drawable/pb_lameiro"
-                        android:id="@+id/imageView7"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:id="@+id/votes_nunoText"
-                        android:layout_column="0"
-                        android:layout_row="3"
-                        android:text="5€"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:textSize="18sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="70dp"
-                        android:gravity="end"
-                        android:paddingEnd="10dp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:id="@+id/votes_meloText"
-                        android:layout_column="0"
-                        android:layout_row="5"
-                        android:text="5€"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:textSize="18sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="70dp"
-                        android:gravity="end"
-                        android:paddingEnd="10dp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:id="@+id/votes_chicoText"
-                        android:layout_column="1"
-                        android:layout_row="3"
-                        android:text="5€"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:textSize="18sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="70dp"
-                        android:gravity="end"
-                        android:paddingEnd="18dp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:id="@+id/votes_salgadoText"
-                        android:layout_column="1"
-                        android:layout_row="5"
-                        android:text="5€"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:textSize="18sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="70dp"
-                        android:gravity="end"
-                        android:paddingEnd="18dp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:id="@+id/votes_lóisText"
-                        android:layout_column="2"
-                        android:layout_row="3"
-                        android:text="5€"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:textSize="18sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="70dp"
-                        android:gravity="start"
-                        android:paddingEnd="10dp" />
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:id="@+id/votes_lameiroText"
-                        android:layout_column="2"
-                        android:layout_row="5"
-                        android:text="5€"
-                        android:textColor="@color/com_facebook_button_background_color"
-                        android:textSize="18sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="70dp"
-                        android:paddingEnd="10dp"
-                        android:gravity="start" />
-
-                    <ImageView
-                        android:layout_row="2"
-                        android:layout_column="2"
-                        android:layout_width="81dp"
-                        android:layout_height="58dp"
-                        app:srcCompat="@drawable/pb_lois"
-                        android:id="@+id/imageView4"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="30dp" />
-
-                    <ImageView
-                        android:layout_row="2"
-                        android:layout_column="0"
-                        app:srcCompat="@drawable/pb_nuno"
-                        android:id="@+id/imageView2"
-                        android:layout_width="81dp"
-                        android:layout_height="58dp"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="30dp" />
-
-                    <ImageView
-                        android:layout_row="2"
-                        android:layout_column="1"
-                        android:layout_width="81dp"
-                        android:layout_height="58dp"
-                        app:srcCompat="@drawable/pb_chico"
-                        android:id="@+id/imageView3"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="30dp" />
-
-                    <ImageView
-                        android:layout_row="4"
-                        android:layout_column="1"
-                        android:layout_width="81dp"
-                        android:layout_height="58dp"
-                        app:srcCompat="@drawable/pb_salgado"
-                        android:id="@+id/imageView6"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="15dp" />
-
-                </GridLayout>
-
-
-            </it.gmariotti.cardslib.library.view.CardViewNative>
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>

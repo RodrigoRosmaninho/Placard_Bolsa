@@ -6,16 +6,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -27,10 +26,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import it.gmariotti.cardslib.library.internal.Card;
@@ -44,140 +39,59 @@ public class BetActivity  extends AppCompatActivity {
     FirebaseRecyclerAdapter mAdapter;
 
     String value;
-    String mode2;
+    String mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bet_main);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.bet_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editEntries();
-            }
-        });
-
         Bundle b = getIntent().getExtras();
+        mode = "";
         value = "";
-        mode2 = "";
 
         if(b != null) {
             //TODO: Make snackbar "Critical Error"
 
             value = b.getString("index");
-            mode2 = b.getString("mode");
+            mode = b.getString("mode");
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-
-        if (mode2.equals("3")) {
-            toolbar.setTitle("Sugestão " + value.substring(1));
-        }
-
-        else {
-            toolbar.setTitle("Aposta " + value.substring(1));
-        }
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        final TextView date = (TextView) findViewById(R.id.bet_textDate);
-        final TextView type = (TextView) findViewById(R.id.bet_textType);
+        String index = value;
 
-        final TextView result = (TextView) findViewById(R.id.bet_textResult);
+        if (index.charAt(0)=='0') {
+            index = index.substring(1);
+        }
+
+        final TextView indexTV = (TextView) findViewById(R.id.bet_number);
+        indexTV.setText(index);
+
+        final TextView date = (TextView) findViewById(R.id.textView_Date);
+        final TextView type = (TextView) findViewById(R.id.textView_type);
+
+        final TextView result = (TextView) findViewById(R.id.textView_result);
 
         final TextView odds = (TextView) findViewById(R.id.oddsTextView);
         final TextView spent = (TextView) findViewById(R.id.spentTextView);
         final TextView winnings = (TextView) findViewById(R.id.winningsTextView);
         final TextView balance = (TextView) findViewById(R.id.balanceTextView);
 
-        final ImageView nuno = (ImageView) findViewById(R.id.imageView2);
-        final ImageView chico = (ImageView) findViewById(R.id.imageView3);
-        final ImageView lois = (ImageView) findViewById(R.id.imageView4);
-        final ImageView melo = (ImageView) findViewById(R.id.imageView5);
-        final ImageView salgado = (ImageView) findViewById(R.id.imageView6);
-        final ImageView lameiro = (ImageView) findViewById(R.id.imageView7);
-
-        CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view2);
+        RecyclerView games_view = (RecyclerView) findViewById(R.id.games_view2);
         games_view.setNestedScrollingEnabled(false);
 
-        Card card = new Card(this);
-        CardHeader header = new CardHeader(this);
-        CardViewNative resultCard = (CardViewNative) findViewById(R.id.bet_resultCard);
-        CardViewNative mainCard = (CardViewNative) findViewById(R.id.bet_mainCard);
-        CardViewNative gamesCard = (CardViewNative) findViewById(R.id.bet_gamesCard);
-        CardViewNative votesCard = (CardViewNative) findViewById(R.id.stats_votesCard);
-        card.addCardHeader(header);
-        header.setButtonExpandVisible(false);
-        header.setButtonOverflowVisible(false);
-        mainCard.setCard(card);
-        header.setTitle("Resultado");
-        resultCard.setCard(card);
-        header.setTitle("Jogos");
-        gamesCard.setCard(card);
-        header.setTitle("Votos");
-        votesCard.setCard(card);
+        String childVar = "Transactions";
 
-        betRef = FirebaseDatabase.getInstance().getReference();
-
-        if(mode2.equals("1")) {
-            betRef = betRef.child("Transactions").child(value);
+        if(!(mode.equals("1"))) {
+            childVar = "Pending";
         }
 
-        else if(mode2.equals("2")) {
-            betRef = betRef.child("Pending").child(value);
-        }
+        betRef = FirebaseDatabase.getInstance().getReference().child(childVar).child(value);
 
-        else if(mode2.equals("3")) {
-            betRef = betRef.child("Suggestions").child(value);
-        }
-
-        DatabaseReference votesRef = betRef.child("votes");
-
-        ValueEventListener postListener2 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                betVotes bet_class = dataSnapshot.getValue(betVotes.class);
-
-                String nuno_vote = bet_class.getU01();
-                String chico_vote = bet_class.getU02();
-                String lois_vote = bet_class.getU03();
-                String melo_vote = bet_class.getU04();
-                String salgado_vote = bet_class.getU05();
-                String lameiro_vote = bet_class.getU06();
-
-                if(nuno_vote.equals("0")){
-                    nuno.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
-                }
-                if(chico_vote.equals("0")){
-                    chico.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
-                }
-                if(lois_vote.equals("0")){
-                    lois.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
-                }
-                if(melo_vote.equals("0")){
-                    melo.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
-                }
-                if(salgado_vote.equals("0")){
-                    salgado.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
-                }
-                if(lameiro_vote.equals("0")){
-                    lameiro.setColorFilter(getResources().getColor(R.color.md_divider_white) ,android.graphics.PorterDuff.Mode.MULTIPLY);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        votesRef.addListenerForSingleValueEvent(postListener2);
-
-        final String finalMode = mode2;
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -185,7 +99,7 @@ public class BetActivity  extends AppCompatActivity {
 
                 String general_bet_type = "Aposta " + bet_class.getGeneral_bet_type();
 
-                date.setText(bet_class.getDate().split("_")[1]);
+                date.setText(bet_class.getDate());
                 type.setText(general_bet_type);
 
                 String bet_result = bet_class.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1];
@@ -209,15 +123,6 @@ public class BetActivity  extends AppCompatActivity {
 
                     String preBalance = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(bet_class.getBet_price())) + "€";
                     balance.setText("-" + preBalance);
-                }
-                else if (finalMode.equals("3")) {
-                    balance.setTextColor(Color.parseColor("#415dae"));
-                    result.setTextColor(Color.parseColor("#415dae"));
-                    int emoji = 0x1F4AD;
-                    String string = "Sugestão " + getEmojiByUnicode(emoji);
-                    result.setText(string);
-
-                    balance.setText("Pendente");
                 }
                 else if (bet_result.equals("2")) {
                     balance.setTextColor(Color.parseColor("#FFFF8800"));
@@ -329,6 +234,7 @@ public class BetActivity  extends AppCompatActivity {
             passes = passes + 1;
         }
 
+        String mode2 = "TODO";
         if (emptyGroups == 0 && mode2.equals("2")) {
             final int failed2 = failed;
             final DatabaseReference betRef2 = FirebaseDatabase.getInstance().getReference().child("Transactions");
@@ -384,7 +290,7 @@ public class BetActivity  extends AppCompatActivity {
                     String bet_number = stats_class.getNumber_ofBets();
                     betRef3.child("general_stats").child("bet_number").setValue(bet_number);
 
-                    String pen_number = stats_class.getNumber_ofPen();
+                    /**String pen_number = stats_class.getNumber_ofPen();
 
                     if (pen_number.equals("1")) {
                         betRef3.child("number_ofPen").setValue("0");
@@ -396,7 +302,7 @@ public class BetActivity  extends AppCompatActivity {
 
                     onPouch[0] = stats_class.getOn_pouch();
                     inv[0] = stats_class.getValue_spent();
-                    earn[0] = stats_class.getAll_earnings();
+                    earn[0] = stats_class.getAll_earnings();**/
 
                 }
 
@@ -467,7 +373,7 @@ public class BetActivity  extends AppCompatActivity {
             };
             betRef2.child(value).addListenerForSingleValueEvent(postListener10);
 
-            final DatabaseReference betRef11 = betRef3.child("vote_stats");
+            //final DatabaseReference betRef11 = betRef3.child("vote_stats");
 
             final String[] nuno = new String[1];
             final String[] chico = new String[1];
@@ -479,14 +385,14 @@ public class BetActivity  extends AppCompatActivity {
             ValueEventListener postListener11 = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    voteStats vS = dataSnapshot.getValue(voteStats.class);
+                    /**voteStats vS = dataSnapshot.getValue(voteStats.class);
 
                     nuno[0] = vS.getU01();
                     chico[0] = vS.getU02();
                     lois[0] = vS.getU03();
                     melo[0] = vS.getU04();
                     salgado[0] = vS.getU05();
-                    lameiro[0] = vS.getU06();
+                    lameiro[0] = vS.getU06();**/
                 }
 
                 @Override
@@ -494,7 +400,7 @@ public class BetActivity  extends AppCompatActivity {
 
                 }
             };
-            betRef11.addListenerForSingleValueEvent(postListener11);
+            //betRef11.addListenerForSingleValueEvent(postListener11);
 
 
 
@@ -553,8 +459,8 @@ public class BetActivity  extends AppCompatActivity {
 
                     }
 
-                    voteStats vS1 = new voteStats(nuno2, chico2, lois2, melo2, salgado2, lameiro2);
-                    betRef11.setValue(vS1);
+                    //voteStats vS1 = new voteStats(nuno2, chico2, lois2, melo2, salgado2, lameiro2);
+                    //betRef11.setValue(vS1);
                     betRef.removeValue();
                 }
 

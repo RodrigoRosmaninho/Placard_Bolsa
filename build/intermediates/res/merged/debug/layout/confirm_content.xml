@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/com_facebook_button_border_color_focused">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:paddingBottom="1dp"
+            android:paddingTop="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/metadata"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp">
+
+                <TextView
+                    android:id="@+id/bet_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="52"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="5sp" />
+
+                <TextView
+                    android:text="Aposta Combinada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_type"
+                    android:paddingStart="10sp"
+                    android:textSize="14sp"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:paddingTop="6sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/bet_number" />
+
+                <TextView
+                    android:text="09 Abril 2017"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_Date"
+                    android:paddingStart="10sp"
+                    android:textSize="13sp"
+                    android:textColor="@color/bodyTextColor"
+                    android:layout_alignBaseline="@+id/bet_number"
+                    android:layout_alignBottom="@+id/bet_number"
+                    android:layout_toEndOf="@+id/bet_number"
+                    android:layout_alignParentBottom="false" />
+
+                <TextView
+                    android:text="Positivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_result"
+                    android:textSize="18sp"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:paddingTop="6sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:paddingRight="25sp" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Resultado"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/bodyTextColor"
+                    android:paddingTop="10sp"
+                    android:layout_below="@+id/textView_Date"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:textSize="23sp"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="97dp"
+                android:layout_width="50dp" />
+
+
+            <RelativeLayout
+                android:id="@+id/games_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/metadata"
+                android:elevation="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background">
+
+                <TextView
+                    android:text="Jogos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView12"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="20sp"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/bodyTextColor"
+                    android:paddingTop="6sp" />
+
+                <View
+                    android:layout_height="1dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/view5"
+                    android:background="@android:color/darker_gray"
+                    android:layout_below="@+id/textView12"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/games_view2"
+                    android:layout_below="@+id/view5"
+                    android:layout_alignParentStart="true">
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/money"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/games_recyclerView"
+                android:elevation="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:paddingTop="10sp">
+
+
+                <TextView
+                    android:text="+ 720.00€"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/math_textBalance"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/balanceTextView"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="5dp"
+                    android:paddingEnd="10sp" />
+
+                <TextView
+                    android:id="@+id/bet_textWinnings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Ganhos Possíveis"
+                    android:background="@color/buttonTextColor"
+                    android:paddingTop="2dp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6sp" />
+
+                <TextView
+                    android:id="@+id/math_textBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Resultado Final"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/buttonTextColor"
+                    android:paddingTop="25dp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_below="@+id/winningsTextView"
+                    android:layout_alignStart="@+id/bet_textOdds"
+                    android:paddingStart="10sp" />
+
+                <TextView
+                    android:id="@+id/bet_textOdds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Total de Cotas"
+                    android:background="@color/buttonTextColor"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignBaseline="@+id/bet_textWinnings"
+                    android:layout_alignBottom="@+id/bet_textWinnings"
+                    android:paddingStart="10sp"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="144.00€"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/oddsTextView"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="21dp"
+                    android:layout_below="@+id/bet_textOdds"
+                    android:layout_alignEnd="@+id/bet_textOdds" />
+
+                <TextView
+                    android:id="@+id/bet_textSpent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Montante Base"
+                    android:background="@color/buttonTextColor"
+                    android:paddingTop="2dp"
+                    android:textColor="@color/card_section_title_color"
+                    android:paddingEnd="10sp"
+                    android:layout_alignBaseline="@+id/bet_textWinnings"
+                    android:layout_alignBottom="@+id/bet_textWinnings"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:text="720.00€"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/winningsTextView"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/bet_textWinnings"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:text="5.00€"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spentTextView"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/bet_textWinnings"
+                    android:layout_alignStart="@+id/balanceTextView"
+                    android:layout_marginStart="21dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

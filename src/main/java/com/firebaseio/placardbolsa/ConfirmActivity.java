@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,11 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,7 +40,6 @@ import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
 import it.gmariotti.cardslib.library.view.CardViewNative;
 
 import static com.firebaseio.placardbolsa.Fragment1.MyPREFERENCES;
-import static java.security.AccessController.getContext;
 
 public class ConfirmActivity  extends AppCompatActivity {
     static boolean firstHasPassed;
@@ -53,7 +48,6 @@ public class ConfirmActivity  extends AppCompatActivity {
     private static RecyclerView.LayoutManager mLayoutManager;
     public static List<gameCode> myDataset;
 
-    static String mode = "";
     static ArrayList<String> markets= new ArrayList<String>();
     static ArrayList<String> homeOpponents= new ArrayList<String>();
     static ArrayList<String> awayOpponents= new ArrayList<String>();
@@ -100,8 +94,6 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         if (b != null) {
             //TODO: Make snackbar "Critical Error" on else
-
-            mode = b.getString("mode");
             markets = b.getStringArrayList("markets");
             homeOpponents = b.getStringArrayList("homeOpponents");
             awayOpponents = b.getStringArrayList("awayOpponents");
@@ -115,22 +107,11 @@ public class ConfirmActivity  extends AppCompatActivity {
             sports = b.getStringArrayList("sports");
         }
 
-        if (mode.equals("1")) {
-            setContentView(R.layout.confirm_main);
-        }
-        else {
-            setContentView(R.layout.confirm_sugg);
-        }
+        setContentView(R.layout.confirm_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        if (mode.equals("1")) {
-            toolbar.setTitle("Confirmar Adição");
-        }
-
-        else {
-            toolbar.setTitle("Confirmar Sugestão");
-        }
+        toolbar.setTitle("Confirmar Adição");
 
         setSupportActionBar(toolbar);
 
@@ -139,98 +120,35 @@ public class ConfirmActivity  extends AppCompatActivity {
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(ConfirmActivity.this);
 
-        final TextView date = (TextView) findViewById(R.id.bet_textDate);
-        final TextView type = (TextView) findViewById(R.id.bet_textType);
+        final TextView indexTV = (TextView) findViewById(R.id.bet_number);
+        indexTV.setText(String.valueOf(Integer.parseInt(index[0]) + 1));
 
-        final TextView result = (TextView) findViewById(R.id.bet_textResult);
+        final TextView date = (TextView) findViewById(R.id.textView_Date);
+        final TextView type = (TextView) findViewById(R.id.textView_type);
+
+        final TextView result = (TextView) findViewById(R.id.textView_result);
 
         final TextView odds = (TextView) findViewById(R.id.oddsTextView);
         final TextView spentTV = (TextView) findViewById(R.id.spentTextView);
         final TextView winnings = (TextView) findViewById(R.id.winningsTextView);
         final TextView balance = (TextView) findViewById(R.id.balanceTextView);
 
-        final CheckBox nunoV;
-        final CheckBox chicoV;
-        final CheckBox loisV;
-        final CheckBox meloV;
-        final CheckBox salgadoV;
-        final CheckBox lameiroV;
 
-        if (mode.equals("1")) {
-            nunoV = (CheckBox) findViewById(R.id.checkBox1);
-            chicoV = (CheckBox) findViewById(R.id.checkBox2);
-            loisV = (CheckBox) findViewById(R.id.checkBox3);
-            meloV = (CheckBox) findViewById(R.id.checkBox4);
-            salgadoV = (CheckBox) findViewById(R.id.checkBox5);
-            lameiroV = (CheckBox) findViewById(R.id.checkBox6);
-        }
-
-        else {
-            nunoV = null;
-            chicoV = null;
-            loisV = null;
-            meloV = null;
-            salgadoV = null;
-            lameiroV = null;
-        }
-
-        FloatingActionButton confirmFAB = (FloatingActionButton) findViewById(R.id.confirm_fab);
+        FloatingActionButton confirmFAB = (FloatingActionButton) findViewById(R.id.fab);
         confirmFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validationChecks(nunoV, chicoV, loisV, meloV, salgadoV, lameiroV, view);
+                sendToDatabase();
             }
         });
-
-        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference().child("Statistics");
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
-
-                suggBodge[0] = Integer.parseInt(stats_class.getNumber_ofSugg());
-                penBodge[0] = Integer.parseInt(stats_class.getNumber_ofPen());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        statsRef.addListenerForSingleValueEvent(postListener);
 
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
         formattedDate = df.format(c.getTime());
         String datef = formattedDate.split("_")[1];
 
-        CardRecyclerView games_view = (CardRecyclerView) findViewById(R.id.games_view2);
+        RecyclerView games_view = (RecyclerView) findViewById(R.id.games_view2);
 
-        Card card = new Card(this);
-        CardHeader header = new CardHeader(this);
-        CardViewNative resultCard = (CardViewNative) findViewById(R.id.bet_resultCard);
-        CardViewNative mainCard = (CardViewNative) findViewById(R.id.bet_mainCard);
-        CardViewNative gamesCard = (CardViewNative) findViewById(R.id.bet_gamesCard);
-        CardViewNative votesCard = (CardViewNative) findViewById(R.id.stats_votesCard);
-
-        if(mode.equals("1")) {
-            votesCard = (CardViewNative) findViewById(R.id.stats_votesCard);
-        }
-
-        card.addCardHeader(header);
-        header.setButtonExpandVisible(false);
-        header.setButtonOverflowVisible(false);
-        mainCard.setCard(card);
-        header.setTitle("Resultado");
-        resultCard.setCard(card);
-        header.setTitle("Jogos");
-        gamesCard.setCard(card);
-        header.setTitle("Votos");
-
-        if (mode.equals("1")) {
-            votesCard.setCard(card);
-        }
 
         balance.setTextColor(Color.parseColor("#FFFF8800"));
         result.setTextColor(Color.parseColor("#FFFF8800"));
@@ -404,63 +322,19 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
     }
 
-    public void validationChecks(CheckBox nunoV, CheckBox chicoV, CheckBox loisV, CheckBox meloV, CheckBox salgadoV, CheckBox lameiroV , View v) {
-        if (mode.equals("1")) {
-            int numberYes = 0;
-
-            boolean[] votes = new boolean[6];
-            votes[0] = nunoV.isChecked();
-            votes[1] = chicoV.isChecked();
-            votes[2] = loisV.isChecked();
-            votes[3] = meloV.isChecked();
-            votes[4] = salgadoV.isChecked();
-            votes[5] = lameiroV.isChecked();
-
-            for (int i = 0; i < 6; i++) {
-                if (votes[i]) {
-                    numberYes = numberYes + 1;
-                }
-            }
-
-            if (numberYes > 3) {
-                sendToDatabase(votes);
-            } else {
-                Snackbar.make(v, "Apenas podem haver 2 votos contra a aposta!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }
-
-        else {
-            sendToDatabase(new boolean[1]);
-        }
-    }
-
-    public void sendToDatabase(boolean[] votes) {
+    public void sendToDatabase() {
         betResult resultObj;
         betVotes votesObj = null;
 
-        int intSugg = suggBodge[0];
-        int intPen = penBodge[0];
         Bet bet;
 
-        if (mode.equals("1")) {
-            resultObj = new betResult("0", "2");
-            votesObj = new betVotes(translateBool(votes[0]), translateBool(votes[1]), translateBool(votes[2]), translateBool(votes[3]), translateBool(votes[4]), translateBool(votes[5]));
-            bet = new Bet("0" + String.valueOf(Integer.parseInt(index[0]) + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
-        }
-        else {
-            resultObj = new betResult("0", "3");
-            bet = new Bet(String.format(Locale.ENGLISH, "%03d", (intSugg + 1)), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
-        }
 
-        if (mode.equals("1")) {
-            mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).setValue(bet);
-        }
+        resultObj = new betResult("0", "2");
+        bet = new Bet("0" + String.valueOf(Integer.parseInt(index[0]) + 1), formattedDate, spent, String.valueOf(homeOpponents.size()), projected_win, overallType, oddTotal, resultObj);
 
-        else {
-            intSugg = Integer.parseInt(index[1]);
-            mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).setValue(bet);
-        }
+
+        mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).setValue(bet);
+
 
         for(int i = 1; i < homeOpponents.size() + 1; i++) {
             int ind = i - 1;
@@ -485,31 +359,16 @@ public class ConfirmActivity  extends AppCompatActivity {
             //TODO: Change hardcoded "0"!!!
             Game game = new Game(codes.get(ind), homeOpponents.get(ind), awayOpponents.get(ind), sports.get(ind), "3", outcomeD, outcomes.get(ind), prices.get(ind), "0", types.get(ind));
 
-            if(mode.equals("1")) {
                 mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("games").child("game_0" + i).setValue(game);
                 mDatabase.child("Statistics").child("number_ofBets").setValue(String.valueOf(Integer.parseInt(index[0]) + 1));
-                mDatabase.child("Statistics").child("number_ofPen").setValue(String.valueOf(intPen + 1));
                 mDatabase.child("Statistics").child("pendingBetsExist").setValue("1");
-            }
-            else {
-                mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).child("games").child("game_0" + i).setValue(game);
-                mDatabase.child("Statistics").child("number_ofSugg").setValue(String.valueOf(intSugg + 1));
-                mDatabase.child("Statistics").child("suggestionsExist").setValue("1");
-            }
         }
         CharSequence text;
 
         myDataset.clear();
 
-        if (mode.equals("1")) {
             mDatabase.child("Pending").child("0" + String.valueOf(Integer.parseInt(index[0]) + 1)).child("votes").setValue(votesObj);
             text = "A aposta foi adicionada à Base de Dados!";
-        }
-
-        else {
-            mDatabase.child("Suggestions").child(String.format(Locale.ENGLISH, "%03d", intSugg + 1)).child("votes").setValue(getVotesObj());
-            text = "A sugestão foi adicionada à Base de Dados!";
-        }
 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
@@ -534,31 +393,6 @@ public class ConfirmActivity  extends AppCompatActivity {
         }
         else {
             return "0";
-        }
-    }
-
-    public Object getVotesObj() {
-        if (uID == 1) {
-            return new betVotes("1", "0", "0", "0", "0", "0");
-        }
-        else if (uID == 2) {
-            return new betVotes("0", "1", "0", "0", "0", "0");
-        }
-        else if (uID == 3) {
-            return new betVotes("0", "0", "1", "0", "0", "0");
-        }
-        else if (uID == 4) {
-            return new betVotes("0", "0", "0", "1", "0", "0");
-        }
-        else if (uID == 5) {
-            return new betVotes("0", "0", "0", "0", "1", "0");
-        }
-        else if (uID == 6) {
-            return new betVotes("0", "0", "0", "0", "0", "1");
-        }
-
-        else {
-            return new betVotes("0", "0", "0", "0", "0", "0");
         }
     }
 

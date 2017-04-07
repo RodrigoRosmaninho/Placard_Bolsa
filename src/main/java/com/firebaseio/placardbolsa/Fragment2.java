@@ -12,12 +12,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,43 +53,19 @@ public class Fragment2 extends Fragment {
         //Create a CardHeader
         CardHeader header = new CardHeader(getContext());
 
-        CardViewNative geralView = (CardViewNative) rootView.findViewById(R.id.stats_mainCard);
-        CardViewNative winLostView = (CardViewNative) rootView.findViewById(R.id.stats_winLostCard);
-        CardViewNative shareView = (CardViewNative) rootView.findViewById(R.id.stats_shareCard);
-        CardViewNative chartView = (CardViewNative) rootView.findViewById(R.id.stats_chartCard);
-        CardViewNative votesView = (CardViewNative) rootView.findViewById(R.id.stats_votesCard);
-
         card.addCardHeader(header);
 
         header.setButtonExpandVisible(false);
         header.setButtonOverflowVisible(false);
 
-        header.setTitle("Geral");
-        geralView.setCard(card);
-        header.setTitle("Apostas");
-        winLostView.setCard(card);
-        header.setTitle("Divisão");
-        shareView.setCard(card);
-        header.setTitle("Na Bolsa");
-        chartView.setCard(card);
-        header.setTitle("Votos");
-        votesView.setCard(card);
-
-        final TextView main_text3 = (TextView) rootView.findViewById(R.id.main_text3);
-        final TextView main_text7 = (TextView) rootView.findViewById(R.id.main_text7);
-        final TextView share_text42 = (TextView) rootView.findViewById(R.id.share_text42);
-        final TextView winLost_text3 = (TextView) rootView.findViewById(R.id.winLost_text3);
-        final TextView winLost_text5 = (TextView) rootView.findViewById(R.id.winLost_text5);
-
-        final TextView votes_nunoText = (TextView) rootView.findViewById(R.id.votes_nunoText);
-        final TextView votes_chicoText = (TextView) rootView.findViewById(R.id.votes_chicoText);
-        final TextView votes_lóisText = (TextView) rootView.findViewById(R.id.votes_lóisText);
-        final TextView votes_meloText = (TextView) rootView.findViewById(R.id.votes_meloText);
-        final TextView votes_salgadoText = (TextView) rootView.findViewById(R.id.votes_salgadoText);
-        final TextView votes_lameiroText = (TextView) rootView.findViewById(R.id.votes_lameiroText);
+        final PieChart chart2 = (PieChart) rootView.findViewById(R.id.chart2);
+        chart2.setUsePercentValues(true);
+        chart2.getDescription().setEnabled(false);
+        chart2.setExtraOffsets(5, 10, 5, 5);
+        chart2.setDragDecelerationFrictionCoef(0.95f);
+        chart2.setCenterText("Apostas");
 
         final LineChart chart = (LineChart) rootView.findViewById(R.id.chart);
-        final String[] dataObjects;
 
         // chart.setAutoScaleMinMaxEnabled(true);
         chart.setBackgroundColor(getResources().getColor(R.color.buttonTextColor));
@@ -115,11 +96,10 @@ public class Fragment2 extends Fragment {
 
 
         DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference pouchRef = statsRef.child("Dates");
         statsRef = statsRef.child("Statistics");
 
         final String[] ammounty = new String[1];
-
-        DatabaseReference pouchRef = statsRef.child("pouch_history");
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
@@ -134,12 +114,12 @@ public class Fragment2 extends Fragment {
 
                 String share = stats_class.getCurrent_share();
 
-                main_text3.setTextColor(Color.parseColor("#FF669900"));
-                main_text3.setText(ammount);
+                //main_text3.setTextColor(Color.parseColor("#FF669900"));
+                //main_text3.setText(ammount);
 
-                main_text7.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(stats_class.getValue_spent())) + "€");
+                //main_text7.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(stats_class.getValue_spent())) + "€");
 
-                share_text42.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(share)) + "€");
+                //share_text42.setText(String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(share)) + "€");
 
             }
 
@@ -157,7 +137,8 @@ public class Fragment2 extends Fragment {
                 int pass = 0;
 
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                    pouchHistory pouchHistory = childSnapshot.getValue(pouchHistory.class);
+
+                    Dates pouchHistory = childSnapshot.getValue(Dates.class);
 
                     SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
                     String inputString1 = "01-10-2016";
@@ -176,7 +157,7 @@ public class Fragment2 extends Fragment {
 
                     String stupidFix = pouchHistory.getPouch_content();
 
-                    if (pass == Integer.parseInt(betNumb[0])) {
+                    if (betNumb[0] != null && pass == Integer.parseInt(betNumb[0])) {
                         stupidFix = ammounty[0];
                     }
                     pass = pass + 1;
@@ -189,7 +170,7 @@ public class Fragment2 extends Fragment {
 
                 dataSet.setLineWidth(1.75f);
                 dataSet.setHighlightEnabled(false);
-                dataSet.setDrawValues(true);
+                dataSet.setDrawValues(false);
                 dataSet.setDrawFilled(true);
 
                 LineData lineData = new LineData(dataSet);
@@ -204,52 +185,8 @@ public class Fragment2 extends Fragment {
         };
         pouchRef.addValueEventListener(postListener2);
 
-        DatabaseReference votesRef = statsRef.child("vote_stats");
-
-        ValueEventListener postListener3 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                voteStats stats_class = dataSnapshot.getValue(voteStats.class);
-
-                String nuno = stats_class.getU01();
-                String chico = stats_class.getU02();
-                String lóis = stats_class.getU03();
-                String melo = stats_class.getU04();
-                String salgado = stats_class.getU05();
-                String lameiro = stats_class.getU06();
-
-                float lameiroBodge = Float.parseFloat(betNumb[0]) - 21;
-
-                if (lameiroBodge == 0) {
-                    lameiro = "0%";
-                }
-                else {
-                    lameiro = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lameiro) / lameiroBodge) * 100 ) + "%";
-                }
-
-                nuno = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(nuno) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
-                chico = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(chico) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
-                lóis = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(lóis) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
-                melo = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(melo) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
-                salgado = String.format(Locale.ENGLISH, "%.0f", (Float.parseFloat(salgado) / Float.parseFloat(betNumb[0])) * 100 ) + "%";
-
-                votes_nunoText.setText(nuno);
-                votes_chicoText.setText(chico);
-                votes_lóisText.setText(lóis);
-                votes_meloText.setText(melo);
-                votes_salgadoText.setText(salgado);
-                votes_lameiroText.setText(lameiro);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        votesRef.addValueEventListener(postListener3);
-
         DatabaseReference wonLostRef = statsRef.child("general_stats");
+        final ArrayList<PieEntry> entries2 = new ArrayList<PieEntry>();
 
         ValueEventListener postListener4 = new ValueEventListener() {
             @Override
@@ -259,11 +196,29 @@ public class Fragment2 extends Fragment {
                 String win = stats_class.getWin_number();
                 String lost = stats_class.getLost_number();
 
-                winLost_text3.setTextColor(Color.parseColor("#FF669900"));
-                winLost_text3.setText(win);
+                entries2.add(new PieEntry(Integer.parseInt(win), "Ganhas"));
+                entries2.add(new PieEntry(Integer.parseInt(lost), "Perdidas"));
 
-                winLost_text5.setTextColor(Color.parseColor("#FFCC0000"));
-                winLost_text5.setText(lost);
+                PieDataSet pds = new PieDataSet(entries2, "");
+                pds.setValueLinePart1OffsetPercentage(80.f);
+                pds.setValueLinePart1Length(0.2f);
+                pds.setValueLinePart2Length(0.4f);
+                pds.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+                pds.setXValuePosition(null);
+
+                ArrayList<Integer> colors = new ArrayList<Integer>(2);
+                colors.add(Color.parseColor("#FF669900"));
+                colors.add(Color.parseColor("#FFCC0000"));
+                pds.setColors(colors);
+                pds.setValueTextSize(5f);
+
+                PieData data = new PieData(pds);
+                data.setValueFormatter(new PercentFormatter());
+                data.setValueTextSize(11f);
+                data.setValueTextColor(Color.BLACK);
+                chart2.setData(data);
+                chart2.invalidate();
+                chart2.animateX(1400);
 
             }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="actions_padding_button">16dp</dimen>
+    <dimen name="notification_right_side_padding_top">4dp</dimen>
     <string name="card_font_fontFamily_expand">sans-serif-condensed</string>
     <string name="card_font_fontFamily_header">sans-serif-condensed</string>
     <string name="card_font_fontFamily_image_text_over">sans-serif</string>

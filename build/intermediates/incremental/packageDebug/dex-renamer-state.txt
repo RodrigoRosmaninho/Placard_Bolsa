@@ -1,4 +1,7 @@
-#Fri Jan 06 21:29:52 GMT 2017
-base.0=F\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-renamed.0=classes.dex
-file.0=F\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+#Fri Apr 07 03:43:37 BST 2017
+base.0=F\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_8a1598efb3de3204aa33fc5d95a7796112224712
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=F\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a1470f56dccc6a84d79e25357fdb36e27ae8a297\\classes.dex
+base.1=F\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a1470f56dccc6a84d79e25357fdb36e27ae8a297
+file.0=F\:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_8a1598efb3de3204aa33fc5d95a7796112224712\\classes.dex

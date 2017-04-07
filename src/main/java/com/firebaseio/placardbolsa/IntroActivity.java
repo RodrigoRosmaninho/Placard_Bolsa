@@ -43,7 +43,7 @@ public class IntroActivity extends AppIntro2 {
 
         String device = "Dispositivo";
         String name = "Utilizador";
-        int ID = 0;
+        int ID = 1;
 
         if (deviceMan.toUpperCase().equals("LGE")) {
             device = "LG G3";
@@ -93,7 +93,8 @@ public class IntroActivity extends AppIntro2 {
         SharedPreferences.Editor editor = sp.edit();
 
         editor.putString("userName", name);
-        editor.putInt("UserID", 01);
+        editor.putInt("UserID", ID);
+        editor.putString("lastViewedNote", "0");
         editor.apply();
 
         // Obtain the FirebaseAnalytics instance.

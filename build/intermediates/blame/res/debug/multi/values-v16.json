@@ -26,8 +26,27 @@
                     "startLine": 3,
                     "startColumn": 4,
                     "startOffset": 109,
+                    "endColumn": 65,
+                    "endOffset": 170
+                },
+                "from": {
+                    "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.0\\res\\values-v16\\values-v16.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 65,
+                        "endOffset": 116
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 175,
                     "endColumn": 76,
-                    "endOffset": 181
+                    "endOffset": 247
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -42,11 +61,11 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 186,
+                    "startOffset": 252,
                     "endColumn": 76,
-                    "endOffset": 258
+                    "endOffset": 324
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -61,11 +80,11 @@
             },
             {
                 "to": {
-                    "startLine": 5,
+                    "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 263,
+                    "startOffset": 329,
                     "endColumn": 75,
-                    "endOffset": 334
+                    "endOffset": 400
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -80,11 +99,11 @@
             },
             {
                 "to": {
-                    "startLine": 6,
+                    "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 339,
+                    "startOffset": 405,
                     "endColumn": 72,
-                    "endOffset": 407
+                    "endOffset": 473
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -99,11 +118,11 @@
             },
             {
                 "to": {
-                    "startLine": 7,
+                    "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 412,
+                    "startOffset": 478,
                     "endColumn": 73,
-                    "endOffset": 481
+                    "endOffset": 547
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -118,11 +137,11 @@
             },
             {
                 "to": {
-                    "startLine": 8,
+                    "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 486,
+                    "startOffset": 552,
                     "endColumn": 73,
-                    "endOffset": 555
+                    "endOffset": 621
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -137,11 +156,11 @@
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 560,
+                    "startOffset": 626,
                     "endColumn": 80,
-                    "endOffset": 636
+                    "endOffset": 702
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -156,11 +175,11 @@
             },
             {
                 "to": {
-                    "startLine": 10,
+                    "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 641,
+                    "startOffset": 707,
                     "endColumn": 79,
-                    "endOffset": 716
+                    "endOffset": 782
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -175,11 +194,11 @@
             },
             {
                 "to": {
-                    "startLine": 11,
+                    "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 721,
+                    "startOffset": 787,
                     "endColumn": 24,
-                    "endOffset": 741
+                    "endOffset": 807
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -194,12 +213,12 @@
             },
             {
                 "to": {
-                    "startLine": 12,
+                    "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 746,
-                    "endLine": 20,
+                    "startOffset": 812,
+                    "endLine": 21,
                     "endColumn": 12,
-                    "endOffset": 1396
+                    "endOffset": 1462
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -215,12 +234,12 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1401,
-                    "endLine": 29,
+                    "startOffset": 1467,
+                    "endLine": 30,
                     "endColumn": 12,
-                    "endOffset": 2018
+                    "endOffset": 2084
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -236,12 +255,12 @@
             },
             {
                 "to": {
-                    "startLine": 30,
+                    "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 2023,
-                    "endLine": 39,
+                    "startOffset": 2089,
+                    "endLine": 40,
                     "endColumn": 12,
-                    "endOffset": 2789
+                    "endOffset": 2855
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -257,12 +276,12 @@
             },
             {
                 "to": {
-                    "startLine": 40,
+                    "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 2794,
-                    "endLine": 44,
+                    "startOffset": 2860,
+                    "endLine": 45,
                     "endColumn": 12,
-                    "endOffset": 3074
+                    "endOffset": 3140
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -278,12 +297,12 @@
             },
             {
                 "to": {
-                    "startLine": 45,
+                    "startLine": 46,
                     "startColumn": 4,
-                    "startOffset": 3079,
-                    "endLine": 54,
+                    "startOffset": 3145,
+                    "endLine": 55,
                     "endColumn": 12,
-                    "endOffset": 3875
+                    "endOffset": 3941
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -299,12 +318,12 @@
             },
             {
                 "to": {
-                    "startLine": 55,
+                    "startLine": 56,
                     "startColumn": 4,
-                    "startOffset": 3880,
-                    "endLine": 63,
+                    "startOffset": 3946,
+                    "endLine": 64,
                     "endColumn": 12,
-                    "endOffset": 4534
+                    "endOffset": 4600
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",
@@ -320,12 +339,12 @@
             },
             {
                 "to": {
-                    "startLine": 64,
+                    "startLine": 65,
                     "startColumn": 4,
-                    "startOffset": 4539,
-                    "endLine": 73,
+                    "startOffset": 4605,
+                    "endLine": 74,
                     "endColumn": 12,
-                    "endOffset": 5354
+                    "endOffset": 5420
                 },
                 "from": {
                     "file": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\values-v16\\values-v16.xml",

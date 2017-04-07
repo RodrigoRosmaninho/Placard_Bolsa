@@ -7,79 +7,266 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="1dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
     android:paddingTop="1dp"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.firebaseio.placardbolsa.MainActivity">
+    tools:context="com.firebaseio.placardbolsa.MainActivity"
+    android:background="@color/com_facebook_button_border_color_focused">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/nested">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/metadata"
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/card_background"
+            android:paddingBottom="15dp"
+            android:elevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/greetings"
+                    android:focusableInTouchMode="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_background"
+                    android:elevation="0dp">
+
+                    <TextView
+                        android:id="@+id/Hello"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="Bem Vindo, Erro"
+                        android:paddingStart="10sp"
+                        android:textColor="@color/card_section_title_color"
+                        android:layout_alignParentTop="false"
+                        android:layout_alignParentStart="true"
+                        android:paddingTop="5sp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true" />
+
+                    <ImageView
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="81dp"
+                        android:layout_height="58dp"
+                        app:srcCompat="@drawable/pb_chico"
+                        android:id="@+id/user_photo"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerInParent="true"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp" />
+
+                </RelativeLayout>
+
+                <View
                 android:layout_width="match_parent"
-                card:list_card_layout_resourceID="@layout/populate_this"
-                android:id="@+id/suggestions_view"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="12dp"
-                android:layout_height="wrap_content">
+                android:layout_height="1dp"
+                android:id="@+id/view6"
+                android:layout_below="@+id/greetings"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="10dp" />
 
-            </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
+            <TextView
+                android:text="Ganhos"
                 android:layout_width="wrap_content"
-                android:id="@+id/progressBar3"
-                android:layout_below="@+id/suggestions_view"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:progress="0"
-                android:progressTint="@android:color/darker_gray"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:visibility="gone" />
+                android:layout_below="@+id/view6"
+                android:id="@+id/textView14"
+                android:paddingStart="10sp"
+                android:textColor="@color/bodyTextColor"
+                android:textSize="18sp"
+                android:paddingTop="12sp" />
 
-            <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
-                android:layout_width="match_parent"
-                card:list_card_layout_resourceID="@layout/populate_this"
-                android:id="@+id/pending_transactions_view"
-                android:layout_below="@+id/progressBar3"
-                android:layout_height="wrap_content">
-
-            </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
+            <TextView
+                android:text="Investimento"
                 android:layout_width="wrap_content"
-                android:id="@+id/progressBar2"
-                android:layout_below="@+id/pending_transactions_view"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:progress="0"
-                android:progressTint="@android:color/darker_gray"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:visibility="gone" />
+                android:layout_below="@+id/textView14"
+                android:id="@+id/textView15"
+                android:paddingStart="10sp"
+                android:textColor="@color/bodyTextColor"
+                android:textSize="18sp"
+                android:paddingTop="10sp" />
 
-            <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
+            <TextView
+                android:text="Na Bolsa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView15"
+                android:id="@+id/textView16"
+                android:paddingStart="10sp"
+                android:textColor="@color/bodyTextColor"
+                android:textSize="18sp"
+                android:paddingTop="15sp" />
+
+            <TextView
+                android:text="200.00€"
+                android:layout_alignBottom="@+id/textView14"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ganhos"
+                android:paddingEnd="15sp"
+                android:textSize="18sp"
+                android:textColor="@color/com_facebook_messenger_blue" />
+
+            <TextView
+                android:text="180.00€"
+                android:layout_alignBottom="@+id/textView15"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/investimento"
+                android:paddingEnd="15sp"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary" />
+
+            <View
+                android:layout_height="1dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/view5"
+                android:layout_below="@+id/investimento"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="15sp"
+                android:layout_width="80dp" />
+
+            <TextView
+                android:text="20.00€"
+                android:layout_alignBottom="@+id/textView16"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/na_bolsa"
+                android:paddingEnd="15sp"
+                android:textSize="19sp"
+                android:textColor="@color/bodyTextColor" />
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/new_note"
+                android:layout_below="@+id/metadata"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:srcCompat="@android:drawable/btn_star_big_on"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/imageView8"
+                    android:paddingTop="3dp"
+                    android:paddingStart="10sp" />
+
+                <TextView
+                    android:id="@+id/textNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/imageView8"
+                    android:textSize="18sp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="Ver nova alteração às Notas do PB"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="false"
+                    android:paddingTop="9sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageView9"
+                    android:layout_marginEnd="10sp"
+                    fab:srcCompat="@drawable/ic_chevron_right_grey600_24dp"
+                    android:paddingTop="10sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/pending"
+                android:layout_below="@+id/new_note"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/bet_number2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="Apostas Pendentes"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="6sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/view2"
+                    android:layout_below="@+id/bet_number2"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="10dp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pending_view"
+                    android:layout_below="@id/view2"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_view"
+            android:layout_below="@id/pending"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp">
+
+            <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card:list_card_layout_resourceID="@layout/populate_this"
                 android:id="@+id/transactions_view"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/progressBar2">
+                android:layout_alignParentStart="true">
 
-            </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
+            </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 
@@ -134,12 +321,12 @@
             fab:fab_label="Adicionar Aposta" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/add_sug_fab"
+            android:id="@+id/add_trans_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/messenger_bubble_small_white"
+            android:src="@drawable/ic_navigate_next_white"
             fab:fab_size="mini"
-            fab:fab_label="Adicionar Sugestão" />
+            fab:fab_label="Adicionar Transação" />
 
     </com.github.clans.fab.FloatingActionMenu>
 

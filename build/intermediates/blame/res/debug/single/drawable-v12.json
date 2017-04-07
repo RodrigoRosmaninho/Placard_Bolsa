@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v12\\indicator.xml",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.turing-tech\\MaterialScrollBar\\12.3.5\\res\\drawable-v12\\indicator.xml"
+    },
+    {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v12\\indicator_ltr.xml",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.turing-tech\\MaterialScrollBar\\12.3.5\\res\\drawable-v12\\indicator_ltr.xml"
+    }
+]

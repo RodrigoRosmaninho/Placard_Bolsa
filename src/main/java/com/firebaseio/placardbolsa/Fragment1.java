@@ -3,49 +3,41 @@ package com.firebaseio.placardbolsa;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -53,42 +45,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+import org.w3c.dom.Text;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
-
-import it.gmariotti.cardslib.library.internal.Card;
-import it.gmariotti.cardslib.library.internal.CardHeader;
-import it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView;
-import it.gmariotti.cardslib.library.view.CardViewNative;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class Fragment1 extends Fragment {
 
@@ -139,6 +107,9 @@ public class Fragment1 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final SharedPreferences sp = this.getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int uID = sp.getInt("UserID", 01);
+
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         markets.clear();
@@ -148,9 +119,6 @@ public class Fragment1 extends Fragment {
         codes.clear();
         types.clear();
         outcomes.clear();
-
-        // Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
 
         fam = (com.github.clans.fab.FloatingActionMenu) rootView.findViewById(R.id.fab);
 
@@ -162,75 +130,68 @@ public class Fragment1 extends Fragment {
             }
         });
 
-        com.github.clans.fab.FloatingActionButton fab2 = (com.github.clans.fab.FloatingActionButton) rootView.findViewById(R.id.add_sug_fab);
+        com.github.clans.fab.FloatingActionButton fab2 = (com.github.clans.fab.FloatingActionButton) rootView.findViewById(R.id.add_trans_fab);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addSuggestions();
+                addTransactions();
             }
         });
 
-        CardRecyclerView transactions_view = (CardRecyclerView) rootView.findViewById(R.id.transactions_view);
-        // transactions_view.setHasFixedSize(true);
+        RecyclerView transactions_view = (RecyclerView) rootView.findViewById(R.id.transactions_view);
         LinearLayoutManager bet_layoutManager = new LinearLayoutManager(getContext());
         bet_layoutManager.setReverseLayout(true);
+        bet_layoutManager.setStackFromEnd(true);
         transactions_view.setLayoutManager(bet_layoutManager);
-
-        final CardRecyclerView pending_transactions_view = (CardRecyclerView) rootView.findViewById(R.id.pending_transactions_view);
-        final CardRecyclerView suggestions_view = (CardRecyclerView) rootView.findViewById(R.id.suggestions_view);
-
         transactions_view.setNestedScrollingEnabled(false);
-        pending_transactions_view.setNestedScrollingEnabled(false);
-        suggestions_view.setNestedScrollingEnabled(false);
-
-        // pending_transactions_view.setHasFixedSize(true);
-        LinearLayoutManager bet_layoutManager2 = new LinearLayoutManager(getContext());
-        bet_layoutManager2.setReverseLayout(true);
-        pending_transactions_view.setLayoutManager(bet_layoutManager2);
-
-        LinearLayoutManager bet_layoutManager3 = new LinearLayoutManager(getContext());
-        bet_layoutManager3.setReverseLayout(true);
-        suggestions_view.setLayoutManager(bet_layoutManager3);
 
         if (!calledAlready) {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
             calledAlready = true;
         }
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref = ref.child("Transactions");
+        final RelativeLayout new_note = (RelativeLayout) rootView.findViewById(R.id.new_note);
+        new_note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(rootView.getContext(), NotesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final TextView hello = (TextView) rootView.findViewById(R.id.Hello);
+        final ImageView user_photo = (ImageView) rootView.findViewById(R.id.user_photo);
+
+        hello.setText("Bem Vindo, " + getUserName(uID));
+        user_photo.setImageResource(getUserPhoto(uID));
 
         DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference notesRef = statsRef.child("Notes");
         statsRef = statsRef.child("Statistics");
 
-        final ProgressBar pb2 = (ProgressBar) rootView.findViewById(R.id.progressBar2);
-        final ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar3);
+        final RecyclerView pending_view = (RecyclerView) rootView.findViewById(R.id.pending_view);
+        final RelativeLayout pending = (RelativeLayout) rootView.findViewById(R.id.pending);
+
+        final TextView ganhos = (TextView) rootView.findViewById(R.id.ganhos);
+        final TextView investimento = (TextView) rootView.findViewById(R.id.investimento);
+        final TextView na_bolsa = (TextView) rootView.findViewById(R.id.na_bolsa);
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Statistics stats_class = dataSnapshot.getValue(Statistics.class);
 
-                // DO NOT REMOVE!!!
                 code[0] = stats_class.getNumber_ofBets();
-                code[1] = stats_class.getNumber_ofSugg();
 
-                if(stats_class.getPendingBetsExist().equals("0")) {
-                    pb2.setVisibility(View.GONE);
-                    pending_transactions_view.setVisibility(View.GONE);
-                }
-                else {
-                    pb2.setVisibility(View.VISIBLE);
-                    pending_transactions_view.setVisibility(View.VISIBLE);
-                }
+                ganhos.setText(stats_class.getAll_earnings() + "€");
+                investimento.setText(stats_class.getValue_spent() + "€");
+                na_bolsa.setText(stats_class.getOn_pouch() + "€");
 
-                if(stats_class.getSuggestionsExist().equals("0")) {
-                    pb3.setVisibility(View.GONE);
-                    suggestions_view.setVisibility(View.GONE);
+                if(stats_class.getPendingBetsExist().equals("1")) {
+                    pending.setVisibility(View.VISIBLE);
                 }
-                else {
-                    pb3.setVisibility(View.VISIBLE);
-                    suggestions_view.setVisibility(View.VISIBLE);
+                else{
+                    pending.setVisibility(View.GONE);
                 }
             }
 
@@ -240,67 +201,63 @@ public class Fragment1 extends Fragment {
         };
         statsRef.addValueEventListener(postListener);
 
-
-        FirebaseRecyclerAdapter mAdapter = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, ref) {
+        ValueEventListener postListener4 = new ValueEventListener() {
             @Override
-            public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
-                betViewHolder.callExpand(getContext(), specificBet.getBet_index(), "1");
-                betViewHolder.setIndex(specificBet.getBet_index(), "1");
-                betViewHolder.setDate(specificBet.getDate());
-                betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
-                betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
-                betViewHolder.setGameNumber(specificBet.getGame_number());
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Notes notes_class = dataSnapshot.getValue(Notes.class);
+                int nID = Integer.parseInt(sp.getString("lastViewedNote", "0"));
+
+                if(Integer.parseInt(notes_class.getNote_id()) > nID) {
+                    new_note.setVisibility(View.VISIBLE);
+                }
+                else {
+                    new_note.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         };
-        transactions_view.setAdapter(mAdapter);
+        notesRef.addValueEventListener(postListener4);
 
-        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("Pending");
+        DatabaseReference betsRef = FirebaseDatabase.getInstance().getReference().child("Pending");
 
-        FirebaseRecyclerAdapter mAdapter2 = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, ref2) {
+        LinearLayoutManager bet_layoutManager3 = new LinearLayoutManager(getContext());
+        bet_layoutManager3.setReverseLayout(true);
+        pending_view.setLayoutManager(bet_layoutManager3);
+        pending_view.setNestedScrollingEnabled(false);
+
+        FirebaseRecyclerAdapter mAdapter2 = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, betsRef) {
             @Override
             public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
                 betViewHolder.callExpand(getContext(), specificBet.getBet_index(), "2");
-                betViewHolder.setIndex(specificBet.getBet_index(), "2");
-                betViewHolder.setDate(specificBet.getDate());
+                betViewHolder.setIndex(specificBet.getBet_index());
                 betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
                 betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
                 betViewHolder.setGameNumber(specificBet.getGame_number());
             }
         };
-        pending_transactions_view.setAdapter(mAdapter2);
+        pending_view.setAdapter(mAdapter2);
 
-        DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("Suggestions");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        ref = ref.child("Dates");
 
-        FirebaseRecyclerAdapter mAdapter3 = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, ref3) {
+        FirebaseRecyclerAdapter mAdapter = new FirebaseRecyclerAdapter<Dates, betHolder>(Dates.class, R.layout.populate_by_date, betHolder.class, ref) {
             @Override
-            public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
-                betViewHolder.callExpand(getContext(), specificBet.getBet_index(), "3");
-                betViewHolder.setIndex(specificBet.getBet_index(), "3");
-                betViewHolder.setDate(specificBet.getDate());
-                betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
-                betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
-                betViewHolder.setGameNumber(specificBet.getGame_number());
+            public void populateViewHolder(betHolder betViewHolder, Dates specificDate, int position) {
+                try {
+                    betViewHolder.setDate(specificDate.getEvent_date());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                betViewHolder.setGeneralBalance(specificDate.getVariation(), specificDate.getResult());
+                betViewHolder.setRecyclerView(specificDate.getEvent_date(), getContext());
             }
         };
-        suggestions_view.setAdapter(mAdapter3);
-
-        /**Handler handler = new Handler();
-         handler.postDelayed(new Runnable() {
-         public void run() {
-         ProgressBar spinner;
-         spinner = (ProgressBar)findViewById(R.id.progressBar1);
-         spinner.setVisibility(View.GONE);
-         }
-         }, 2700);**/
-
-        //final EditText mMessage = (EditText) findViewById(R.id.message_text);
-        //findViewById(R.id.send_button).setOnClickListener(new View.OnClickListener() {
-        //@Override
-        //public void onClick(View v) {
-        //ref.push().setValue(new Chat("puf", "1234", mMessage.getText().toString()));
-        //mMessage.setText("");
-        //}
-        //});
+        transactions_view.setAdapter(mAdapter);
 
         return rootView;
     }
@@ -423,118 +380,87 @@ public class Fragment1 extends Fragment {
 
     }
 
-    public void addSuggestions() {
+    //TODO: Change
+    public void addTransactions() {
         final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
-                .title("Adicionar Nova Sugestão")
-                .customView(R.layout.dialog_addentries, true)
-                .positiveText("Adicionar Jogos")
+                .title("Data da Transação")
+                .customView(R.layout.dialog_date_transactions, true)
+                .positiveText("Continuar")
                 .negativeText("Cancelar")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        MaterialSpinner ammount = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
-                        MaterialSpinner type = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
 
-                        int ammountInt = ammount.getSelectedIndex();
-                        int typeInt = type.getSelectedIndex();
-
-                        ArrayList<String> a = new ArrayList<String>();
-                        ArrayList<String> t = new ArrayList<String>();
-
-                        a.add("5");
-                        a.add("1");
-                        a.add("2");
-                        a.add("10");
-                        a.add("20");
-                        a.add("50");
-                        a.add("75");
-                        a.add("100");
-                        t.add("Combinada");
-                        t.add("Simples");
-                        t.add("Múltipla");
-
-                        spent = a.get(ammountInt);
-                        overallType = t.get(typeInt);
+                        DatePicker dateP = (DatePicker) dialog.getCustomView().findViewById(R.id.datePicker);
+                        final String date = getDateFromDatePicker(dateP);
 
                         MaterialDialog dialog2 = new MaterialDialog.Builder(getContext())
-                                .title("Adicionar Jogos")
-                                .customView(R.layout.dialog_addgames, true)
+                                .title("Adicionar Transação")
+                                .customView(R.layout.dialog_edit_transactions, true)
                                 .positiveText("Confirmar")
                                 .negativeText("Cancelar")
                                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                                     @Override
                                     public void onClick(@NonNull final MaterialDialog dialog2, @NonNull DialogAction which) {
-                                        //TODO: Check 1 x 2 + - compatibility with betType
-                                        parseInput("2");
+
+                                        final DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference().child("Statistics");
+
+                                        ValueEventListener postListener5 = new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
+                                                String bodge = "t0";
+
+                                                if(Integer.parseInt(stats_class.getNumber_ofTransactions().toString()) < 10) {
+                                                    bodge = "t00";
+                                                }
+
+                                                String index = bodge + (Integer.parseInt(stats_class.getNumber_ofTransactions().toString()) + 1);
+
+                                                EditText description = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta);
+                                                EditText value = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta2);
+                                                MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
+
+                                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Transactions").child(index);
+                                                ref.child("bet_index").setValue(index);
+                                                ref.child("game_number").setValue(description.getText().toString());
+                                                ref.child("projected_winnings").setValue(value.getText().toString());
+                                                ref.child("date").setValue(date);
+
+                                                if(type.getSelectedIndex() == 0){
+                                                    ref.child("bet_price").setValue("1");
+                                                }
+                                                else {
+                                                    ref.child("bet_price").setValue("0");
+                                                }
+
+                                                statsRef.child("number_ofTransactions").setValue(String.valueOf(Integer.parseInt(stats_class.getNumber_ofTransactions().toString()) + 1));
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        };
+                                        statsRef.addListenerForSingleValueEvent(postListener5);
                                     }
                                 })
                                 .build();
 
-                        viewArray.clear();
-                        myDataset = gameCode.createEmpty();
-                        number_of_games = 1;
+                        EditText description = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta);
+                        EditText value = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta2);
 
-                        mRecyclerView = (RecyclerView) dialog2.getCustomView().findViewById(R.id.games_list);
+                        description.setHint("Descrição Breve");
+                        value.setHint("25.00");
 
-                        mRecyclerView.setHasFixedSize(true);
-
-                        mLayoutManager = new LinearLayoutManager(getContext());
-                        mRecyclerView.setLayoutManager(mLayoutManager);
-
-                        mAdapter = new MyAdapter(getContext(), myDataset);
-                        mRecyclerView.setAdapter(mAdapter);
-
-                        Button add = (Button) dialog2.getCustomView().findViewById(R.id.add_button);
-                        add.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                prePreAdd(v);
-                            }
-                        });
-
+                        MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
+                        type.setItems("Lucro", "Despesa");
 
                         dialog2.show();
                     }
                 })
                 .build();
-
-        final TextView n_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta);
-        final TextView d_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.d_da_aposta);
-
-        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
-        statsRef = statsRef.child("Statistics");
-
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
-        String formattedDate = df.format(c.getTime());
-        final String date = formattedDate.split("_")[1];
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
-
-                String bet_number_string = stats_class.getNumber_ofBets();
-                int bet_number_int = Integer.parseInt(bet_number_string) + 1;
-                String bet_number_result = "Aposta " + bet_number_int;
-
-                n_da_aposta.setText(bet_number_result);
-                d_da_aposta.setText(date);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        };
-        statsRef.addListenerForSingleValueEvent(postListener);
-
-        MaterialSpinner typeSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
-        MaterialSpinner spinner_tipo = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
-        spinner_tipo.isInEditMode();
-        typeSpinner.setItems("Combinada", "Simples", "Múltipla");
-
-        MaterialSpinner ammountSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
-        ammountSpinner.setItems("5€", "1€", "2€", "10€", "20€", "50€", "75€", "100€");
 
         dialog.show();
         fam.toggle(true);
@@ -817,21 +743,12 @@ public class Fragment1 extends Fragment {
         }
 
         public void callExpand(Context ctx, String index, String mode2) {
-            CardViewNative card_view = (CardViewNative) mView.findViewById(R.id.list_cardId);
-
-            CardHeader header = new CardHeader(ctx);
-            Card card = new Card(ctx);
-
-            header.setButtonExpandVisible(false);
-            header.setButtonOverflowVisible(false);
-            card.addCardHeader(header);
-
-            card_view.setCard(card);
+            RelativeLayout view = (RelativeLayout) mView.findViewById(R.id.individual_bet);
 
             final String finalIndex = index;
             final Context ctxx = ctx;
             final String mode22 = mode2;
-            card_view.setOnClickListener(new View.OnClickListener() {
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(ctxx, BetActivity.class);
@@ -844,28 +761,60 @@ public class Fragment1 extends Fragment {
             });
         }
 
-        public void setIndex(String index, String mode) {
-            // mView.setPadding(20, 0, 20, 0);
-            TextView field = (TextView) mView.findViewById(R.id.bet_text1);
+        public void setIndex(String index) {
+            TextView field = (TextView) mView.findViewById(R.id.bet_number);
 
-            if (mode.equals("3")) {
-                index = "Sugestão " + index.substring(1);
-            }
-            else {
-                index = "Aposta " + index.substring(1);
+            if (index.charAt(0)=='0') {
+                index = index.substring(1);
             }
 
+            else if (index.charAt(0)=='t') {
+                if (index.charAt(1)=='0') {
+                    index = index.substring(2);
+                }
+                else {
+                    index = index.substring(1);
+                }
+                index = "Transação " + index;
+            }
+            
             field.setText(index);
         }
 
-        public void setDate(String date) {
-            TextView field = (TextView) mView.findViewById(R.id.bet_text2);
-            date = date.split("_")[1];
-            field.setText(date);
+        public void setDate(String date) throws ParseException {
+            TextView field1 = (TextView) mView.findViewById(R.id.textView_type);
+            TextView field2 = (TextView) mView.findViewById(R.id.textView_Date);
+
+            Calendar c = Calendar.getInstance();
+            c.setTime(new SimpleDateFormat("dd-MM-yyyy").parse(date));
+            int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+
+            field1.setText(getPortugueseDay(dayOfWeek));
+            field2.setText(date.split("-")[0] + " " + getPortugueseMonth(date.split("-")[1]) + " " + date.split("-")[2]);
         }
 
+        public void setGeneralBalance(String amount, String result) {
+            TextView field = (TextView) mView.findViewById(R.id.textView_Amount);
+            String balance = "error";
+
+            if (result.equals("1")) {
+                balance = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(amount)) + "€";
+                field.setTextColor(Color.parseColor("#FF669900"));
+            } else if (result.equals("0")){
+                balance = "-" + String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(amount)) + "€";
+                field.setTextColor(Color.parseColor("#FFCC0000"));
+            }
+            else if (result.equals("2")) {
+                balance = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(amount)) + "€";
+                field.setTextColor(Color.parseColor("#FFFF8800"));
+            }
+
+            field.setText(balance);
+        }
+
+
         public void setBalance(String winnings, String result, String losses) {
-            TextView field = (TextView) mView.findViewById(R.id.bet_text3);
+            TextView field = (TextView) mView.findViewById(R.id.bet_amount);
             String balance = "error";
 
             if (result.equals("1")) {
@@ -891,15 +840,142 @@ public class Fragment1 extends Fragment {
         }
 
         public void setGeneralBetType(String type) {
-            TextView field = (TextView) mView.findViewById(R.id.bet_text4);
-            field.setText(type);
+            TextView field = (TextView) mView.findViewById(R.id.bet_type);
+            field.setText("Aposta " + type);
         }
 
         public void setGameNumber(String number) {
-            TextView field = (TextView) mView.findViewById(R.id.bet_text5);
-            field.setTextSize(17);
+            TextView field = (TextView) mView.findViewById(R.id.bet_game_number);
+            String jogos = " Jogos";
 
-            field.setText("Jogos: " + number);
+            if(number.equals("1")) {
+                jogos = " Jogo";
+            }
+
+            field.setText(number + jogos);
+        }
+
+        public void callDialog(final Context ctx, final String descrip, final String res, final String val, final String index) {
+            RelativeLayout view = (RelativeLayout) mView.findViewById(R.id.individual_bet);
+            TextView bet_type = (TextView) mView.findViewById(R.id.bet_type);
+            TextView bet_game_number = (TextView) mView.findViewById(R.id.bet_game_number);
+            TextView bet_number = (TextView) mView.findViewById(R.id.bet_number);
+
+            bet_type.setVisibility(View.GONE);
+            bet_game_number.setVisibility(View.GONE);
+
+            bet_number.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
+            bet_number.setTextColor(Color.parseColor("#0084ff"));
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final MaterialDialog dialog = new MaterialDialog.Builder(ctx)
+                            .title("Detalhes da Transação")
+                            .customView(R.layout.dialog_transactions, true)
+                            .positiveText("Editar")
+                            .negativeText("Concluído")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                                    MaterialDialog dialog2 = new MaterialDialog.Builder(ctx)
+                                            .title("Editar Transação")
+                                            .customView(R.layout.dialog_edit_transactions, true)
+                                            .positiveText("Confirmar")
+                                            .negativeText("Cancelar")
+                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                                @Override
+                                                public void onClick(@NonNull MaterialDialog dialog2, @NonNull DialogAction which) {
+                                                    EditText description = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta);
+                                                    EditText value = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta2);
+                                                    MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
+
+                                                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Transactions").child(index);
+                                                    ref.child("game_number").setValue(description.getText().toString());
+                                                    ref.child("projected_winnings").setValue(value.getText().toString());
+
+                                                    if(type.getSelectedIndex() == 0){
+                                                        ref.child("bet_price").setValue("1");
+                                                    }
+                                                    else {
+                                                        ref.child("bet_price").setValue("0");
+                                                    }
+                                                }
+                                            })
+                                            .build();
+
+                                    EditText description = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta);
+                                    EditText value = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta2);
+
+                                    description.setText(descrip);
+                                    value.setText(val);
+
+                                    MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
+                                    type.setItems("Lucro", "Despesa");
+
+                                    if(res.equals("0")) {
+                                        type.setSelectedIndex(1);
+                                    }
+
+                                    dialog2.show();
+                                }
+                            })
+                            .build();
+
+                    TextView description = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta);
+                    TextView value = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta2);
+                    TextView type = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta3);
+
+                    String fRes = "Lucro";
+
+                    if(res.equals("0")) {
+                        fRes = "Despesa";
+                    }
+
+                    description.setText(descrip);
+                    value.setText(val + "€");
+                    type.setText(fRes);
+
+                    dialog.show();
+                }
+            });
+        }
+
+        public void setRecyclerView(String date, final Context ctx) {
+
+            Query betsRef = FirebaseDatabase.getInstance().getReference().child("Transactions").orderByChild("date").equalTo(date);
+
+            RecyclerView games_view = (RecyclerView) mView.findViewById(R.id.games_view);
+
+            LinearLayoutManager bet_layoutManager2 = new LinearLayoutManager(ctx);
+            bet_layoutManager2.setReverseLayout(true);
+            games_view.setLayoutManager(bet_layoutManager2);
+            games_view.setNestedScrollingEnabled(false);
+
+            FirebaseRecyclerAdapter mAdapter = new FirebaseRecyclerAdapter<Bet, betHolder>(Bet.class, R.layout.populate_this, betHolder.class, betsRef) {
+                @Override
+                public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
+                    if(specificBet.getBet_index().contains("t")) {
+                        betViewHolder.callDialog(ctx, specificBet.getGame_number(), specificBet.getBet_price(), specificBet.getProjected_winnings(), specificBet.getBet_index());
+                        betViewHolder.setIndex(specificBet.getBet_index());
+                        if(specificBet.getBet_price().equals("1")){
+                            betViewHolder.setBalance(specificBet.getProjected_winnings(), "1", "0");
+                        }
+                        else {
+                            betViewHolder.setBalance("0", "0", specificBet.getProjected_winnings());
+                        }
+                    }
+                    else {
+                        betViewHolder.callExpand(ctx, specificBet.getBet_index(), "1");
+                        betViewHolder.setIndex(specificBet.getBet_index());
+                        betViewHolder.setBalance(specificBet.getProjected_winnings(), specificBet.getResult().toString().split("\\{")[1].split("\\}")[0].split(", ")[0].split("=")[1], specificBet.getBet_price());
+                        betViewHolder.setGeneralBetType(specificBet.getGeneral_bet_type());
+                        betViewHolder.setGameNumber(specificBet.getGame_number());
+                    }
+                }
+            };
+            games_view.setAdapter(mAdapter);
         }
 
     }
@@ -981,6 +1057,182 @@ public class Fragment1 extends Fragment {
         }
     }
 
+    static String getPortugueseDay(int day) {
+        String dia = "erro";
+
+        switch (day){
+            case 1:
+                dia = "Domingo";
+                break;
+
+            case 2:
+                dia = "Segunda";
+                break;
+
+            case 3:
+                dia = "Terça";
+                break;
+
+            case 4:
+                dia = "Quarta";
+                break;
+
+            case 5:
+                dia = "Quinta";
+                break;
+
+            case 6:
+                dia = "Sexta";
+                break;
+
+            case 7:
+                dia = "Sábado";
+                break;
+        }
+
+        return dia;
+    }
+
+    static String getPortugueseMonth(String month) {
+        String mes = "erro";
+
+        switch (month){
+            case "01":
+                mes = "Janeiro";
+                break;
+
+            case "02":
+                mes = "Fevereiro";
+                break;
+
+            case "03":
+                mes = "Março";
+                break;
+
+            case "04":
+                mes = "Abril";
+                break;
+
+            case "05":
+                mes = "Maio";
+                break;
+
+            case "06":
+                mes = "Junho";
+                break;
+
+            case "07":
+                mes = "Julho";
+                break;
+
+            case "08":
+                mes = "Agosto";
+                break;
+
+            case "09":
+                mes = "Setembro";
+                break;
+
+            case "10":
+                mes = "Outubro";
+                break;
+
+            case "11":
+                mes = "Novembro";
+                break;
+
+            case "12":
+                mes = "Dezembro";
+                break;
+
+        }
+
+        return mes;
+    }
+
+    static String getUserName(int uid) {
+        String user = "Error";
+
+        switch (uid) {
+            case 1:
+                user = "Nuno";
+                break;
+
+            case 2:
+                user = "Chico";
+                break;
+
+            case 3:
+                user = "Lóis";
+                break;
+
+            case 4:
+                user = "Melo";
+                break;
+
+            case 5:
+                user = "Salgado";
+                break;
+
+            case 6:
+                user = "Lameiro";
+                break;
+
+            default:
+                user = "Quico";
+                break;
+        }
+
+        return user;
+    }
+
+    static int getUserPhoto(int uid) {
+        int id;
+
+        switch (uid) {
+            case 1:
+                id = R.drawable.pb_nuno;
+                break;
+
+            case 2:
+                id = R.drawable.pb_chico;
+                break;
+
+            case 3:
+                id = R.drawable.pb_lois;
+                break;
+
+            case 4:
+                id = R.drawable.pb_melo;
+                break;
+
+            case 5:
+                id = R.drawable.pb_salgado;
+                break;
+
+            case 6:
+                id = R.drawable.pb_lameiro;
+                break;
+
+            default:
+                id = R.drawable.pb_quico;
+                break;
+        }
+
+        return id;
+    }
+
+    public static String getDateFromDatePicker(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(calendar.getTime());
+    }
 
 }
 

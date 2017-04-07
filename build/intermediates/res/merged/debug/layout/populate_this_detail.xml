@@ -30,12 +30,12 @@
                 android:text="1x2 TR"
                 android:gravity="center_horizontal"
                 android:layout_width="match_parent"
-                android:paddingEnd="1dp" />
+                android:paddingEnd="1dp"
+                android:textColor="@color/bodyTextColor" />
 
             <TextView
                 android:id="@+id/game_code"
                 android:layout_width="59dp"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:paddingBottom="7dp"
                 android:textSize="18sp"
@@ -43,14 +43,15 @@
                 android:layout_row="1"
                 android:layout_column="0"
                 tools:text="117"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textColor="@color/card_section_title_color" />
         </GridLayout>
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:id="@+id/view"
-            android:background="@color/bodyTextColor"
+            android:background="@android:color/darker_gray"
             android:layout_toEndOf="@+id/gridLayout"
             android:layout_alignBottom="@+id/gridLayout"
             android:layout_alignTop="@+id/gridLayout"
@@ -68,7 +69,7 @@
             android:layout_height="1dp"
             android:layout_width="match_parent"
             android:id="@+id/view3"
-            android:background="@color/bodyTextColor"
+            android:background="@android:color/darker_gray"
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/game_result" />
 
@@ -96,7 +97,8 @@
                 android:maxLines="1"
                 android:paddingStart="4dp"
                 android:paddingEnd="10dp"
-                android:layout_width="wrap_content" />
+                android:layout_width="wrap_content"
+                android:textColor="@color/bodyTextColor" />
 
             <TextView
                 android:text="1.80"
@@ -177,7 +179,8 @@
                 android:id="@+id/game_vs"
                 android:textStyle="bold"
                 android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/bodyTextColor" />
 
         </RelativeLayout>
 
