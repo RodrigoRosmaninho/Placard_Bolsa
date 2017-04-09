@@ -29,14 +29,7 @@
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            tools:replace="android:name, android:label, android:parentActivityName"></activity>
-        <activity
-            android:name=".ConfirmActivity"
-            android:colorPrimaryDark="#880000"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:replace="android:name"></activity>
+            tools:replace="android:name, android:label, android:parentActivityName" />
         <activity
             android:name=".IntroActivity"
             android:colorPrimaryDark="#880000"
@@ -56,7 +49,25 @@
             android:name=".NotesActivity"
             android:label="Notas"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".NewBetActivity"
+            android:label="@string/title_activity_new_bet"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.firebaseio.placardbolsa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EditBet"
+            android:label="@string/title_activity_edit_bet"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.firebaseio.placardbolsa.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

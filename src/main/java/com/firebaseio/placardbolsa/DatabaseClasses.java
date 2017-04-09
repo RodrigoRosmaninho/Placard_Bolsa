@@ -109,11 +109,12 @@ class Statistics {
     private Object pouch_history;
     private String pendingBetsExist;
     private String number_ofTransactions;
+    private String number_ofDates;
 
     public Statistics() {
     }
 
-    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofTransactions) {
+    public Statistics(String all_earnings, String current_share, String on_pouch, String value_spent, Object general_stats, String number_ofBets, Object pouch_history, String pendingBetsExist, String number_ofTransactions, String number_ofDates) {
         this.all_earnings = all_earnings;
         this.current_share = current_share;
         this.on_pouch = on_pouch;
@@ -123,6 +124,7 @@ class Statistics {
         this.pouch_history = pouch_history;
         this.pendingBetsExist = pendingBetsExist;
         this.number_ofTransactions = number_ofTransactions;
+        this.number_ofDates = number_ofDates;
 
     }
 
@@ -160,6 +162,10 @@ class Statistics {
 
     public String getNumber_ofTransactions() {
         return number_ofTransactions;
+    }
+
+    public String getNumber_ofDates() {
+        return number_ofDates;
     }
 }
 

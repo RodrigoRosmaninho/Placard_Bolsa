@@ -26,6 +26,7 @@ import static com.firebaseio.placardbolsa.R.drawable.pb_lois;
 import static com.firebaseio.placardbolsa.R.drawable.pb_melo;
 import static com.firebaseio.placardbolsa.R.drawable.pb_nuno;
 import static com.firebaseio.placardbolsa.R.drawable.pb_quico;
+import static com.firebaseio.placardbolsa.R.drawable.pb_salgado;
 import static com.firebaseio.placardbolsa.R.drawable.web_hi_res_512;
 
 public class IntroActivity extends AppIntro2 {
@@ -57,6 +58,13 @@ public class IntroActivity extends AppIntro2 {
             image = pb_melo;
             name = "Melo";
             ID = 4;
+        }
+
+        else if (deviceMan.toUpperCase().equals("XIAOMI")) {
+            device = "Xiaomi";
+            image = pb_salgado;
+            name = "Salgado";
+            ID = 5;
         }
 
         else if (deviceMan.toUpperCase().equals("SAMSUNG")) {

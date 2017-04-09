@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -46,7 +45,6 @@ import com.google.gson.JsonParser;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -69,37 +67,7 @@ public class Fragment1 extends Fragment {
 
     com.github.clans.fab.FloatingActionMenu fam;
 
-    public static int number_of_games;
-    int passes = 0;
-    int number;
-    int goForIt = 0;
-    int pass = 0;
-    int typeBodge = 0;
-
-    String modey;
-
-    ProgressDialog pd;
-
-    private static RecyclerView mRecyclerView;
-    private static RecyclerView.Adapter mAdapter;
-    private static RecyclerView.LayoutManager mLayoutManager;
-    public static List<gameCode> myDataset;
-
     final String[] code = new String[2];
-
-    ArrayList<String> markets = new ArrayList<String>();
-    ArrayList<String> homeOpponents = new ArrayList<String>();
-    ArrayList<String> awayOpponents = new ArrayList<String>();
-    ArrayList<String> prices = new ArrayList<String>();
-    ArrayList<String> codes = new ArrayList<String>();
-    ArrayList<String> types = new ArrayList<String>();
-    ArrayList<String> sports = new ArrayList<String>();
-    ArrayList<String> outcomes = new ArrayList<String>();
-
-    static ArrayList<View> viewArray = new ArrayList<View>();
-
-    String spent = "";
-    String overallType = "";
 
     static boolean calledAlready = false;
 
@@ -111,14 +79,6 @@ public class Fragment1 extends Fragment {
         final int uID = sp.getInt("UserID", 01);
 
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        markets.clear();
-        homeOpponents.clear();
-        awayOpponents.clear();
-        prices.clear();
-        codes.clear();
-        types.clear();
-        outcomes.clear();
 
         fam = (com.github.clans.fab.FloatingActionMenu) rootView.findViewById(R.id.fab);
 
@@ -263,124 +223,10 @@ public class Fragment1 extends Fragment {
     }
 
     public void addEntries() {
-        final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
-                .title("Adicionar Nova Aposta")
-                .customView(R.layout.dialog_addentries, true)
-                .positiveText("Adicionar Jogos")
-                .negativeText("Cancelar")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        MaterialSpinner ammount = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
-                        MaterialSpinner type = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
-
-                        int ammountInt = ammount.getSelectedIndex();
-                        int typeInt = type.getSelectedIndex();
-
-                        ArrayList<String> a = new ArrayList<String>();
-                        ArrayList<String> t = new ArrayList<String>();
-
-                        a.add("5");
-                        a.add("1");
-                        a.add("2");
-                        a.add("10");
-                        a.add("20");
-                        a.add("50");
-                        a.add("75");
-                        a.add("100");
-                        t.add("Combinada");
-                        t.add("Simples");
-                        t.add("Múltipla");
-
-                        spent = a.get(ammountInt);
-                        overallType = t.get(typeInt);
-
-                        MaterialDialog dialog2 = new MaterialDialog.Builder(getContext())
-                                .title("Adicionar Jogos")
-                                .customView(R.layout.dialog_addgames, true)
-                                .positiveText("Confirmar")
-                                .negativeText("Cancelar")
-                                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog2, @NonNull DialogAction which) {
-                                        //TODO: Check 1 x 2 + - compatibility with betType
-                                        parseInput("1");
-                                    }
-                                })
-                                .build();
-
-                        viewArray.clear();
-                        myDataset = gameCode.createEmpty();
-                        number_of_games = 1;
-
-                        mRecyclerView = (RecyclerView) dialog2.getCustomView().findViewById(R.id.games_list);
-
-                        mRecyclerView.setHasFixedSize(true);
-
-                        mLayoutManager = new LinearLayoutManager(getContext());
-                        mRecyclerView.setLayoutManager(mLayoutManager);
-
-                        mAdapter = new MyAdapter(getContext(), myDataset);
-                        mRecyclerView.setAdapter(mAdapter);
-
-                        Button add = (Button) dialog2.getCustomView().findViewById(R.id.add_button);
-                        add.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                prePreAdd(v);
-                            }
-                        });
-
-
-                        dialog2.show();
-                    }
-                })
-                .build();
-
-        final TextView n_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.n_da_aposta);
-        final TextView d_da_aposta = (TextView) dialog.getCustomView().findViewById(R.id.d_da_aposta);
-
-        DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference();
-        statsRef = statsRef.child("Statistics");
-
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
-        String formattedDate = df.format(c.getTime());
-        final String date = formattedDate.split("_")[1];
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Statistics stats_class = dataSnapshot.getValue(Statistics.class);
-
-                String bet_number_string = stats_class.getNumber_ofBets();
-                int bet_number_int = Integer.parseInt(bet_number_string) + 1;
-                String bet_number_result = "Aposta " + bet_number_int;
-
-                n_da_aposta.setText(bet_number_result);
-                d_da_aposta.setText(date);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        };
-        statsRef.addListenerForSingleValueEvent(postListener);
-
-        MaterialSpinner typeSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.type_spinner);
-        View spinner_tipo = (View) dialog.getCustomView().findViewById(R.id.type_spinner);
-        spinner_tipo.isInEditMode();
-        typeSpinner.setItems("Combinada", "Simples", "Múltipla");
-
-        MaterialSpinner ammountSpinner = (MaterialSpinner) dialog.getCustomView().findViewById(R.id.ammount_spinner);
-        ammountSpinner.setItems("5€", "1€", "2€", "10€", "20€", "50€", "75€", "100€");
-
-        dialog.show();
-        fam.toggle(true);
-
+        Intent intent = new Intent(rootView.getContext(), NewBetActivity.class);
+        startActivity(intent);
     }
 
-    //TODO: Change
     public void addTransactions() {
         final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
                 .title("Data da Transação")
@@ -422,19 +268,33 @@ public class Fragment1 extends Fragment {
                                                 MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
 
                                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Transactions").child(index);
-                                                ref.child("bet_index").setValue(index);
-                                                ref.child("game_number").setValue(description.getText().toString());
-                                                ref.child("projected_winnings").setValue(value.getText().toString());
-                                                ref.child("date").setValue(date);
+                                                String bet_index = index;
+                                                String game_number = description.getText().toString();
+                                                String projected_winnings = value.getText().toString();
+                                                String date2 = date;
+                                                String bet_price;
+
+                                                statsRef.child("number_ofTransactions").setValue(String.valueOf(Integer.parseInt(stats_class.getNumber_ofTransactions()) + 1));
+
+                                                double pouch = Double.parseDouble(stats_class.getOn_pouch());
 
                                                 if(type.getSelectedIndex() == 0){
-                                                    ref.child("bet_price").setValue("1");
+                                                    bet_price = "1";
+                                                    statsRef.child("on_pouch").setValue(String.valueOf(pouch + Double.parseDouble(value.getText().toString())));
+                                                    statsRef.child("current_share").setValue(String.format(Locale.ENGLISH, "%.2f", (pouch + Double.parseDouble(value.getText().toString())) / 6.0));
+                                                    statsRef.child("all_earnings").setValue(String.valueOf(Double.parseDouble(stats_class.getAll_earnings()) + Double.parseDouble(value.getText().toString())));
+                                                    addToDatesNode(date);
                                                 }
                                                 else {
-                                                    ref.child("bet_price").setValue("0");
+                                                    bet_price = "0";
+                                                    statsRef.child("on_pouch").setValue(String.valueOf(pouch - Double.parseDouble(value.getText().toString())));
+                                                    statsRef.child("current_share").setValue(String.format(Locale.ENGLISH, "%.2f", (pouch - Double.parseDouble(value.getText().toString())) / 6.0));
+                                                    statsRef.child("value_spent").setValue(String.valueOf(Double.parseDouble(stats_class.getValue_spent()) + Double.parseDouble(value.getText().toString())));
+                                                    addToDatesNode(date);
                                                 }
 
-                                                statsRef.child("number_ofTransactions").setValue(String.valueOf(Integer.parseInt(stats_class.getNumber_ofTransactions().toString()) + 1));
+                                                Bet bet = new Bet(bet_index, date2, bet_price, game_number, projected_winnings, null, null, null);
+                                                ref.setValue(bet);
 
                                             }
 
@@ -467,270 +327,117 @@ public class Fragment1 extends Fragment {
 
     }
 
-    public void parserJSON(JsonElement root) throws JSONException {
+    public static void addToDatesNode(final String date) {
+        final DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference().child("Statistics");
+        final DatabaseReference datesRef = FirebaseDatabase.getInstance().getReference().child("Dates");
 
-        JsonObject mainObject = root.getAsJsonObject();
+        ValueEventListener postListener5 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final Statistics stats_class = dataSnapshot.getValue(Statistics.class);
 
-        if (mainObject.has("Error")) {
-            MaterialDialog dialog = new MaterialDialog.Builder(getContext())
-                    .title("Erro!")
-                    .customView(R.layout.dialog_fourzerofour, true)
-                    .positiveText("OK")
-                    .onPositive(new MaterialDialog.SingleButtonCallback() {
-                        @Override
-                        public void onClick(@NonNull final MaterialDialog dialog2, @NonNull DialogAction which) {
-                            // Dismiss
+                final String index2 = stats_class.getNumber_ofDates();
+
+                final String prev_index = String.valueOf(Integer.parseInt(index2) - 1);
+                final double new_on_pouch = Double.parseDouble(stats_class.getOn_pouch());
+
+                final DatabaseReference prev_datesRef = datesRef.child("0" + prev_index);
+
+                ValueEventListener postListener5 = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Dates dates_class = dataSnapshot.getValue(Dates.class);
+
+                        String index = index2;
+
+                        if(dates_class.getEvent_date().equals(date)) {
+
+                            final String index3 = String.valueOf(Integer.parseInt(index) - 1);
+
+                            final DatabaseReference prev_datesRef = datesRef.child("0" + String.valueOf(Integer.parseInt(index3) - 1));
+
+                            ValueEventListener postListener5 = new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    Dates dates_class = dataSnapshot.getValue(Dates.class);
+
+                                    DatabaseReference datesRef2 = datesRef.child("0" + index3);
+
+                                    String event_date = date;
+
+                                    double pouch = Double.parseDouble(dates_class.getPouch_content());
+                                    double res = new_on_pouch - pouch;
+
+                                    String pouch_content = String.valueOf(new_on_pouch);
+                                    String result;
+                                    String variation;
+
+                                    if (res > 0) {
+                                        result = "1";
+                                        variation = String.valueOf(res);
+                                    } else {
+                                        result = "0";
+                                        variation = String.valueOf(Math.abs(res));
+                                    }
+
+                                    Dates dates = new Dates(event_date, pouch_content, result, variation);
+                                    datesRef2.setValue(dates);
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            };
+                            prev_datesRef.addListenerForSingleValueEvent(postListener5);
+
                         }
-                    })
-                    .build();
 
-            TextView codeView = (TextView) dialog.getCustomView().findViewById(R.id.textView11);
+                        else {
 
-            codeView.setText(mainObject.get("eID").getAsString());
+                            DatabaseReference datesRef2 = datesRef.child("0" + index);
 
-            pd.dismiss();
-            pass = 0;
-            passes = 0;
-            goForIt = 0;
-            typeBodge = 0;
-            codes.clear();
-            types.clear();
-            outcomes.clear();
-            dialog.show();
-        }
+                            statsRef.child("number_ofDates").setValue(String.valueOf(Integer.parseInt(index) + 1));
 
-        else {
+                            String event_date = date;
 
-            JsonArray marketsArray = mainObject.get("markets").getAsJsonArray();
+                            double pouch = Double.parseDouble(dates_class.getPouch_content());
+                            double res = new_on_pouch - pouch;
 
-            int indexToUseOne = 0;
+                            String pouch_content = String.valueOf(new_on_pouch);
+                            String result;
+                            String variation;
 
-            if (types.get(typeBodge).equals("INT")) {
-                indexToUseOne = 1;
-            } else if (types.get(typeBodge).equals("DV")) {
-                indexToUseOne = 2;
-            } else if (types.get(typeBodge).equals("+/-")) {
-                indexToUseOne = 3;
+                            if (res > 0) {
+                                result = "1";
+                                variation = String.valueOf(res);
+                            } else {
+                                result = "0";
+                                variation = String.valueOf(Math.abs(res));
+                            }
+
+                            Dates dates = new Dates(event_date, pouch_content, result, variation);
+                            datesRef2.setValue(dates);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                };
+                prev_datesRef.addListenerForSingleValueEvent(postListener5);
+
             }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-            JsonObject marketsObject = marketsArray.get(indexToUseOne).getAsJsonObject();
-            JsonArray outcomesArray = marketsObject.get("outcomes").getAsJsonArray();
-
-            String homeOpponent = mainObject.get("homeOpponentDescription").getAsString();
-            Log.d("DEBUG", "ALLOALLO: " + homeOpponent);
-            String awayOpponent = mainObject.get("awayOpponentDescription").getAsString();
-
-            String sport = mainObject.get("sportCode").getAsString();
-
-            int indexToUseTwo = 0;
-
-            if (outcomes.get(typeBodge).equals("x")) {
-                indexToUseTwo = 1;
-            } else if (outcomes.get(typeBodge).equals("2")) {
-                indexToUseTwo = 2;
-            } else if (outcomes.get(typeBodge).equals("-")) {
-                indexToUseTwo = 1;
             }
-
-            JsonObject outcomeObject = outcomesArray.get(indexToUseTwo).getAsJsonObject();
-            typeBodge = typeBodge + 1;
-            JsonObject outcomePriceObj = outcomeObject.get("price").getAsJsonObject();
-            String price = outcomePriceObj.get("decimalPrice").getAsString();
-
-            markets.add(marketsObject.toString());
-            homeOpponents.add(homeOpponent);
-            awayOpponents.add(awayOpponent);
-            prices.add(price);
-            sports.add(sport);
-
-            goForIt = goForIt + 1;
-            pd.setMessage("A obter dados dos servidores do Placard...    (" + goForIt + "/" + (number + 1) + ")");
-
-            Log.d("DEBUG", "HERE: " + homeOpponents.toString());
-            if (goForIt == number + 1) {
-                Log.d("DEBUG", "Wait is over");
-                showConfirmActivity(modey);
-            }
-
-        }
-
-    }
-
-    public void showConfirmActivity(String mode) {
-        Log.d("DEBUG", "ALLO: " + outcomes.toString());
-        Intent intent = new Intent(getContext(), ConfirmActivity.class);
-        Bundle b = new Bundle();
-        b.putString("mode", mode);
-        b.putStringArrayList("markets", markets);
-        b.putStringArrayList("homeOpponents", homeOpponents);
-        b.putStringArrayList("awayOpponents", awayOpponents);
-        b.putStringArrayList("prices", prices);
-        b.putStringArrayList("codes", codes);
-        b.putStringArrayList("types", types);
-        b.putStringArrayList("outcomes", outcomes);
-        b.putString("spent", spent);
-        b.putString("overallType", overallType);
-        b.putStringArray("index", code);
-        b.putStringArrayList("sports", sports);
-        intent.putExtras(b);
-
-        pd.dismiss();
-        pass = 0;
-        goForIt = 0;
-        startActivity(intent);
-
-        markets.clear();
-        homeOpponents.clear();
-        awayOpponents.clear();
-        prices.clear();
-        codes.clear();
-        types.clear();
-        outcomes.clear();
-        sports.clear();
-    }
-
-    public void parseInput(String mode) {
-        pass = 0;
-        passes = 0;
-        goForIt = 0;
-        typeBodge = 0;
-        number = MyAdapter.getPosition();
-        modey = mode;
-
-        while (passes != number + 1) {
-            View v = viewArray.get(passes);
-            Log.d("DEBUG", "Child number: " + mRecyclerView.getAdapter().getItemCount());
-            Log.d("DEBUG", "passes: " + passes);
-            EditText placardCode = (EditText) v.findViewById(R.id.placardCode);
-            MaterialSpinner type = (MaterialSpinner) v.findViewById(R.id.betType_spinner);
-            MaterialSpinner outcome = (MaterialSpinner) v.findViewById(R.id.outcome_spinner);
-
-            int tipoBodge = type.getSelectedIndex();
-            int outcomeBodge = outcome.getSelectedIndex();
-
-            ArrayList<String> t = new ArrayList<String>();
-            ArrayList<String> o = new ArrayList<String>();
-
-            t.add("1x2 TR");
-            t.add("INT");
-            t.add("DV");
-            t.add("+/-");
-            o.add("1");
-            o.add("x");
-            o.add("2");
-            o.add("+");
-            o.add("-");
-
-            String tt = t.get(tipoBodge);
-            String oo = o.get(outcomeBodge);
-
-            t.clear();
-            o.clear();
-
-            String código = placardCode.getText().toString();
-            Log.d("DEBUG", "Código: " + código + ", Posição: " + number);
-
-            String api_url = "https://runkit.io/rodrigorosmaninho/pb-placard-api/branches/master/" + código;
-            codes.add(código);
-
-            types.add(tt);
-            outcomes.add(oo);
-            Log.d("DEBUG", "tt: " + types.toString() + " oo: " + outcomes.toString());
-
-            TestAsyncTask testAsyncTask = new TestAsyncTask(api_url);
-            testAsyncTask.execute();
-
-            Log.d("DEBUG", "Executed loop");
-
-            passes = passes + 1;
-        }
-
-    }
-
-    public void prePreAdd(View v) {
-        MyAdapter.preAdd(v);
-    }
-
-    public static void addLineToList(View v, int pos, Context context) {
-        if (number_of_games < 8) {
-            myDataset.add(pos + 1, new gameCode("", "", ""));
-            mAdapter.notifyItemInserted(pos + 1);
-
-            Log.d("DEBUG", myDataset.toString());
-
-            number_of_games = number_of_games + 1;
-            mRecyclerView.invalidate();
-        } else {
-            Snackbar.make(v, "Ja tens 8 jogos listados!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-        }
-    }
-
-    public class TestAsyncTask extends AsyncTask<Void, Void, JsonElement> {
-        private String mUrl;
-
-        public TestAsyncTask(String url) {
-            mUrl = url;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pass = pass + 1;
-
-            if (pass == 1) {
-                pd = new ProgressDialog(getContext());
-                pd.setMessage("A obter dados dos servidores do Placard...    (1/" + (number + 1) + ")");
-            }
-
-            pd.setCancelable(false);
-            pd.show();
-        }
-
-        @Override
-        protected JsonElement doInBackground(Void... params) {
-            Log.d("DEBUG", "doInBackground started");
-            // Connect to the URL using java's native library
-            URL url = null;
-            try {
-                url = new URL(mUrl);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            HttpURLConnection request = null;
-            try {
-                request = (HttpURLConnection) url.openConnection();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                request.connect();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Convert to a JSON object to print data
-            JsonParser jp = new JsonParser(); //from gson
-            JsonElement root = null;
-            try {
-                root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Log.d("DEBUG", "COME_SEE_THIS: " + root.getAsJsonObject().toString());
-            return root;
-        }
-
-        @Override
-        protected void onPostExecute(JsonElement root) {
-            super.onPostExecute(root);
-            try {
-                parserJSON(root);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+        };
+        statsRef.addListenerForSingleValueEvent(postListener5);
     }
 
     public static class betHolder extends RecyclerView.ViewHolder {
@@ -855,7 +562,7 @@ public class Fragment1 extends Fragment {
             field.setText(number + jogos);
         }
 
-        public void callDialog(final Context ctx, final String descrip, final String res, final String val, final String index) {
+        public void callDialog(final Context ctx, final String descrip, final String res, final String val, final String index, final String date) {
             RelativeLayout view = (RelativeLayout) mView.findViewById(R.id.individual_bet);
             TextView bet_type = (TextView) mView.findViewById(R.id.bet_type);
             TextView bet_game_number = (TextView) mView.findViewById(R.id.bet_game_number);
@@ -886,21 +593,67 @@ public class Fragment1 extends Fragment {
                                             .negativeText("Cancelar")
                                             .onPositive(new MaterialDialog.SingleButtonCallback() {
                                                 @Override
-                                                public void onClick(@NonNull MaterialDialog dialog2, @NonNull DialogAction which) {
-                                                    EditText description = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta);
-                                                    EditText value = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta2);
-                                                    MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
+                                                public void onClick(@NonNull final MaterialDialog dialog2, @NonNull DialogAction which) {
 
-                                                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Transactions").child(index);
-                                                    ref.child("game_number").setValue(description.getText().toString());
-                                                    ref.child("projected_winnings").setValue(value.getText().toString());
+                                                    final DatabaseReference statsRef = FirebaseDatabase.getInstance().getReference().child("Statistics");
 
-                                                    if(type.getSelectedIndex() == 0){
-                                                        ref.child("bet_price").setValue("1");
-                                                    }
-                                                    else {
-                                                        ref.child("bet_price").setValue("0");
-                                                    }
+                                                    ValueEventListener postListener5 = new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            Statistics stats_class = dataSnapshot.getValue(Statistics.class);
+
+                                                            EditText description = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta);
+                                                            EditText value = (EditText) dialog2.getCustomView().findViewById(R.id.n_da_aposta2);
+                                                            MaterialSpinner type = (MaterialSpinner) dialog2.getCustomView().findViewById(R.id.type_spinner);
+
+                                                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Transactions").child(index);
+                                                            String bet_index = index;
+                                                            String game_number = description.getText().toString();
+                                                            String projected_winnings = value.getText().toString();
+                                                            String date2 = date;
+                                                            String bet_price;
+
+                                                            double pouch;
+                                                            double all_earn = 0.0;
+                                                            double val_spent = 0.0;
+
+                                                            // Revert changes to Statistic Variables
+                                                            if(res.equals("1")) {
+                                                                pouch = Double.parseDouble(stats_class.getOn_pouch()) - Double.parseDouble(val);
+                                                                all_earn = Double.parseDouble(stats_class.getAll_earnings()) - Double.parseDouble(val);
+                                                            }
+                                                            else {
+                                                                pouch = Double.parseDouble(stats_class.getOn_pouch()) + Double.parseDouble(val);
+                                                                val_spent = Double.parseDouble(stats_class.getValue_spent()) - Double.parseDouble(val);
+                                                            }
+
+                                                            if(type.getSelectedIndex() == 0){
+                                                                bet_price = "1";
+                                                                statsRef.child("on_pouch").setValue(String.valueOf(pouch + Double.parseDouble(value.getText().toString())));
+                                                                statsRef.child("current_share").setValue(String.format(Locale.ENGLISH, "%.2f", (pouch + Double.parseDouble(value.getText().toString())) / 6.0));
+                                                                statsRef.child("all_earnings").setValue(String.valueOf(all_earn + Double.parseDouble(value.getText().toString())));
+                                                                addToDatesNode(date);
+                                                            }
+                                                            else {
+                                                                bet_price = "0";
+                                                                statsRef.child("on_pouch").setValue(String.valueOf(pouch - Double.parseDouble(value.getText().toString())));
+                                                                statsRef.child("current_share").setValue(String.format(Locale.ENGLISH, "%.2f", (pouch - Double.parseDouble(value.getText().toString())) / 6.0));
+                                                                statsRef.child("value_spent").setValue(String.valueOf(val_spent + Double.parseDouble(value.getText().toString())));
+                                                                addToDatesNode(date);
+                                                            }
+
+                                                            Bet bet = new Bet(bet_index, date2, bet_price, game_number, projected_winnings, null, null, null);
+                                                            ref.setValue(bet);
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                        }
+                                                    };
+                                                    statsRef.addListenerForSingleValueEvent(postListener5);
+
                                                 }
                                             })
                                             .build();
@@ -957,7 +710,7 @@ public class Fragment1 extends Fragment {
                 @Override
                 public void populateViewHolder(betHolder betViewHolder, Bet specificBet, int position) {
                     if(specificBet.getBet_index().contains("t")) {
-                        betViewHolder.callDialog(ctx, specificBet.getGame_number(), specificBet.getBet_price(), specificBet.getProjected_winnings(), specificBet.getBet_index());
+                        betViewHolder.callDialog(ctx, specificBet.getGame_number(), specificBet.getBet_price(), specificBet.getProjected_winnings(), specificBet.getBet_index(), specificBet.getDate());
                         betViewHolder.setIndex(specificBet.getBet_index());
                         if(specificBet.getBet_price().equals("1")){
                             betViewHolder.setBalance(specificBet.getProjected_winnings(), "1", "0");
@@ -978,83 +731,6 @@ public class Fragment1 extends Fragment {
             games_view.setAdapter(mAdapter);
         }
 
-    }
-
-
-    public static class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-        private List<gameCode> myDataset;
-        private static Context cont;
-        gameCode gameCode;
-        static int pos;
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public EditText placardCode;
-            public MaterialSpinner outcomeSpinner;
-            public MaterialSpinner betTypeSpinner;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-
-                placardCode = (EditText) itemView.findViewById(R.id.placardCode);
-                outcomeSpinner = (MaterialSpinner) itemView.findViewById(R.id.outcome_spinner);
-                betTypeSpinner = (MaterialSpinner) itemView.findViewById(R.id.betType_spinner);
-            }
-        }
-
-        // Provide a suitable constructor (depends on the kind of dataset)
-        public MyAdapter(Context context, List<gameCode> game_code) {
-            myDataset = game_code;
-            cont = context;
-
-        }
-
-        // Create new views (invoked by the layout manager)
-        @Override
-        public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                       int viewType) {
-
-            Context context = parent.getContext();
-            LayoutInflater inflater = LayoutInflater.from(context);
-
-            // Inflate the custom layout
-            View gamesView = inflater.inflate(R.layout.populate_newgames, parent, false);
-
-            // Return a new holder instance
-            ViewHolder viewHolder = new ViewHolder(gamesView);
-            return viewHolder;
-        }
-
-        // Replace the contents of a view (invoked by the layout manager)
-        @Override
-        public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int position) {
-            pos = position;
-            gameCode = myDataset.get(position);
-
-            viewArray.add(viewHolder.itemView);
-
-            EditText placardCode = (EditText) viewHolder.placardCode;
-            MaterialSpinner outcome_spinner = (MaterialSpinner) viewHolder.outcomeSpinner;
-            MaterialSpinner betType_spinner = (MaterialSpinner) viewHolder.betTypeSpinner;
-
-            outcome_spinner.setItems("1", "x", "2", "+", "-");
-            betType_spinner.setItems("TR", "INT", "DV", "+/-");
-
-        }
-
-        public static void preAdd(View v) {
-            addLineToList(v, pos, cont);
-        }
-
-        public static int getPosition() {
-            return pos;
-        }
-
-
-        // Return the size of your dataset (invoked by the layout manager)
-        @Override
-        public int getItemCount() {
-            return myDataset.size();
-        }
     }
 
     static String getPortugueseDay(int day) {

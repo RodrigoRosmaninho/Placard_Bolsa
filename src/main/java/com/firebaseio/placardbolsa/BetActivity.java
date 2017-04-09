@@ -51,8 +51,6 @@ public class BetActivity  extends AppCompatActivity {
         value = "";
 
         if(b != null) {
-            //TODO: Make snackbar "Critical Error"
-
             value = b.getString("index");
             mode = b.getString("mode");
         }
@@ -67,6 +65,21 @@ public class BetActivity  extends AppCompatActivity {
         if (index.charAt(0)=='0') {
             index = index.substring(1);
         }
+
+        final String index2 = value;
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BetActivity.this, EditBet.class);
+                Bundle b = new Bundle();
+                b.putString("mode", mode);
+                b.putString("index", index2);
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
 
         final TextView indexTV = (TextView) findViewById(R.id.bet_number);
         indexTV.setText(index);
@@ -168,38 +181,6 @@ public class BetActivity  extends AppCompatActivity {
         };
         games_view.setAdapter(mAdapter);
 
-    }
-
-    public void editEntries() {
-        final MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title("Alterar Resultados")
-                .customView(R.layout.dialog_editentries, true)
-                .positiveText("Confirmar")
-                .negativeText("Cancelar")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        checkEdit();
-                    }
-                })
-                .build();
-
-        edit_view = (RecyclerView) dialog.getCustomView().findViewById(R.id.edit_view);
-
-        LinearLayoutManager game_layoutManager = new LinearLayoutManager(this);
-        edit_view.setLayoutManager(game_layoutManager);
-
-        mAdapter = new FirebaseRecyclerAdapter<Game, gameHolder>(Game.class, R.layout.populate_this_detail1, gameHolder.class, betRef.child("games")) {
-            @Override
-            public void populateViewHolder(gameHolder gameViewHolder, Game specificGame, int position) {
-                gameViewHolder.setOutcome(specificGame.getOutcome_description());
-                gameViewHolder.setCode(specificGame.getEvent_index());
-                gameViewHolder.setRadio(specificGame.getGame_result());
-            }
-        };
-        edit_view.setAdapter(mAdapter);
-
-        dialog.show();
     }
 
     public void checkEdit() {
@@ -350,8 +331,6 @@ public class BetActivity  extends AppCompatActivity {
                         // TODO: Fix all_earnings!
                         // betRef3.child("all_earnings").setValue(String.valueOf(Float.parseFloat(earn[0]) + (Float.parseFloat(projected[0]) - Float.parseFloat(price[0]))));
                         betRef3.child("current_share").setValue(String.format(Locale.ENGLISH, "%.2f", op / 6));
-                        betRef3.child("pouch_history").child(value).child("event_date").setValue(date[0].split("_")[1]);
-                        betRef3.child("pouch_history").child(value).child("pouch_content").setValue(String.format(Locale.ENGLISH, "%.2f", op));
                     }
 
                     else {
@@ -359,8 +338,6 @@ public class BetActivity  extends AppCompatActivity {
                         betRef3.child("on_pouch").setValue(String.format(Locale.ENGLISH, "%.2f", op));
                         betRef3.child("value_spent").setValue(String.format(Locale.ENGLISH, "%.2f", (Float.parseFloat(inv[0])) + Float.parseFloat(price[0])));
                         betRef3.child("current_share").setValue(String.format(Locale.ENGLISH, "%.2f", op / 6));
-                        betRef3.child("pouch_history").child(value).child("event_date").setValue(date[0].split("_")[1]);
-                        betRef3.child("pouch_history").child(value).child("pouch_content").setValue(String.format(Locale.ENGLISH, "%.2f", op));
                     }
 
 
@@ -372,104 +349,6 @@ public class BetActivity  extends AppCompatActivity {
                 }
             };
             betRef2.child(value).addListenerForSingleValueEvent(postListener10);
-
-            //final DatabaseReference betRef11 = betRef3.child("vote_stats");
-
-            final String[] nuno = new String[1];
-            final String[] chico = new String[1];
-            final String[] lois = new String[1];
-            final String[] melo = new String[1];
-            final String[] salgado = new String[1];
-            final String[] lameiro = new String[1];
-
-            ValueEventListener postListener11 = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    /**voteStats vS = dataSnapshot.getValue(voteStats.class);
-
-                    nuno[0] = vS.getU01();
-                    chico[0] = vS.getU02();
-                    lois[0] = vS.getU03();
-                    melo[0] = vS.getU04();
-                    salgado[0] = vS.getU05();
-                    lameiro[0] = vS.getU06();**/
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            };
-            //betRef11.addListenerForSingleValueEvent(postListener11);
-
-
-
-            ValueEventListener postListener12 = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    betVotes bV = dataSnapshot.getValue(betVotes.class);
-                    String nuno2 = nuno[0];
-                    String chico2 = chico[0];
-                    String lois2 = lois[0];
-                    String melo2 = melo[0];
-                    String salgado2 = salgado[0];
-                    String lameiro2 = lameiro[0];
-
-
-                    if (failed2 == 0) {
-
-                        if(bV.getU01().equals("1")) {
-                            nuno2 = String.valueOf(Integer.parseInt(nuno[0]) + 1);
-                        }
-                        if(bV.getU02().equals("1")) {
-                            chico2 = String.valueOf(Integer.parseInt(chico[0]) + 1);
-                        }
-                        if(bV.getU03().equals("1")) {
-                            lois2 = String.valueOf(Integer.parseInt(lois[0]) + 1);
-                        }
-                        if(bV.getU04().equals("1")) {
-                            melo2 = String.valueOf(Integer.parseInt(melo[0]) + 1);
-                        }
-                        if(bV.getU05().equals("1")) {
-                            salgado2 = String.valueOf(Integer.parseInt(salgado[0]) + 1);
-                        }
-                        if(bV.getU06().equals("1")) {
-                            lameiro2 = String.valueOf(Integer.parseInt(lameiro[0]) + 1);
-                        }
-                    }
-                    else {
-                        if(bV.getU01().equals("0")) {
-                            nuno2 = String.valueOf(Integer.parseInt(nuno[0]) + 1);
-                        }
-                        if(bV.getU02().equals("0")) {
-                            chico2 = String.valueOf(Integer.parseInt(chico[0]) + 1);
-                        }
-                        if(bV.getU03().equals("0")) {
-                            lois2 = String.valueOf(Integer.parseInt(lois[0]) + 1);
-                        }
-                        if(bV.getU04().equals("0")) {
-                            melo2 = String.valueOf(Integer.parseInt(melo[0]) + 1);
-                        }
-                        if(bV.getU05().equals("0")) {
-                            salgado2 = String.valueOf(Integer.parseInt(salgado[0]) + 1);
-                        }
-                        if(bV.getU06().equals("0")) {
-                            lameiro2 = String.valueOf(Integer.parseInt(lameiro[0]) + 1);
-                        }
-
-                    }
-
-                    //voteStats vS1 = new voteStats(nuno2, chico2, lois2, melo2, salgado2, lameiro2);
-                    //betRef11.setValue(vS1);
-                    betRef.removeValue();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            };
-            betRef.child("votes").addListenerForSingleValueEvent(postListener12);
 
             new Handler().postDelayed(new Runnable(){
                 @Override

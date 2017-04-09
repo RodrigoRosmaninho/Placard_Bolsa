@@ -44,12 +44,12 @@
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxhdpi\\ic_menu_overflow_card.png"
     },
     {
-        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_expand_more_black_24dp.png",
-        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxhdpi\\ic_expand_more_black_24dp.png"
-    },
-    {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\card_drag.png",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-extra-dragdrop\\2.1.0\\res\\drawable-xxhdpi\\card_drag.png"
+    },
+    {
+        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_expand_more_black_24dp.png",
+        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-core\\2.1.0\\res\\drawable-xxhdpi\\ic_expand_more_black_24dp.png"
     },
     {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_more_vert_black_18dp.png",

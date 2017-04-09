@@ -47,12 +47,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.firebaseio.placardbolsa.ConfirmActivity"
-            android:colorPrimaryDark="#880000"
-            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="com.firebaseio.placardbolsa.IntroActivity"
             android:colorPrimaryDark="#880000"
             android:screenOrientation="portrait" />
@@ -70,6 +64,24 @@
             android:label="Notas"
             android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.firebaseio.placardbolsa.NewBetActivity"
+            android:label="@string/title_activity_new_bet"
+            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.firebaseio.placardbolsa.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.firebaseio.placardbolsa.EditBet"
+            android:label="@string/title_activity_edit_bet"
+            android:parentActivityName="com.firebaseio.placardbolsa.MainActivity"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.firebaseio.placardbolsa.MainActivity" />
+        </activity>
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"

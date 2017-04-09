@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/com_facebook_button_border_color_focused">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="52dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:paddingBottom="1dp"
+            android:paddingTop="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/metadata"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp">
+
+                <TextView
+                    android:id="@+id/bet_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="Aposta 52"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/card_section_title_color"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="5sp" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21sp"
+                    android:text="Data"
+                    android:paddingStart="10sp"
+                    android:textColor="@color/card_section_title_color"
+                    android:paddingTop="20dp"
+                    android:layout_below="@+id/bet_number"
+                    android:layout_alignParentStart="true"
+                    android:textColorHighlight="@color/card_section_title_color" />
+
+                <TextView
+                    android:text="07-04-2017"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="23dp"
+                    android:id="@+id/dateView"
+                    android:textSize="19sp"
+                    android:textColor="@color/bodyTextColor"
+                    android:layout_alignBottom="@+id/textView17"
+                    android:layout_toEndOf="@+id/textView17" />
+
+                <Button
+                    android:text="Escolher Data"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pickDate"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_alignBaseline="@+id/textView17"
+                    android:layout_alignBottom="@+id/textView17"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10sp" />
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:id="@+id/type_spinner"
+                    android:textColor="#000000"
+                    android:layout_width="140dp"
+                    android:layout_below="@+id/pickDate"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10sp" />
+
+                <TextView
+                    android:text="Tipo de Aposta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView20"
+                    android:textColor="@color/card_section_title_color"
+                    android:textSize="21sp"
+                    android:layout_alignBaseline="@+id/type_spinner"
+                    android:layout_alignBottom="@+id/type_spinner"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10sp" />
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:id="@+id/ammount_spinner"
+                    android:textColor="#000000"
+                    android:layout_width="140dp"
+                    android:layout_below="@+id/type_spinner"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10sp" />
+
+                <TextView
+                    android:text="Montante Base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView21"
+                    android:textColor="@color/card_section_title_color"
+                    android:textSize="21sp"
+                    android:layout_alignBaseline="@+id/ammount_spinner"
+                    android:layout_alignBottom="@+id/ammount_spinner"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:textSize="23sp"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="97dp"
+                android:layout_width="50dp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/games_view2"
+                android:layout_below="@+id/metadata"
+                android:layout_alignParentStart="true">
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/more"
+                android:layout_below="@+id/games_view2"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/card_background"
+                android:paddingBottom="15dp"
+                android:elevation="2dp">
+
+                <Button
+                    android:text="Adicionar Jogo"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pickDate"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center_vertical|center_horizontal|center"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_alignBaseline="@+id/textView17"
+                    android:layout_alignBottom="@+id/textView17"
+                    android:layout_alignParentEnd="false"
+                    android:layout_marginEnd="10sp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="prePreAdd" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -146,14 +146,14 @@ public class Fragment2 extends Fragment {
 
                     String days = "0";
 
-                    try {
-                        Date date1 = myFormat.parse(inputString1);
-                        Date date2 = myFormat.parse(inputString2);
-                        long diff = date2.getTime() - date1.getTime();
-                        days = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            Date date1 = myFormat.parse(inputString1);
+                            Date date2 = myFormat.parse(inputString2);
+                            long diff = date2.getTime() - date1.getTime();
+                            days = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
 
                     String stupidFix = pouchHistory.getPouch_content();
 

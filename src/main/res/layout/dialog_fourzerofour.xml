@@ -17,7 +17,8 @@
             android:id="@+id/textView10"
             android:textSize="21sp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/card_section_title_color" />
 
         <TextView
             android:text="Este código não existe presentemente nos servidores do Placard! Verifica."
@@ -28,7 +29,8 @@
             android:layout_below="@+id/textView10"
             android:layout_alignParentStart="true"
             android:layout_marginTop="10dp"
-            android:gravity="left" />
+            android:gravity="left"
+            android:textColor="@color/card_section_title_color" />
 
         <TextView
             android:text="117"
@@ -38,7 +40,8 @@
             android:layout_toEndOf="@+id/textView10"
             android:id="@+id/textView11"
             android:textSize="21sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark" />
     </RelativeLayout>
 
 </LinearLayout>
