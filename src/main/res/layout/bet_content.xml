@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/oddsTextView"
                 android:textSize="14sp"
-                android:layout_marginEnd="21dp"
+                android:layout_marginEnd="25dp"
                 android:layout_below="@+id/bet_textOdds"
                 android:layout_alignEnd="@+id/bet_textOdds" />
 
@@ -248,9 +248,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/spentTextView"
                 android:textSize="14sp"
+                android:paddingStart="32sp"
                 android:layout_below="@+id/bet_textWinnings"
-                android:layout_alignStart="@+id/balanceTextView"
-                android:layout_marginStart="21dp" />
+                android:layout_alignStart="@+id/bet_textSpent" />
         </RelativeLayout>
 
         </RelativeLayout>

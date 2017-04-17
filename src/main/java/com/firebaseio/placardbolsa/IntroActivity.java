@@ -60,13 +60,6 @@ public class IntroActivity extends AppIntro2 {
             ID = 4;
         }
 
-        else if (deviceMan.toUpperCase().equals("XIAOMI")) {
-            device = "Xiaomi";
-            image = pb_salgado;
-            name = "Salgado";
-            ID = 5;
-        }
-
         else if (deviceMan.toUpperCase().equals("SAMSUNG")) {
             if (deviceModel.equals("SM-G900F")) {
                 device = "Samsung Galaxy S5";
@@ -94,6 +87,13 @@ public class IntroActivity extends AppIntro2 {
             image = pb_quico;
             name = "Quico";
             ID = 7;
+        }
+
+        else {
+            device = "Xiaomi";
+            image = pb_salgado;
+            name = "Salgado";
+            ID = 5;
         }
 
         SharedPreferences sp = this.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);

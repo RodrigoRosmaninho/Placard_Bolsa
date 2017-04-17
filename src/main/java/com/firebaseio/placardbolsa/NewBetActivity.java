@@ -399,6 +399,9 @@ public class NewBetActivity extends AppCompatActivity {
                         break;
                 }
             }
+            else {
+                strToUse = outDes.getText().toString();
+            }
 
             Game game = new Game(placardCode.getText().toString(), home.getText().toString(), away.getText().toString(), sports[sport.getSelectedIndex()], "3", strToUse, outcomes[outcome.getSelectedIndex()], String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(odd.getText().toString())), "0", types2[type.getSelectedIndex()]);
             games.add(game);

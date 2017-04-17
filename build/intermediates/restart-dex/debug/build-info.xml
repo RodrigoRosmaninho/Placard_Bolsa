@@ -5,22 +5,22 @@
     density="420dpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="943473461506787"
+    timestamp="27716916646502"
     token="-1795569177905282926"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="833" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="42" />
+        duration="0" />
     <task
         name="verifier"
-        duration="7" />
+        duration="0" />
 
     <artifact
         location="F:\Android\Projects\PlacardBolsa\app\build\outputs\apk\app-debug.apk"

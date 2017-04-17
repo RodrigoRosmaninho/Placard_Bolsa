@@ -436,10 +436,6 @@
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.github.gabrielemariotti.cards\\cardslib-cards\\2.1.0\\res\\layout\\native_material_topcolored_card.xml"
     },
     {
-        "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\populate_this_detail1.xml",
-        "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\src\\main\\res\\layout\\populate_this_detail1.xml"
-    },
-    {
         "merged": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
         "source": "F:\\Android\\Projects\\PlacardBolsa\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.3.0\\res\\layout\\design_navigation_item_separator.xml"
     },

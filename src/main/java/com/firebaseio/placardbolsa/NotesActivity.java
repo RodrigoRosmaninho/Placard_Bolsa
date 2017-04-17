@@ -46,6 +46,8 @@ public class NotesActivity extends AppCompatActivity {
         final SharedPreferences sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         final int uID = sp.getInt("UserID", 01);
 
+        final String[] bodge = new String[1];
+
         final SharedPreferences.Editor editor = sp.edit();
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -54,6 +56,7 @@ public class NotesActivity extends AppCompatActivity {
                 Notes notes_class = dataSnapshot.getValue(Notes.class);
 
                 ET.setText(notes_class.getText());
+                bodge[0] = notes_class.getText();
 
                 String str = notes_class.getLast_edited().split("_")[0];
                 String string1 = notes_class.getLast_edited().split("_")[1] + ", às " + str.substring(0, str.length()-3);
@@ -82,26 +85,33 @@ public class NotesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref.child("text").setValue(ET.getText().toString());
+                if(ET.getText().toString().equals(bodge[0])) {
+                    Intent intent = new Intent(NotesActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
 
-                editor.putString("lastViewedNote", String.valueOf(Integer.parseInt(sp.getString("lastViewedNote", "100")) + 1));
-                editor.apply();
+                else {
+                    ref.child("text").setValue(ET.getText().toString());
 
-                ref.child("note_id").setValue(sp.getString("lastViewedNote", "100"));
+                    editor.putString("lastViewedNote", String.valueOf(Integer.parseInt(sp.getString("lastViewedNote", "100")) + 1));
+                    editor.apply();
 
-                Calendar c = Calendar.getInstance();
-                SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
-                String formattedDate = df.format(c.getTime());
+                    ref.child("note_id").setValue(sp.getString("lastViewedNote", "100"));
 
-                ref.child("last_edited").setValue(formattedDate);
+                    Calendar c = Calendar.getInstance();
+                    SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy");
+                    String formattedDate = df.format(c.getTime());
 
-                ref.child("last_author").setValue(Fragment1.getUserName(uID));
+                    ref.child("last_edited").setValue(formattedDate);
 
-                Snackbar.make(findViewById(android.R.id.content), "Nota alterada com sucesso!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                    ref.child("last_author").setValue(Fragment1.getUserName(uID));
 
-                Intent intent = new Intent(NotesActivity.this, MainActivity.class);
-                startActivity(intent);
+                    Snackbar.make(findViewById(android.R.id.content), "Nota alterada com sucesso!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+                    Intent intent = new Intent(NotesActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
